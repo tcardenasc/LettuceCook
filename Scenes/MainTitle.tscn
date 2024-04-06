@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://dti55wss7cv7g"]
+
+[ext_resource type="Script" path="res://MainTitle.gd" id="1_rorm8"]
+[ext_resource type="Texture2D" uid="uid://cug68addljywv" path="res://Assets/Background/pixel-art-fantasy-lands-1/828x512/035.large.png" id="2_ewnmp"]
+[ext_resource type="Theme" uid="uid://d17q6xshnwip4" path="res://Default.tres" id="3_kuu6f"]
+[ext_resource type="Texture2D" uid="uid://bykq43s1igudu" path="res://Assets/Graphical user interface/GUI.png" id="4_dg6og"]
+[ext_resource type="AudioStream" uid="uid://de32i50smpygg" path="res://Assets/Background music/プレリュード第2番「名前を入力してください」_2.mp3" id="5_q8tkq"]
+[ext_resource type="AudioStream" uid="uid://i6x51548nve8" path="res://Assets/Soud effects/171697__nenadsimic__menu-selection-click.wav" id="6_sqcia"]
+[ext_resource type="AudioStream" uid="uid://b22pgl4snqnao" path="res://Assets/Soud effects/448080__breviceps__wet-click.wav" id="7_xtyhb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jxypo"]
+texture = ExtResource("4_dg6og")
+region_rect = Rect2(4, 96, 40, 32)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1024.0
+offset_bottom = 576.0
+script = ExtResource("1_rorm8")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 576.0
+texture = ExtResource("2_ewnmp")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 287.0
+offset_top = 120.0
+offset_right = 737.0
+offset_bottom = 190.0
+theme = ExtResource("3_kuu6f")
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.65098, 0.482353, 0.356863, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 7
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_jxypo")
+text = "Horde Tamer"
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 270.0
+offset_right = 612.0
+offset_bottom = 310.0
+theme = ExtResource("3_kuu6f")
+text = "Start Game "
+
+[node name="Continue" type="Button" parent="."]
+offset_left = 412.0
+offset_top = 330.0
+offset_right = 612.0
+offset_bottom = 370.0
+theme = ExtResource("3_kuu6f")
+text = "Continue"
+
+[node name="Settings" type="Button" parent="."]
+offset_left = 412.0
+offset_top = 390.0
+offset_right = 612.0
+offset_bottom = 430.0
+theme = ExtResource("3_kuu6f")
+text = "  Settings "
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 412.0
+offset_top = 450.0
+offset_right = 612.0
+offset_bottom = 490.0
+auto_translate = false
+theme = ExtResource("3_kuu6f")
+text = "Exit"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_q8tkq")
+volume_db = -20.0
+autoplay = true
+
+[node name="ButtonPressSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_sqcia")
+
+[node name="ButtonHoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_xtyhb")
+volume_db = -10.0
+
+[connection signal="mouse_entered" from="Start" to="." method="_on_start_mouse_entered"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="Continue" to="." method="_on_continue_mouse_entered"]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="mouse_entered" from="Settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

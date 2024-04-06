@@ -11,5 +11,16 @@ config_version=5
 [application]
 
 config/name="LettuceCook"
+run/main_scene="res://Scenes/MainTitle.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=576
+window/stretch/mode="viewport"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
