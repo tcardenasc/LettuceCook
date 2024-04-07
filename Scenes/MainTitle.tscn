@@ -51,6 +51,7 @@ theme = ExtResource("3_kuu6f")
 text = "Start Game "
 
 [node name="Continue" type="Button" parent="."]
+layout_mode = 0
 offset_left = 412.0
 offset_top = 330.0
 offset_right = 612.0
@@ -59,6 +60,7 @@ theme = ExtResource("3_kuu6f")
 text = "Continue"
 
 [node name="Settings" type="Button" parent="."]
+layout_mode = 0
 offset_left = 412.0
 offset_top = 390.0
 offset_right = 612.0
@@ -67,6 +69,7 @@ theme = ExtResource("3_kuu6f")
 text = "  Settings "
 
 [node name="Exit" type="Button" parent="."]
+layout_mode = 0
 offset_left = 412.0
 offset_top = 450.0
 offset_right = 612.0
