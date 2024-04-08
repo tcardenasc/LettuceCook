@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcmgov7nsxsl7"]
+
+[ext_resource type="PackedScene" uid="uid://gosldyeqg71c" path="res://Scenes/player.tscn" id="1_82fhd"]
+[ext_resource type="PackedScene" uid="uid://dc3d4uiibma01" path="res://Scenes/enemyBrain.tscn" id="2_vqkg2"]
+
+[node name="TestScene1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_82fhd")]
+position = Vector2(964, 22)
+
+[node name="EnemyBrain" parent="." instance=ExtResource("2_vqkg2")]
+position = Vector2(398, 199)
+collision_layer = 0
+collision_mask = 2
