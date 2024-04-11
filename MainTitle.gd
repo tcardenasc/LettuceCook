@@ -1,7 +1,8 @@
 extends Control
 
+const TEST_SCENE_1 = preload("res://Scenes/testScene1.tscn")
+
 func _ready():
-	
 	var button1 = $Start
 	var button2 = $Continue
 	var button3 = $Settings
@@ -14,8 +15,7 @@ func _ready():
 
 func _on_start_pressed():
 	_button_pressed_sound()
-	pass # Replace with function body.
-
+	get_tree().change_scene_to_packed(TEST_SCENE_1)
 
 func _on_continue_pressed():
 	_button_pressed_sound()
