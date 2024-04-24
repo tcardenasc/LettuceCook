@@ -222,7 +222,7 @@ radius = 196.45
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(4, 4)
 collision_layer = 4
-collision_mask = 4
+collision_mask = 7
 script = ExtResource("1_3pmyj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
