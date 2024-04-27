@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 @export var speed = 300
+@export var damage = 5
 @export var knockback_strenght = 15
 
 @onready var animation_tree = $AnimationTree
@@ -16,7 +17,7 @@ func _on_attack_body_entered(body: Node2D):
 	if (body is CharacterBody2D):
 		var direction = global_position.direction_to(body.global_position)
 		body.knockback = direction * knockback_strenght 
-		print("empuje a un enemigo")
+		body.receive_damage(damage)
 
 func _physics_process(delta):
 	velocity = Input.get_vector("left", "right", "up", "down")*speed
