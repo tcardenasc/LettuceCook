@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://dc3d4uiibma01"]
 
-[ext_resource type="Script" path="res://Scenes/enemyBrain.gd" id="1_3pmyj"]
+[ext_resource type="Script" path="res://Scripts/enemyBrain.gd" id="1_c4tlq"]
 [ext_resource type="Texture2D" uid="uid://cse50planqusc" path="res://Assets/Characters/brainDevour/Intellect Devourer Sprites.png" id="2_touvu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ti2kc"]
@@ -223,7 +223,7 @@ radius = 196.45
 scale = Vector2(4, 4)
 collision_layer = 4
 collision_mask = 7
-script = ExtResource("1_3pmyj")
+script = ExtResource("1_c4tlq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lukc2")
