@@ -1,0 +1,144 @@
+[gd_scene load_steps=4 format=3 uid="uid://c182stu20qtgv"]
+
+[ext_resource type="Script" path="res://Scripts/Settings.gd" id="1_x77cm"]
+[ext_resource type="Theme" uid="uid://g17khyquf3wg" path="res://Assets/Themes/SettingsMenu.tres" id="2_e3b7t"]
+[ext_resource type="Theme" uid="uid://dgq3f1dlfm1ss" path="res://Assets/Themes/MainMenu.tres" id="3_eqqov"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x77cm")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 100.0
+offset_right = 762.0
+offset_bottom = 500.0
+theme = ExtResource("2_e3b7t")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 44.0
+offset_right = 280.0
+offset_bottom = 67.0
+theme = ExtResource("2_e3b7t")
+text = "Settings"
+
+[node name="FullscreenMode" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 248.0
+offset_right = 427.0
+offset_bottom = 279.0
+
+[node name="Label" type="Label" parent="FullscreenMode"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 154.0
+offset_bottom = 32.0
+theme = ExtResource("2_e3b7t")
+theme_override_font_sizes/font_size = 16
+text = "Fullscreen"
+
+[node name="Resolution" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 216.0
+offset_right = 470.0
+offset_bottom = 236.0
+
+[node name="Label" type="Label" parent="Resolution"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -16.0
+offset_right = 152.0
+offset_bottom = 8.0
+theme = ExtResource("2_e3b7t")
+theme_override_font_sizes/font_size = 16
+text = "Resolution"
+
+[node name="MasterVolume" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 216.0
+offset_right = 687.0
+offset_bottom = 236.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="MasterVolume"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -8.0
+offset_right = 170.0
+offset_bottom = 16.0
+theme = ExtResource("2_e3b7t")
+theme_override_font_sizes/font_size = 16
+text = "Main Volume"
+
+[node name="MusicVolume" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 296.0
+offset_right = 687.0
+offset_bottom = 316.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="MusicVolume"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -8.0
+offset_right = 183.0
+offset_bottom = 16.0
+theme = ExtResource("2_e3b7t")
+theme_override_font_sizes/font_size = 16
+text = "Music Volume"
+
+[node name="SfxVolume" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 256.0
+offset_right = 687.0
+offset_bottom = 276.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="SfxVolume"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 256.0
+offset_bottom = 16.0
+theme = ExtResource("2_e3b7t")
+theme_override_font_sizes/font_size = 16
+text = "Sound effects Volume"
+
+[node name="Close" type="Button" parent="."]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 410.0
+offset_right = 700.0
+offset_bottom = 450.0
+theme = ExtResource("3_eqqov")
+text = "Close"
+
+[connection signal="toggled" from="FullscreenMode" to="." method="_on_fullscreen_mode_toggled"]
+[connection signal="item_selected" from="Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="pressed" from="Resolution" to="." method="_on_resolution_pressed"]
+[connection signal="value_changed" from="MasterVolume" to="." method="_on_global_volume_value_changed"]
+[connection signal="value_changed" from="MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="SfxVolume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

@@ -7,11 +7,6 @@ func _ready():
 	var button2 = $Continue
 	var button3 = $Settings
 	var button4 = $Exit
-	
-	button1.pressed.connect(self._on_start_pressed)
-	button2.pressed.connect(self._on_continue_pressed)
-	button3.pressed.connect(self._on_settings_pressed)
-	button4.pressed.connect(self._on_exit_pressed)
 
 func _on_start_pressed():
 	_button_pressed_sound()
@@ -24,6 +19,7 @@ func _on_continue_pressed():
 
 func _on_settings_pressed():
 	_button_pressed_sound()
+	$CanvasLayer/SettingsMenu.show()
 	pass # Replace with function body.
 
 
