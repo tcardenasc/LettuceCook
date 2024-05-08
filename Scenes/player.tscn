@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://gosldyeqg71c"]
+[gd_scene load_steps=23 format=3 uid="uid://gosldyeqg71c"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lt40r"]
 [ext_resource type="Texture2D" uid="uid://omdg15n7fl4v" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Idle_4.png" id="2_rmpbm"]
@@ -262,8 +262,6 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5m8rr"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_21qjc"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1igrf"]
 switch_mode = 2
 advance_mode = 2
@@ -277,7 +275,7 @@ states/idle/node = SubResource("AnimationNodeAnimation_ixqat")
 states/idle/position = Vector2(343, 94)
 states/walk/node = SubResource("AnimationNodeAnimation_ndok0")
 states/walk/position = Vector2(594, 94)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qo6cv"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_lercg"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_bfx4i"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_5m8rr"), "walk", "attack_1", SubResource("AnimationNodeStateMachineTransition_21qjc"), "attack_1", "idle", SubResource("AnimationNodeStateMachineTransition_1igrf")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qo6cv"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_lercg"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_bfx4i"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_5m8rr"), "attack_1", "idle", SubResource("AnimationNodeStateMachineTransition_1igrf")]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4rg2j"]
 radius = 11.0
