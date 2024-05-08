@@ -1,0 +1,102 @@
+[gd_scene load_steps=20 format=3 uid="uid://b11s6bm66u8db"]
+
+[ext_resource type="Script" path="res://Scripts/Creature.gd" id="1_vrcqj"]
+
+[sub_resource type="Animation" id="Animation_3ya2t"]
+resource_name = "attack"
+
+[sub_resource type="Animation" id="Animation_hki55"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_k2vb8"]
+resource_name = "stunned"
+
+[sub_resource type="Animation" id="Animation_3alhe"]
+resource_name = "walk"
+
+[sub_resource type="Animation" id="Animation_lu3qm"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wfdpy"]
+resource_local_to_scene = true
+_data = {
+"RESET": SubResource("Animation_lu3qm"),
+"attack": SubResource("Animation_3ya2t"),
+"idle": SubResource("Animation_hki55"),
+"stunned": SubResource("Animation_k2vb8"),
+"walk": SubResource("Animation_3alhe")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qfygh"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1q7dt"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wgxlh"]
+animation = &"stunned"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5r2r3"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6b1pa"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_riwgt"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mons2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0mo8q"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4agvm"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_frlf3"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hkqb6"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gifvk"]
+states/Start/position = Vector2(98, 83)
+states/attack/node = SubResource("AnimationNodeAnimation_qfygh")
+states/attack/position = Vector2(499, 173)
+states/idle/node = SubResource("AnimationNodeAnimation_1q7dt")
+states/idle/position = Vector2(331, 83)
+states/stunned/node = SubResource("AnimationNodeAnimation_wgxlh")
+states/stunned/position = Vector2(499, 4)
+states/walk/node = SubResource("AnimationNodeAnimation_5r2r3")
+states/walk/position = Vector2(669, 83)
+transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_6b1pa"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_riwgt"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_mons2"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_0mo8q"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_4agvm"), "idle", "stunned", SubResource("AnimationNodeStateMachineTransition_frlf3"), "stunned", "idle", SubResource("AnimationNodeStateMachineTransition_hkqb6")]
+graph_offset = Vector2(-53.8927, -6)
+
+[node name="Creature" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_vrcqj")
+
+[node name="pivot" type="Node2D" parent="."]
+
+[node name="AttackArea" type="Area2D" parent="pivot"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/AttackArea"]
+
+[node name="Sprite" type="Sprite2D" parent="pivot"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wfdpy")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
+tree_root = SubResource("AnimationNodeStateMachine_gifvk")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+offset_bottom = -48.0
+show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
