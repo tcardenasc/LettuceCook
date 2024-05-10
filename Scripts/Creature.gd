@@ -32,8 +32,8 @@ func _physics_process(delta):
 	
 	if player:
 		var direction = global_position.direction_to(player.global_position)
-		velocity = direction * movementSpeed*delta + knockback
-		move_and_collide(velocity)
+		velocity = direction * movementSpeed + knockback
+		move_and_slide()
 		knockback = lerp(knockback, Vector2.ZERO, 0.1)
 	
 	# animation

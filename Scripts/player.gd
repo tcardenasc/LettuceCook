@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var speed = 300
 @export var damage = 5
-@export var knockback_strenght = 15
+@export var knockback_strenght = 1000
 
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
