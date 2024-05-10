@@ -12,6 +12,7 @@ const MAX_HEALTH = 20
 var target_detected = false
 var target_on_attack_range = false
 var movementSpeed = 100
+var movementAttackPenalty = 50
 var knockback = Vector2.ZERO
 var basicDamage = 10
 var health = MAX_HEALTH:
@@ -61,12 +62,15 @@ func receive_damage(damage):
 
 func _on_attack_area_body_entered(body):
 	if (body == target):
+		movementSpeed-=movementAttackPenalty
 		target_on_attack_range = true
 
 func _on_attack_area_body_exited(body):
 	if (body == target):
+		movementSpeed+=movementAttackPenalty
 		target_on_attack_range = false
 
 func attack():
 	print("attack")
-	target.recieve_damage(basicDamage)
+	if target_on_attack_range:
+		target.recieve_damage(basicDamage)
