@@ -39,15 +39,7 @@ animation = &"stunned"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5r2r3"]
 animation = &"walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6b1pa"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_riwgt"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mons2"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0mo8q"]
-switch_mode = 2
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4agvm"]
 advance_mode = 2
@@ -55,6 +47,12 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_frlf3"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hkqb6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6b1pa"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_riwgt"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tmqia"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gifvk"]
 states/Start/position = Vector2(98, 83)
@@ -66,8 +64,8 @@ states/stunned/node = SubResource("AnimationNodeAnimation_wgxlh")
 states/stunned/position = Vector2(499, 4)
 states/walk/node = SubResource("AnimationNodeAnimation_5r2r3")
 states/walk/position = Vector2(669, 83)
-transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_6b1pa"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_riwgt"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_mons2"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_0mo8q"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_4agvm"), "idle", "stunned", SubResource("AnimationNodeStateMachineTransition_frlf3"), "stunned", "idle", SubResource("AnimationNodeStateMachineTransition_hkqb6")]
-graph_offset = Vector2(-53.8927, -6)
+transitions = ["idle", "attack", SubResource("AnimationNodeStateMachineTransition_mons2"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_4agvm"), "idle", "stunned", SubResource("AnimationNodeStateMachineTransition_frlf3"), "stunned", "idle", SubResource("AnimationNodeStateMachineTransition_hkqb6"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_6b1pa"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_riwgt"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_tmqia")]
+graph_offset = Vector2(28.1073, 23)
 
 [node name="Creature" type="CharacterBody2D"]
 collision_layer = 4
@@ -77,6 +75,7 @@ script = ExtResource("1_vrcqj")
 [node name="pivot" type="Node2D" parent="."]
 
 [node name="AttackArea" type="Area2D" parent="pivot"]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/AttackArea"]
 
@@ -89,6 +88,9 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
+libraries = {
+"": SubResource("AnimationLibrary_wfdpy")
+}
 tree_root = SubResource("AnimationNodeStateMachine_gifvk")
 anim_player = NodePath("../AnimationPlayer")
 
@@ -100,3 +102,6 @@ offset_bottom = -48.0
 show_percentage = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="body_entered" from="pivot/AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="pivot/AttackArea" to="." method="_on_attack_area_body_exited"]
