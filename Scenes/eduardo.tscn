@@ -89,6 +89,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fv7y5"]
+resource_local_to_scene = true
 _data = {
 "RESET": SubResource("Animation_6fx2r"),
 "attack": SubResource("Animation_uv3hi"),
