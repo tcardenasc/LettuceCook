@@ -30,11 +30,13 @@ func _physics_process(delta):
 	if health == 0:
 		return
 	
-	if target:
+	if target and global_position.distance_to(target.global_position) > 20:
 		var direction = global_position.direction_to(target.global_position)
 		velocity = direction * movementSpeed + knockback
 		move_and_slide()
 		knockback = lerp(knockback, Vector2.ZERO, 0.1)
+	else:
+		velocity = Vector2.ZERO
 	
 	# animation
 	if velocity.x or velocity.y:
