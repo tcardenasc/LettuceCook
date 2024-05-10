@@ -1,17 +1,17 @@
 extends CharacterBody2D
 
-@export var movement_speed = 0
-const MAX_HEALTH = 20
 
 @onready var health_bar = $HealthBar
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot = $pivot
 
+const MAX_HEALTH = 20
+@export var movement_speed = 0
+@export var target: CharacterBody2D = null
+var target_detected = false
+var target_on_attack_range = false
 var movementSpeed = 100
-var player_detected = false
-var player_on_attack_range = false
-@export var player: CharacterBody2D = null
 var knockback = Vector2.ZERO
 var health = MAX_HEALTH:
 	set(value):
@@ -30,8 +30,8 @@ func _physics_process(delta):
 	if health == 0:
 		return
 	
-	if player:
-		var direction = global_position.direction_to(player.global_position)
+	if target:
+		var direction = global_position.direction_to(target.global_position)
 		velocity = direction * movementSpeed + knockback
 		move_and_slide()
 		knockback = lerp(knockback, Vector2.ZERO, 0.1)
@@ -45,7 +45,7 @@ func _physics_process(delta):
 	if (velocity.x):
 		pivot.scale.x = sign(velocity.x)
 		
-	if(player_on_attack_range):
+	if(target_on_attack_range):
 		playback.travel("attack")
 		return
 
@@ -57,10 +57,10 @@ func receive_damage(damage):
 
 
 func _on_attack_area_body_entered(body):
-	if (body == player):
-		player_on_attack_range = true
+	if (body == target):
+		target_on_attack_range = true
 
 
 func _on_attack_area_body_exited(body):
-	if (body == player):
-		player_on_attack_range = false
+	if (body == target):
+		target_on_attack_range = false
