@@ -1745,13 +1745,13 @@ layer_3/tile_data = PackedInt32Array(-3932032, 524294, 2, -3932029, 524294, 2684
 [node name="Player" parent="." instance=ExtResource("1_82fhd")]
 position = Vector2(4256, -2472)
 
-[node name="Eduardo" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_hnhop")]
+[node name="Eduardo" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_hnhop")]
 position = Vector2(4352, -2664)
-player = NodePath("../Player")
+target = NodePath("../Player")
 
-[node name="Brain" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_62liv")]
+[node name="Brain" parent="." node_paths=PackedStringArray("target") instance=ExtResource("9_62liv")]
 position = Vector2(4424, -2424)
-player = NodePath("../Player")
+target = NodePath("../Player")
 
 [node name="EnemyBrain" parent="." instance=ExtResource("2_vqkg2")]
 position = Vector2(4640, -2632)
