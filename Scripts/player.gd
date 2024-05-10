@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+const MAX_HEALTH = 500
+var health = MAX_HEALTH
+				
+@onready var health_points = $HealthBar
 
 @export var speed = 300
 @export var damage = 5
@@ -9,6 +13,7 @@ extends CharacterBody2D
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot = $pivot
 @onready var attack_area = $pivot/AttackArea
+
 
 func _ready():
 	attack_area.body_entered.connect(_on_attack_body_entered)
@@ -35,4 +40,7 @@ func _physics_process(delta):
 	
 	if (velocity.x):
 		pivot.scale.x = sign(velocity.x)
-	
+
+func recieve_damage(amount):
+	health = max(health - amount, 0)
+	print("health: ",health)

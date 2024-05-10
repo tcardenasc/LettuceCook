@@ -13,6 +13,7 @@ var target_detected = false
 var target_on_attack_range = false
 var movementSpeed = 100
 var knockback = Vector2.ZERO
+var basicDamage = 10
 var health = MAX_HEALTH:
 	set(value):
 		if health != value:
@@ -62,7 +63,10 @@ func _on_attack_area_body_entered(body):
 	if (body == target):
 		target_on_attack_range = true
 
-
 func _on_attack_area_body_exited(body):
 	if (body == target):
 		target_on_attack_range = false
+
+func attack():
+	print("attack")
+	target.recieve_damage(basicDamage)
