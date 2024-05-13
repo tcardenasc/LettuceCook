@@ -6,25 +6,28 @@ extends CharacterBody2D
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot = $pivot
 
-const MAX_HEALTH = 20
-@export var movement_speed = 0
+@export var MAX_HEALTH = 0
 @export var target: CharacterBody2D = null
 var target_detected = false
 var target_on_attack_range = false
-var movementSpeed = 100
+@export var movementSpeed = 100
 var movementAttackPenalty = 50
 var knockback = Vector2.ZERO
-var basicDamage = 10
-var health = MAX_HEALTH:
+@export var basicDamage = 10
+var tamable = false
+var health:
 	set(value):
 		if health != value:
 			health = value
 			set_health_bar()
 			if (health == 0):
+				tamable = true;
 				playback.travel("stunned")
+				print("tamable: ", tamable)
 
 func _ready():
 	animation_tree.active = true
+	health = MAX_HEALTH
 	health_bar.max_value = MAX_HEALTH
 	set_health_bar()
 
@@ -35,10 +38,10 @@ func _physics_process(delta):
 	if target and global_position.distance_to(target.global_position) > 20:
 		var direction = global_position.direction_to(target.global_position)
 		velocity = direction * movementSpeed + knockback
-		move_and_slide()
-		knockback = lerp(knockback, Vector2.ZERO, 0.1)
 	else:
-		velocity = Vector2.ZERO
+		velocity = Vector2.ZERO + knockback
+	move_and_slide()
+	knockback = lerp(knockback, Vector2.ZERO, 0.1)
 	
 	# animation
 	if velocity.x or velocity.y:

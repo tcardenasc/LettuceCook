@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b11s6bm66u8db"]
+[gd_scene load_steps=21 format=3 uid="uid://b11s6bm66u8db"]
 
 [ext_resource type="Script" path="res://Scripts/Creature.gd" id="1_vrcqj"]
 
@@ -67,6 +67,14 @@ states/walk/position = Vector2(669, 83)
 transitions = ["idle", "attack", SubResource("AnimationNodeStateMachineTransition_mons2"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_4agvm"), "idle", "stunned", SubResource("AnimationNodeStateMachineTransition_frlf3"), "stunned", "idle", SubResource("AnimationNodeStateMachineTransition_hkqb6"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_6b1pa"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_riwgt"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_tmqia")]
 graph_offset = Vector2(28.1073, 23)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d65ar"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(16, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(10, 0, 0)
+gravity = Vector3(0, -20, 0)
+
 [node name="Creature" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 5
@@ -88,6 +96,9 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
+libraries = {
+"": SubResource("AnimationLibrary_wfdpy")
+}
 tree_root = SubResource("AnimationNodeStateMachine_gifvk")
 anim_player = NodePath("../AnimationPlayer")
 
@@ -99,6 +110,10 @@ offset_bottom = -48.0
 show_percentage = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_d65ar")
+lifetime = 1.5
 
 [connection signal="body_entered" from="pivot/AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="pivot/AttackArea" to="." method="_on_attack_area_body_exited"]
