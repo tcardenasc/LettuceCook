@@ -5,3 +5,4 @@
 
 [node name="EduardoSpawner" instance=ExtResource("1_64r5c")]
 mob_scene = ExtResource("2_rivfx")
+spawn_limit = 10
