@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Creature
 
 @onready var health_bar = $HealthBar
 @onready var animation_tree = $AnimationTree
