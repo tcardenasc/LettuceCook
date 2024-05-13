@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cksh4cpo3gkqc"]
+
+[ext_resource type="PackedScene" uid="uid://dym4bs3gw2gpt" path="res://Scenes/enemy_spawner.tscn" id="1_64r5c"]
+[ext_resource type="PackedScene" uid="uid://csak43125sjd7" path="res://Scenes/eduardo.tscn" id="2_rivfx"]
+
+[node name="EduardoSpawner" instance=ExtResource("1_64r5c")]
+mob_scene = ExtResource("2_rivfx")
