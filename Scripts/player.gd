@@ -32,6 +32,7 @@ func _physics_process(delta):
 		playback.travel("attack_1")
 		return
 	
+		
 	# animation
 	if velocity.x or velocity.y:
 		playback.travel("walk")

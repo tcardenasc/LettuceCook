@@ -115,5 +115,13 @@ show_percentage = false
 process_material = SubResource("ParticleProcessMaterial_d65ar")
 lifetime = 1.5
 
+[node name="tameLabel" type="Label" parent="."]
+visible = false
+offset_left = -29.0
+offset_top = 22.0
+offset_right = 30.0
+offset_bottom = 45.0
+text = "press F"
+
 [connection signal="body_entered" from="pivot/AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="pivot/AttackArea" to="." method="_on_attack_area_body_exited"]
