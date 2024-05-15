@@ -25,7 +25,6 @@ var health:
 			if (health == 0):
 				stunned = true;
 				tameLabel.show()
-				playback.travel("stunned")
 
 func _ready():
 	animation_tree.active = true
@@ -35,6 +34,7 @@ func _ready():
 
 func _physics_process(delta):
 	if health == 0:
+		playback.travel("stunned")
 		return
 	
 	if target and global_position.distance_to(target.global_position) > 20:
