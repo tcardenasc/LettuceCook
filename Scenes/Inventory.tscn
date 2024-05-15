@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://upaq8dya7jrt"]
 
-[ext_resource type="Script" path="res://Scenes/MonsterInventory.gd" id="1_w77m5"]
+[ext_resource type="Script" path="res://Scripts/MonsterInventory.gd" id="1_w77m5"]
 [ext_resource type="Texture2D" uid="uid://c612m3bfp5uul" path="res://Assets/Background/pixel-art-fantasy-lands-1/276x171/003.small.png" id="2_8wkkg"]
 [ext_resource type="Theme" uid="uid://b4jmac6dul4w6" path="res://Assets/Themes/Inventory.tres" id="3_w1vee"]
 [ext_resource type="Texture2D" uid="uid://d22ufrv51q0l3" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster.png" id="4_8c6up"]

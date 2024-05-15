@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b11s6bm66u8db" path="res://Scenes/creature.tscn" id="1_6yfjx"]
 [ext_resource type="Texture2D" uid="uid://cpv0ou6krcbns" path="res://Assets/Characters/Eduardo/Dwarf Sprite Sheet 1.3v.png" id="2_1wqol"]
-[ext_resource type="Script" path="res://Scenes/eduardo.gd" id="2_lfk7c"]
+[ext_resource type="Script" path="res://Scripts/eduardo.gd" id="2_lfk7c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oim2m"]
 radius = 56.5685
