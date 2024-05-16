@@ -11,25 +11,9 @@ func _ready():
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		# Manejar la selección según el número presionado
-		match event.keycode:
-			KEY_1:
-				select_slot(0)
-			KEY_2:
-				select_slot(1)
-			KEY_3:
-				select_slot(2)
-			KEY_4:
-				select_slot(3)
-			KEY_5:
-				select_slot(4)
-			KEY_6:
-				select_slot(5)
-			KEY_7:
-				select_slot(6)
-			KEY_8:
-				select_slot(7)
-			KEY_9:
-				select_slot(8)
+		# KEY_1 - KEY_9 numeros consecutivos
+		if (KEY_1 <= event.keycode and event.keycode <= KEY_9):
+			select_slot(event.keycode % KEY_1)
 
 # Función para seleccionar un slot de inventario
 func select_slot(index):
