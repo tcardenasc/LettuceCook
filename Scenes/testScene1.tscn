@@ -1744,13 +1744,11 @@ layer_3/tile_data = PackedInt32Array(-3932032, 524294, 2, -3932029, 524294, 2684
 [node name="Player" parent="." instance=ExtResource("1_82fhd")]
 position = Vector2(4256, -2472)
 
-[node name="BrainSpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_d80mg")]
+[node name="BrainSpawner" parent="." instance=ExtResource("9_d80mg")]
 position = Vector2(4568, -2432)
-player = NodePath("../Player")
 
-[node name="EduardoSpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_fa2st")]
+[node name="EduardoSpawner" parent="." instance=ExtResource("9_fa2st")]
 position = Vector2(4112, -2616)
-player = NodePath("../Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

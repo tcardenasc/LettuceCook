@@ -1,10 +1,15 @@
 extends Node2D
 
 @onready var pause_menu = $CanvasLayer/PauseMenu
+@onready var player = $Player
+@onready var brain_spawner = $BrainSpawner
+@onready var eduardo_spawner = $EduardoSpawner
+
 var paused = false
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# Assign player scene to creature spawners
+	for spawner:CreatureSpawner in find_children("*", "CreatureSpawner"):
+		spawner.player = player
 
 func pause_game():
 	if paused:

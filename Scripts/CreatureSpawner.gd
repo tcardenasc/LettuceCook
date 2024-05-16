@@ -1,4 +1,5 @@
 extends Node2D
+class_name CreatureSpawner
 
 @export var mob_scene: PackedScene
 @export var player: CharacterBody2D
