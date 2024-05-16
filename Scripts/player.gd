@@ -1,19 +1,18 @@
 extends CharacterBody2D
+class_name Player
 
-const MAX_HEALTH = 500
-var health = MAX_HEALTH
-				
 @onready var health_points = $HealthBar
-
-@export var speed = 300
-@export var damage = 5
-@export var knockback_strenght = 1000
-
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot = $pivot
 @onready var attack_area = $pivot/AttackArea
 
+@export var speed = 300
+@export var damage = 5
+@export var knockback_strenght = 1000
+
+const MAX_HEALTH = 500
+var health = MAX_HEALTH
 
 func _ready():
 	attack_area.body_entered.connect(_on_attack_body_entered)

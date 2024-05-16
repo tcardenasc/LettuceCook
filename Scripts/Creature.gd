@@ -9,12 +9,13 @@ class_name Creature
 
 @export var MAX_HEALTH = 0
 @export var target: CharacterBody2D = null
+@export var movementSpeed = 100
+@export var basicDamage = 10
+
 var target_detected = false
 var target_on_attack_range = false
-@export var movementSpeed = 100
 var movementAttackPenalty = 50
 var knockback = Vector2.ZERO
-@export var basicDamage = 10
 var stunned = false
 var in_tame_range = false
 var health:
@@ -85,6 +86,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use") and stunned and in_tame_range:
 		#player.picked.emit(name)
 		picked()
-		
+
 func picked():
 	queue_free()

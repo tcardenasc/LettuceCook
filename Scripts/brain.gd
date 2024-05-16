@@ -1,4 +1,5 @@
-extends "res://Scripts/Creature.gd"
+extends Creature
+class_name Brain
 
 func _ready():
 	basicDamage=1

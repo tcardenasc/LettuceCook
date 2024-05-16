@@ -1,4 +1,6 @@
-extends "res://Scripts/Creature.gd"
+extends Creature
+class_name Eduardo
+
 func _ready():
 	basicDamage = 20
 	MAX_HEALTH = 100

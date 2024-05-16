@@ -6,6 +6,7 @@ extends Node2D
 @onready var eduardo_spawner = $EduardoSpawner
 
 var paused = false
+
 func _ready():
 	# Assign player scene to creature spawners
 	for spawner:CreatureSpawner in find_children("*", "CreatureSpawner"):
