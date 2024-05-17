@@ -83,6 +83,7 @@ script = ExtResource("1_vrcqj")
 [node name="pivot" type="Node2D" parent="."]
 
 [node name="AttackArea" type="Area2D" parent="pivot"]
+collision_layer = 4
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/AttackArea"]
@@ -96,6 +97,9 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
+libraries = {
+"": SubResource("AnimationLibrary_wfdpy")
+}
 tree_root = SubResource("AnimationNodeStateMachine_gifvk")
 anim_player = NodePath("../AnimationPlayer")
 

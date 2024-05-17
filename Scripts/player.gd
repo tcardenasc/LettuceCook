@@ -14,6 +14,8 @@ class_name Player
 const MAX_HEALTH = 500
 var health = MAX_HEALTH
 
+const bulletPath = preload('res://Scenes/Lettuce.tscn')
+
 func _ready():
 	attack_area.body_entered.connect(_on_attack_body_entered)
 	
@@ -26,12 +28,15 @@ func _on_attack_body_entered(body: Node2D):
 func _physics_process(delta):
 	velocity = Input.get_vector("left", "right", "up", "down")*speed
 	move_and_slide()
+	$aim.look_at(get_global_mouse_position())
 	
 	if(Input.is_action_just_pressed("attack")):
 		playback.travel("attack_1")
 		return
 	
-		
+	if(Input.is_action_just_pressed("shoot")):
+		shoot_lettuce()
+	
 	# animation
 	if velocity.x or velocity.y:
 		playback.travel("walk")
@@ -44,3 +49,13 @@ func _physics_process(delta):
 func recieve_damage(amount):
 	health = max(health - amount, 0)
 	print("health: ",health)
+ 
+func shoot_lettuce():
+	var bullet = bulletPath.instantiate()
+	get_parent().add_child(bullet)
+	bullet.position = $aim/BulletPosition.global_position
+	bullet.velocity = get_global_mouse_position() - bullet.position
+	
+	
+	
+	

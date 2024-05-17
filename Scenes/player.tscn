@@ -307,6 +307,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hacy4")
+}
 tree_root = SubResource("AnimationNodeStateMachine_vd4i2")
 anim_player = NodePath("../AnimationPlayer")
 
@@ -315,3 +318,8 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 8)
 shape = SubResource("CapsuleShape2D_4rg2j")
+
+[node name="aim" type="Node2D" parent="."]
+
+[node name="BulletPosition" type="Marker2D" parent="aim"]
+position = Vector2(26, 0)
