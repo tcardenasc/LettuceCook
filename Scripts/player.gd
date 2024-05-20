@@ -6,12 +6,14 @@ class_name Player
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot = $pivot
 @onready var attack_area = $pivot/AttackArea
+@onready var attack_sfx = $AttackSFX
 
 @export var speed = 300
 @export var damage = 5
 @export var knockback_strenght = 1000
 
 const MAX_HEALTH = 500
+var gems = 0
 var health = MAX_HEALTH
 
 const bulletPath = preload('res://Scenes/Lettuce.tscn')
@@ -24,6 +26,12 @@ func _on_attack_body_entered(body: Node2D):
 		var direction = global_position.direction_to(body.global_position)
 		body.knockback = direction * knockback_strenght 
 		body.receive_damage(damage)
+		
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("Gemas"):
+		body.queue_free()
+		gems = gems + 1
+	pass # Replace with function body.
 
 func _physics_process(delta):
 	velocity = Input.get_vector("left", "right", "up", "down")*speed
@@ -56,6 +64,12 @@ func shoot_lettuce():
 	bullet.position = $aim/BulletPosition.global_position
 	bullet.velocity = get_global_mouse_position() - bullet.position
 	
-	
-	
-	
+
+func _on_animation_player_animation_started(anim_name):
+	pass # Replace with function body.
+
+
+func _on_animation_tree_animation_started(anim_name):
+	if(anim_name=="attack_1"):
+		attack_sfx.play()
+	pass # Replace with function body.

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://csak43125sjd7"]
+[gd_scene load_steps=13 format=3 uid="uid://csak43125sjd7"]
 
 [ext_resource type="PackedScene" uid="uid://b11s6bm66u8db" path="res://Scenes/creature.tscn" id="1_6yfjx"]
 [ext_resource type="Texture2D" uid="uid://cpv0ou6krcbns" path="res://Assets/Characters/Eduardo/Dwarf Sprite Sheet 1.3v.png" id="2_1wqol"]
 [ext_resource type="Script" path="res://Scripts/eduardo.gd" id="2_lfk7c"]
+[ext_resource type="AudioStream" uid="uid://djksuledm0jcp" path="res://Assets/Soud effects/eduardoAttack.wav" id="4_hcx6v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oim2m"]
 radius = 56.5685
@@ -159,13 +160,11 @@ libraries = {
 "": SubResource("AnimationLibrary_fv7y5")
 }
 
-[node name="AnimationTree" parent="." index="2"]
-libraries = {
-"": SubResource("AnimationLibrary_fv7y5")
-}
-
 [node name="CollisionShape2D" parent="." index="4"]
 shape = SubResource("CapsuleShape2D_ql7wh")
 
 [node name="GPUParticles2D" parent="." index="5"]
 emitting = false
+
+[node name="AttackSFX" parent="." index="8"]
+stream = ExtResource("4_hcx6v")

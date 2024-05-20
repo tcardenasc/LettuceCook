@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://gosldyeqg71c"]
+[gd_scene load_steps=25 format=3 uid="uid://gosldyeqg71c"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lt40r"]
 [ext_resource type="Texture2D" uid="uid://omdg15n7fl4v" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Idle_4.png" id="2_rmpbm"]
 [ext_resource type="Texture2D" uid="uid://807mgoepc8i7" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Attack1_4.png" id="3_6ks3l"]
 [ext_resource type="Texture2D" uid="uid://bnrtvvra35by1" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Run_6.png" id="4_ltxox"]
 [ext_resource type="Texture2D" uid="uid://4h47dd0atdj8" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Walk_6.png" id="5_wwe03"]
+[ext_resource type="AudioStream" uid="uid://8xdxa1eet3b0" path="res://Assets/Soud effects/punch.wav" id="6_qy0me"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nad7p"]
 size = Vector2(26.5, 42)
@@ -277,8 +278,11 @@ states/walk/node = SubResource("AnimationNodeAnimation_ndok0")
 states/walk/position = Vector2(594, 94)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qo6cv"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_lercg"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_bfx4i"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_5m8rr"), "attack_1", "idle", SubResource("AnimationNodeStateMachineTransition_1igrf")]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7jg38"]
+radius = 33.0151
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4rg2j"]
-radius = 11.0
+radius = 17.0
 height = 46.0
 
 [node name="Player" type="CharacterBody2D"]
@@ -307,19 +311,30 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_hacy4")
-}
 tree_root = SubResource("AnimationNodeStateMachine_vd4i2")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 8)
-shape = SubResource("CapsuleShape2D_4rg2j")
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, 4)
+shape = SubResource("CircleShape2D_7jg38")
 
 [node name="aim" type="Node2D" parent="."]
 
 [node name="BulletPosition" type="Marker2D" parent="aim"]
 position = Vector2(26, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-2, 8)
+shape = SubResource("CapsuleShape2D_4rg2j")
+
+[node name="AttackSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qy0me")
+
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="animation_started" from="AnimationTree" to="." method="_on_animation_tree_animation_started"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -97,9 +97,6 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
-libraries = {
-"": SubResource("AnimationLibrary_wfdpy")
-}
 tree_root = SubResource("AnimationNodeStateMachine_gifvk")
 anim_player = NodePath("../AnimationPlayer")
 
@@ -124,5 +121,13 @@ offset_right = 30.0
 offset_bottom = 45.0
 text = "press F"
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="AttackSFX" type="AudioStreamPlayer" parent="."]
+bus = &"Sound Effects"
+
 [connection signal="body_entered" from="pivot/AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="pivot/AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

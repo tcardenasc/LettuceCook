@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsx7cxqsiig5f"]
+[gd_scene load_steps=13 format=3 uid="uid://bsx7cxqsiig5f"]
 
 [ext_resource type="PackedScene" uid="uid://b11s6bm66u8db" path="res://Scenes/creature.tscn" id="1_5nuhc"]
 [ext_resource type="Texture2D" uid="uid://cse50planqusc" path="res://Assets/Characters/brainDevour/Intellect Devourer Sprites.png" id="2_d5nhq"]
 [ext_resource type="Script" path="res://Scripts/brain.gd" id="2_imapt"]
+[ext_resource type="AudioStream" uid="uid://d2wekbjje37bh" path="res://Assets/Soud effects/ghoulAttack.mp3" id="4_y8m4f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o35cf"]
 radius = 57.1402
@@ -159,11 +160,6 @@ libraries = {
 "": SubResource("AnimationLibrary_gsq87")
 }
 
-[node name="AnimationTree" parent="." index="2"]
-libraries = {
-"": SubResource("AnimationLibrary_gsq87")
-}
-
 [node name="HealthBar" parent="." index="3"]
 offset_top = -48.0
 offset_bottom = -32.0
@@ -174,3 +170,6 @@ shape = SubResource("CircleShape2D_duxsb")
 
 [node name="GPUParticles2D" parent="." index="5"]
 emitting = false
+
+[node name="AttackSFX" parent="." index="8"]
+stream = ExtResource("4_y8m4f")

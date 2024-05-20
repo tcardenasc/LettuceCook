@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://upaq8dya7jrt"]
+[gd_scene load_steps=7 format=3 uid="uid://upaq8dya7jrt"]
 
+[ext_resource type="Script" path="res://Scenes/Inventory.gd" id="1_2qbxw"]
 [ext_resource type="Script" path="res://Scripts/MonsterInventory.gd" id="1_w77m5"]
 [ext_resource type="Texture2D" uid="uid://c612m3bfp5uul" path="res://Assets/Background/pixel-art-fantasy-lands-1/276x171/003.small.png" id="2_8wkkg"]
 [ext_resource type="Theme" uid="uid://b4jmac6dul4w6" path="res://Assets/Themes/Inventory.tres" id="3_w1vee"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2qbxw")
 metadata/_edit_lock_ = true
 
 [node name="Creatures" type="GridContainer" parent="."]
@@ -159,19 +161,19 @@ offset_bottom = 95.0
 text = "9"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="."]
+[node name="PlayerInformation" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 128.0
 offset_bottom = 128.0
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="PfpPanel" type="Panel" parent="PlayerInformation"]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 128.0
 theme = ExtResource("3_w1vee")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Control"]
+[node name="PlayerPfp" type="Sprite2D" parent="PlayerInformation"]
 position = Vector2(64, 64)
 scale = Vector2(5.6, 6.22222)
 texture = ExtResource("4_8c6up")
@@ -179,7 +181,7 @@ region_enabled = true
 region_rect = Rect2(6, 3, 20, 18)
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="Control"]
+[node name="PlayerName" type="Label" parent="PlayerInformation"]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 128.0
@@ -188,7 +190,7 @@ offset_bottom = 172.0
 theme = ExtResource("3_w1vee")
 text = "Player"
 
-[node name="Sprite2D2" type="Sprite2D" parent="Control"]
+[node name="HealthIcon" type="Sprite2D" parent="PlayerInformation"]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(8, 160)
 scale = Vector2(4, 4)
@@ -197,7 +199,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(116, 67, 8, 8)
 
-[node name="Sprite2D3" type="Sprite2D" parent="Control"]
+[node name="GemIcon" type="Sprite2D" parent="PlayerInformation"]
 modulate = Color(0.680717, 0.928888, 0.954977, 1)
 position = Vector2(8, 192)
 scale = Vector2(4, 4.57143)
@@ -206,14 +208,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(68, 68, 8, 7)
 
-[node name="Label" type="Label" parent="Control/Sprite2D3"]
-offset_left = 52.3636
-offset_top = -16.0
-offset_right = 58.3636
-offset_bottom = 7.0
-theme = ExtResource("3_w1vee")
-
-[node name="Label2" type="Label" parent="Control"]
+[node name="Health" type="Label" parent="PlayerInformation"]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 160.0
@@ -223,7 +218,7 @@ theme = ExtResource("3_w1vee")
 text = "100
 "
 
-[node name="Label3" type="Label" parent="Control"]
+[node name="Gem" type="Label" parent="PlayerInformation"]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 192.0

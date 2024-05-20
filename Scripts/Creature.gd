@@ -6,11 +6,15 @@ class_name Creature
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot = $pivot
 @onready var tameLabel: Label = $tameLabel
+@onready var timer = $Timer
+@onready var attackSfx = $AttackSFX
 
 @export var MAX_HEALTH = 0
 @export var target: CharacterBody2D = null
 @export var movementSpeed = 100
 @export var basicDamage = 10
+
+const gema = preload("res://Scenes/gem.tscn")
 
 var target_detected = false
 var target_on_attack_range = false
@@ -24,9 +28,23 @@ var health:
 			health = value
 			set_health_bar()
 			if (health == 0):
-				stunned = true;
-				tameLabel.show()
+				for n in 5:
+					soltar_gema()				
+				var probability = randi() % 100
+				if(probability >= 80):		
+					stunned = true;
+					tameLabel.show()
+				else:
+					timer.start()
+					
 
+func soltar_gema():
+	var gema_instancia = gema.instantiate()
+	get_parent().add_child(gema_instancia)
+	gema_instancia.global_position = global_position
+	var impulso_aleatorio = Vector2(randf_range(-300, 300), -300)
+	gema_instancia.apply_central_impulse(impulso_aleatorio)
+	
 func _ready():
 	animation_tree.active = true
 	health = MAX_HEALTH
@@ -79,6 +97,7 @@ func _on_attack_area_body_exited(body):
 
 func attack():
 	print("attack")
+	attackSfx.play()
 	if target_on_attack_range:
 		target.recieve_damage(basicDamage)
 
@@ -89,3 +108,8 @@ func _input(event: InputEvent) -> void:
 
 func picked():
 	queue_free()
+
+
+func _on_timer_timeout():
+	queue_free()
+	pass # Replace with function body.
