@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dti55wss7cv7g"]
+[gd_scene load_steps=10 format=3 uid="uid://dti55wss7cv7g"]
 
-[ext_resource type="Script" path="res://MainTitle.gd" id="1_rorm8"]
+[ext_resource type="Script" path="res://Scripts/MainTitle.gd" id="1_rorm8"]
 [ext_resource type="Texture2D" uid="uid://cug68addljywv" path="res://Assets/Background/pixel-art-fantasy-lands-1/828x512/035.large.png" id="2_ewnmp"]
-[ext_resource type="Theme" uid="uid://dgq3f1dlfm1ss" path="res://Default.tres" id="3_kuu6f"]
+[ext_resource type="PackedScene" uid="uid://c182stu20qtgv" path="res://Scenes/settings.tscn" id="2_rvta1"]
+[ext_resource type="Theme" uid="uid://dgq3f1dlfm1ss" path="res://Assets/Themes/MainMenu.tres" id="3_kuu6f"]
 [ext_resource type="Texture2D" uid="uid://bykq43s1igudu" path="res://Assets/Graphical user interface/GUI.png" id="4_dg6og"]
 [ext_resource type="AudioStream" uid="uid://de32i50smpygg" path="res://Assets/Background music/プレリュード第2番「名前を入力してください」_2.mp3" id="5_q8tkq"]
 [ext_resource type="AudioStream" uid="uid://i6x51548nve8" path="res://Assets/Soud effects/171697__nenadsimic__menu-selection-click.wav" id="6_sqcia"]
@@ -18,6 +19,10 @@ anchors_preset = 0
 offset_right = 1024.0
 offset_bottom = 576.0
 script = ExtResource("1_rorm8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SettingsMenu" parent="CanvasLayer" instance=ExtResource("2_rvta1")]
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -82,13 +87,16 @@ text = "Exit"
 stream = ExtResource("5_q8tkq")
 volume_db = -20.0
 autoplay = true
+bus = &"Music"
 
 [node name="ButtonPressSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_sqcia")
+bus = &"Sound Effects"
 
 [node name="ButtonHoverSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_xtyhb")
 volume_db = -10.0
+bus = &"Sound Effects"
 
 [connection signal="mouse_entered" from="Start" to="." method="_on_start_mouse_entered"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

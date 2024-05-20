@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdr2jyfx3kn18"]
+
+[ext_resource type="Script" path="res://Scripts/pauseMenu.gd" id="1_3nbtw"]
+[ext_resource type="Theme" uid="uid://qmhi4o7wdtce" path="res://Assets/Themes/PauseMenu.tres" id="1_30et1"]
+[ext_resource type="AudioStream" uid="uid://i6x51548nve8" path="res://Assets/Soud effects/171697__nenadsimic__menu-selection-click.wav" id="3_bk81x"]
+[ext_resource type="AudioStream" uid="uid://b22pgl4snqnao" path="res://Assets/Soud effects/448080__breviceps__wet-click.wav" id="4_kkc1l"]
+[ext_resource type="PackedScene" uid="uid://c182stu20qtgv" path="res://Scenes/settings.tscn" id="5_mief2"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3nbtw")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 70.0
+offset_right = 704.0
+offset_bottom = 490.0
+theme = ExtResource("1_30et1")
+
+[node name="Resume" type="Button" parent="."]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 140.0
+offset_right = 612.0
+offset_bottom = 180.0
+theme = ExtResource("1_30et1")
+text = "Resume"
+
+[node name="Restart" type="Button" parent="."]
+layout_mode = 2
+offset_left = 412.0
+offset_top = 200.0
+offset_right = 612.0
+offset_bottom = 240.0
+theme = ExtResource("1_30et1")
+text = "Restart"
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 260.0
+offset_right = 612.0
+offset_bottom = 300.0
+theme = ExtResource("1_30et1")
+text = "Settings"
+
+[node name="QuitToMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 320.0
+offset_right = 612.0
+offset_bottom = 360.0
+theme = ExtResource("1_30et1")
+text = "Return to Menu"
+
+[node name="QuitGame" type="Button" parent="."]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 380.0
+offset_right = 612.0
+offset_bottom = 420.0
+theme = ExtResource("1_30et1")
+text = "Quit Game"
+
+[node name="ButtonPressSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bk81x")
+bus = &"Sound Effects"
+
+[node name="ButtonHoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kkc1l")
+volume_db = -10.0
+bus = &"Sound Effects"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("5_mief2")]
+visible = false
+layout_mode = 1
+
+[connection signal="mouse_entered" from="Resume" to="." method="_on_resume_mouse_entered"]
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="Restart" to="." method="_on_restart_mouse_entered"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="mouse_entered" from="Settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="QuitToMenu" to="." method="_on_quit_to_menu_mouse_entered"]
+[connection signal="pressed" from="QuitToMenu" to="." method="_on_quit_to_menu_pressed"]
+[connection signal="mouse_entered" from="QuitGame" to="." method="_on_quit_game_mouse_entered"]
+[connection signal="pressed" from="QuitGame" to="." method="_on_quit_game_pressed"]

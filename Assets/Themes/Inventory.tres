@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b4jmac6dul4w6"]
+
+[ext_resource type="Texture2D" uid="uid://bykq43s1igudu" path="res://Assets/Graphical user interface/GUI.png" id="1_c10l6"]
+[ext_resource type="FontFile" uid="uid://cjaqnjul5amxx" path="res://Assets/Fonts/Silver.ttf" id="1_sgrq7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v5q5b"]
+texture = ExtResource("1_c10l6")
+region_rect = Rect2(122, 267, 28, 28)
+
+[resource]
+Label/font_sizes/font_size = 39
+Label/fonts/font = ExtResource("1_sgrq7")
+Panel/styles/panel = SubResource("StyleBoxTexture_v5q5b")

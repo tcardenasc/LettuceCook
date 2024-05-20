@@ -1,0 +1,231 @@
+[gd_scene load_steps=7 format=3 uid="uid://upaq8dya7jrt"]
+
+[ext_resource type="Script" path="res://Scenes/Inventory.gd" id="1_2qbxw"]
+[ext_resource type="Script" path="res://Scripts/MonsterInventory.gd" id="1_w77m5"]
+[ext_resource type="Texture2D" uid="uid://c612m3bfp5uul" path="res://Assets/Background/pixel-art-fantasy-lands-1/276x171/003.small.png" id="2_8wkkg"]
+[ext_resource type="Theme" uid="uid://b4jmac6dul4w6" path="res://Assets/Themes/Inventory.tres" id="3_w1vee"]
+[ext_resource type="Texture2D" uid="uid://d22ufrv51q0l3" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster.png" id="4_8c6up"]
+[ext_resource type="Texture2D" uid="uid://bykq43s1igudu" path="res://Assets/Graphical user interface/GUI.png" id="5_y8ew5"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2qbxw")
+metadata/_edit_lock_ = true
+
+[node name="Creatures" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 16.0
+offset_right = 899.0
+offset_bottom = 91.0
+columns = 9
+script = ExtResource("1_w77m5")
+
+[node name="TextureRect" type="TextureRect" parent="Creatures"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("2_8wkkg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Creatures/TextureRect"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 56.0
+offset_bottom = 95.0
+text = "1"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Creatures"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("2_8wkkg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Creatures/TextureRect2"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 56.0
+offset_bottom = 95.0
+text = "2"
+horizontal_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Creatures"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("2_8wkkg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Creatures/TextureRect3"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 56.0
+offset_bottom = 95.0
+text = "3"
+horizontal_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="Creatures"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("2_8wkkg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Creatures/TextureRect4"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 56.0
+offset_bottom = 95.0
+text = "4"
+horizontal_alignment = 1
+
+[node name="TextureRect5" type="TextureRect" parent="Creatures"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("2_8wkkg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Creatures/TextureRect5"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 56.0
+offset_bottom = 95.0
+text = "5"
+horizontal_alignment = 1
+
+[node name="TextureRect6" type="TextureRect" parent="Creatures"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("2_8wkkg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Creatures/TextureRect6"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 56.0
+offset_bottom = 95.0
+text = "6"
+horizontal_alignment = 1
+
+[node name="TextureRect7" type="TextureRect" parent="Creatures"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("2_8wkkg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Creatures/TextureRect7"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 56.0
+offset_bottom = 95.0
+text = "7"
+horizontal_alignment = 1
+
+[node name="TextureRect8" type="TextureRect" parent="Creatures"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("2_8wkkg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Creatures/TextureRect8"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 56.0
+offset_bottom = 95.0
+text = "8"
+horizontal_alignment = 1
+
+[node name="TextureRect9" type="TextureRect" parent="Creatures"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("2_8wkkg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Creatures/TextureRect9"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 56.0
+offset_bottom = 95.0
+text = "9"
+horizontal_alignment = 1
+
+[node name="PlayerInformation" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="PfpPanel" type="Panel" parent="PlayerInformation"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+theme = ExtResource("3_w1vee")
+metadata/_edit_lock_ = true
+
+[node name="PlayerPfp" type="Sprite2D" parent="PlayerInformation"]
+position = Vector2(64, 64)
+scale = Vector2(5.6, 6.22222)
+texture = ExtResource("4_8c6up")
+region_enabled = true
+region_rect = Rect2(6, 3, 20, 18)
+metadata/_edit_lock_ = true
+
+[node name="PlayerName" type="Label" parent="PlayerInformation"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 128.0
+offset_right = 108.0
+offset_bottom = 172.0
+theme = ExtResource("3_w1vee")
+text = "Player"
+
+[node name="HealthIcon" type="Sprite2D" parent="PlayerInformation"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(8, 160)
+scale = Vector2(4, 4)
+texture = ExtResource("5_y8ew5")
+centered = false
+region_enabled = true
+region_rect = Rect2(116, 67, 8, 8)
+
+[node name="GemIcon" type="Sprite2D" parent="PlayerInformation"]
+modulate = Color(0.680717, 0.928888, 0.954977, 1)
+position = Vector2(8, 192)
+scale = Vector2(4, 4.57143)
+texture = ExtResource("5_y8ew5")
+centered = false
+region_enabled = true
+region_rect = Rect2(68, 68, 8, 7)
+
+[node name="Health" type="Label" parent="PlayerInformation"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 160.0
+offset_right = 88.0
+offset_bottom = 204.0
+theme = ExtResource("3_w1vee")
+text = "100
+"
+
+[node name="Gem" type="Label" parent="PlayerInformation"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 192.0
+offset_right = 88.0
+offset_bottom = 236.0
+theme = ExtResource("3_w1vee")
+text = "0
+"
+
+[connection signal="gui_input" from="Creatures/TextureRect2" to="Creatures" method="_on_texture_rect_2_gui_input"]

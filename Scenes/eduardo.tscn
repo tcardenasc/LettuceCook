@@ -1,0 +1,170 @@
+[gd_scene load_steps=13 format=3 uid="uid://csak43125sjd7"]
+
+[ext_resource type="PackedScene" uid="uid://b11s6bm66u8db" path="res://Scenes/creature.tscn" id="1_6yfjx"]
+[ext_resource type="Texture2D" uid="uid://cpv0ou6krcbns" path="res://Assets/Characters/Eduardo/Dwarf Sprite Sheet 1.3v.png" id="2_1wqol"]
+[ext_resource type="Script" path="res://Scripts/eduardo.gd" id="2_lfk7c"]
+[ext_resource type="AudioStream" uid="uid://djksuledm0jcp" path="res://Assets/Soud effects/eduardoAttack.wav" id="4_hcx6v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oim2m"]
+radius = 56.5685
+
+[sub_resource type="Animation" id="Animation_6fx2r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uv3hi"]
+resource_name = "attack"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 22]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ivh6t"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_bphau"]
+resource_name = "stunned"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [56, 57, 58, 59, 60, 61, 62]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_0dcd5"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fv7y5"]
+resource_local_to_scene = true
+_data = {
+"RESET": SubResource("Animation_6fx2r"),
+"attack": SubResource("Animation_uv3hi"),
+"idle": SubResource("Animation_ivh6t"),
+"stunned": SubResource("Animation_bphau"),
+"walk": SubResource("Animation_0dcd5")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ql7wh"]
+radius = 40.0
+height = 80.0
+
+[node name="Eduardo" instance=ExtResource("1_6yfjx")]
+script = ExtResource("2_lfk7c")
+
+[node name="CollisionShape2D" parent="pivot/AttackArea" index="0"]
+shape = SubResource("CircleShape2D_oim2m")
+
+[node name="Sprite" parent="pivot" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("2_1wqol")
+offset = Vector2(0, -3.5)
+hframes = 8
+vframes = 8
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_fv7y5")
+}
+
+[node name="CollisionShape2D" parent="." index="4"]
+shape = SubResource("CapsuleShape2D_ql7wh")
+
+[node name="GPUParticles2D" parent="." index="5"]
+emitting = false
+
+[node name="AttackSFX" parent="." index="8"]
+stream = ExtResource("4_hcx6v")
