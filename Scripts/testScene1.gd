@@ -32,3 +32,14 @@ func _process(delta):
 	if Input.is_action_just_pressed("escape"):
 		pause_game()
 	pass
+
+
+func _on_inventory_gui_closed():
+	pass 
+	#Engine.time_scale = 1
+	#get_tree().paused = false
+
+func _on_inventory_gui_opened():
+	pass 
+	#Engine.time_scale = 0
+	#get_tree().paused = true

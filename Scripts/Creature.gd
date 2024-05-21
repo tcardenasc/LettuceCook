@@ -13,7 +13,9 @@ class_name Creature
 @export var target: CharacterBody2D = null
 @export var movementSpeed = 100
 @export var basicDamage = 10
+@export var itemResource: InventoryItem
 
+var player_inventory: Inventory = preload("res://Scenes/Inventory/playerInventory.tres")
 const gema = preload("res://Scenes/gem.tscn")
 
 var target_detected = false
@@ -104,9 +106,10 @@ func attack():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use") and stunned and in_tame_range:
 		#player.picked.emit(name)
-		picked()
+		picked(player_inventory)
 
-func picked():
+func picked(inventory: Inventory):
+	inventory.insert(itemResource)
 	queue_free()
 
 

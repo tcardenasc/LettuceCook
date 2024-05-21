@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://ctqdu5s8nkpwy"]
+
+[ext_resource type="Script" path="res://inventoryItem.gd" id="1_xctp3"]
+[ext_resource type="Texture2D" uid="uid://bav2fsnm8n243" path="res://Assets/Characters/brainDevour/brainIcon.png" id="2_ahciw"]
+
+[resource]
+script = ExtResource("1_xctp3")
+name = "Brain"
+description = "Not so smart for a brain..."
+type = "Creature"
+texture = ExtResource("2_ahciw")

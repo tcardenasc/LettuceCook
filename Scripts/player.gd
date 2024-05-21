@@ -11,6 +11,7 @@ class_name Player
 @export var speed = 300
 @export var damage = 5
 @export var knockback_strenght = 1000
+@export var inventory: Inventory
 
 const MAX_HEALTH = 500
 var gems = 0

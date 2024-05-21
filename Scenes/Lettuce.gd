@@ -8,5 +8,6 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	if(body is Creature):
 		if (body.stunned):
+			body.picked(body.player_inventory)
 			body.queue_free()
 	queue_free()

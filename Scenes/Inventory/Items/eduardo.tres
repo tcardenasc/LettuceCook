@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dw7l57pjidk1e"]
+
+[ext_resource type="Script" path="res://inventoryItem.gd" id="1_310gc"]
+[ext_resource type="Texture2D" uid="uid://dpgjr183f76tl" path="res://Assets/Characters/Eduardo/eduardoIcon.png" id="2_fhrdm"]
+
+[resource]
+script = ExtResource("1_310gc")
+name = "Eduardo"
+description = "Eduardo"
+type = "Creature"
+texture = ExtResource("2_fhrdm")
