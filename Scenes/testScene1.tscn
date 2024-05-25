@@ -1778,6 +1778,3 @@ grow_vertical = 0
 stream = ExtResource("13_h5cgt")
 autoplay = true
 bus = &"Music"
-
-[connection signal="closed" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_closed"]
-[connection signal="opened" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_opened"]

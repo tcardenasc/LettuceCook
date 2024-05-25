@@ -4,8 +4,8 @@ extends Node2D
 @onready var player = $Player
 @onready var brain_spawner = $BrainSpawner
 @onready var eduardo_spawner = $EduardoSpawner
-@onready var inventory = $CanvasLayer/Inventory
-
+@onready var playerStatus = $CanvasLayer/Inventory
+@onready var inventoryGui = $CanvasLayer/InventoryGui
 var paused = false
 
 func _ready():
@@ -16,30 +16,22 @@ func _ready():
 func pause_game():
 	if paused:
 		pause_menu.hide()
-		inventory.show()
+		playerStatus.show()
+		inventoryGui.show()
 		Engine.time_scale = 1
 	else:
 		pause_menu.show()
-		inventory.hide()
+		playerStatus.hide()
+		inventoryGui.hide()
 		Engine.time_scale = 0
 		
 	paused = !paused
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	inventory._update_health(player.health)
-	inventory._update_gems(player.gems)
+	playerStatus._update_health(player.health)
+	playerStatus._update_gems(player.gems)
 	if Input.is_action_just_pressed("escape"):
 		pause_game()
 	pass
 
-
-func _on_inventory_gui_closed():
-	pass 
-	#Engine.time_scale = 1
-	#get_tree().paused = false
-
-func _on_inventory_gui_opened():
-	pass 
-	#Engine.time_scale = 0
-	#get_tree().paused = true
