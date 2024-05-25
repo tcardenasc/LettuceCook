@@ -5,7 +5,8 @@
 
 [resource]
 script = ExtResource("1_xctp3")
+texture = ExtResource("2_ahciw")
 name = "Brain"
 description = "Not so smart for a brain..."
 type = "Creature"
-texture = ExtResource("2_ahciw")
+maxStackAmount = 2
