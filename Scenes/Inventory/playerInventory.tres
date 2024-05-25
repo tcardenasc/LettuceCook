@@ -1,15 +1,19 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=18 format=3 uid="uid://bnacd1yphrvow"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=20 format=3 uid="uid://bnacd1yphrvow"]
 
 [ext_resource type="Script" path="res://Scenes/Inventory/inventorySlot.gd" id="2_3ameu"]
+[ext_resource type="Resource" uid="uid://ctqdu5s8nkpwy" path="res://Scenes/Inventory/Items/brain.tres" id="2_o318l"]
 [ext_resource type="Script" path="res://Scenes/Inventory/inventory.gd" id="3_cjdvp"]
+[ext_resource type="Resource" uid="uid://dw7l57pjidk1e" path="res://Scenes/Inventory/Items/eduardo.tres" id="4_8hi80"]
 
 [sub_resource type="Resource" id="Resource_bbvdo"]
 script = ExtResource("2_3ameu")
-amount = 0
+item = ExtResource("2_o318l")
+amount = 1
 
 [sub_resource type="Resource" id="Resource_m2hby"]
 script = ExtResource("2_3ameu")
-amount = 0
+item = ExtResource("4_8hi80")
+amount = 1
 
 [sub_resource type="Resource" id="Resource_dd7aa"]
 script = ExtResource("2_3ameu")
