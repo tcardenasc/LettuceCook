@@ -21,3 +21,6 @@ func takeItem():
 
 func isEmpty():
 	return !itemStackGui
+
+func useItem():
+	itemStackGui.inventorySlot.use()

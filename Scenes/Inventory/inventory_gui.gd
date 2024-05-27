@@ -11,6 +11,7 @@ var itemInHandSize: Vector2
 @onready var ItemStackGuiClass = preload("res://Scenes/Inventory/itemStackGui.tscn")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
+
 func _ready():
 	connectSlots()
 	inventory.updated.connect(update)
@@ -74,7 +75,24 @@ func insertItemOnSlot(slot):
 func updateItemInHand():
 	if !itemInHand: return
 	itemInHand.global_position = get_global_mouse_position() - itemInHandSize
-
+	
 func _input(event):
 	updateItemInHand()
+	if event is InputEventKey and event.pressed:
+		# Manejar la selección según el número presionado
+		# KEY_1 - KEY_9 numeros consecutivos
+		if (KEY_1 <= event.keycode and event.keycode <= KEY_9):
+			useItemFrom(event.keycode % KEY_1)
+
+
+signal summon(itemName: String)
+func useItemFrom(slotNumber: int):
+	if slots[slotNumber].isEmpty(): #si no hay nada en el slot...
+		print("no item")
+	else:
+		var itemName = slots[slotNumber].itemStackGui.inventorySlot.item.creatureName
+		#print("you tried to summon ",slots[slotNumber].itemStackGui.inventorySlot.item.creatureName) # si hay item en el slot...
+		summon.emit(itemName)
+		
+	
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dcmgov7nsxsl7"]
+[gd_scene load_steps=24 format=3 uid="uid://dcmgov7nsxsl7"]
 
 [ext_resource type="PackedScene" uid="uid://gosldyeqg71c" path="res://Scenes/player.tscn" id="1_82fhd"]
 [ext_resource type="Script" path="res://Scripts/testScene1.gd" id="1_boitp"]
@@ -8,11 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://b3qb21o4hfyon" path="res://Assets/Map/TX Tileset Stone Ground.png" id="6_030pr"]
 [ext_resource type="Texture2D" uid="uid://bqemnm4bm5qa4" path="res://Assets/Map/TX Props.png" id="7_2k0j0"]
 [ext_resource type="Texture2D" uid="uid://cognn0gpxb60y" path="res://Assets/Map/TX Tileset Wall.png" id="7_4qux8"]
-[ext_resource type="PackedScene" uid="uid://b5378h7fio6j5" path="res://Scenes/brain_spawner.tscn" id="9_d80mg"]
-[ext_resource type="PackedScene" uid="uid://cksh4cpo3gkqc" path="res://Scenes/eduardo_spawner.tscn" id="9_fa2st"]
 [ext_resource type="PackedScene" uid="uid://bdr2jyfx3kn18" path="res://Scenes/pauseMenu.tscn" id="9_fujf8"]
+[ext_resource type="PackedScene" uid="uid://b5378h7fio6j5" path="res://Scenes/brain_spawner.tscn" id="9_tgqi2"]
 [ext_resource type="PackedScene" uid="uid://upaq8dya7jrt" path="res://Scenes/Inventory.tscn" id="10_nqbqf"]
+[ext_resource type="PackedScene" uid="uid://cksh4cpo3gkqc" path="res://Scenes/eduardo_spawner.tscn" id="10_pnxtb"]
 [ext_resource type="Script" path="res://Scenes/CanvasLayer.gd" id="11_ip4ju"]
+[ext_resource type="PackedScene" uid="uid://b8wqyx684klcb" path="res://Scenes/summoner.tscn" id="11_qa6at"]
 [ext_resource type="AudioStream" uid="uid://ce5fxk0nniyw5" path="res://Assets/Background music/Magical_Upbeat_Gangs.mp3" id="13_h5cgt"]
 [ext_resource type="PackedScene" uid="uid://6jaib5wo360c" path="res://Scenes/Inventory/inventory_gui.tscn" id="13_m255c"]
 
@@ -1747,11 +1748,14 @@ layer_3/tile_data = PackedInt32Array(-3932032, 524294, 2, -3932029, 524294, 2684
 [node name="Player" parent="." instance=ExtResource("1_82fhd")]
 position = Vector2(4256, -2472)
 
-[node name="BrainSpawner" parent="." instance=ExtResource("9_d80mg")]
+[node name="BrainSpawner" parent="." instance=ExtResource("9_tgqi2")]
 position = Vector2(4568, -2432)
 
-[node name="EduardoSpawner" parent="." instance=ExtResource("9_fa2st")]
+[node name="EduardoSpawner" parent="." instance=ExtResource("10_pnxtb")]
 position = Vector2(4112, -2616)
+
+[node name="Summoner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_qa6at")]
+player = NodePath("../Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3

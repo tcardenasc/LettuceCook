@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dym4bs3gw2gpt"]
 
-[ext_resource type="Script" path="res://Scripts/CreatureSpawner.gd" id="1_1rdj5"]
+[ext_resource type="Script" path="res://Scripts/CreatureSpawner.gd" id="1_n3hap"]
 
 [node name="CreatureSpawner" type="Node2D"]
-script = ExtResource("1_1rdj5")
+script = ExtResource("1_n3hap")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

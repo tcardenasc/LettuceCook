@@ -6,12 +6,15 @@ extends Node2D
 @onready var eduardo_spawner = $EduardoSpawner
 @onready var playerStatus = $CanvasLayer/Inventory
 @onready var inventoryGui = $CanvasLayer/InventoryGui
+@onready var summoner = $Summoner
+
 var paused = false
 
 func _ready():
 	# Assign player scene to creature spawners
 	for spawner:CreatureSpawner in find_children("*", "CreatureSpawner"):
 		spawner.player = player
+	inventoryGui.summon.connect(_on_summon)
 
 func pause_game():
 	if paused:
@@ -34,4 +37,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("escape"):
 		pause_game()
 	pass
+	
+func _on_summon(itemName):
+	print(itemName)
+	summoner.summon(itemName)
+	
 
