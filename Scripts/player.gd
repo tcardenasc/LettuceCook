@@ -55,7 +55,7 @@ func _physics_process(delta):
 	if (velocity.x):
 		pivot.scale.x = sign(velocity.x)
 
-func recieve_damage(amount):
+func receive_damage(amount):
 	health = max(health - amount, 0)
 	print("health: ",health)
  

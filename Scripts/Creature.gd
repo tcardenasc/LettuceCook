@@ -101,7 +101,7 @@ func attack():
 	print("attack")
 	attackSfx.play()
 	if target_on_attack_range:
-		target.recieve_damage(basicDamage)
+		target.receive_damage(basicDamage)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use") and stunned and in_tame_range:
