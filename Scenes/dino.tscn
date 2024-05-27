@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://7i7tl4jtlxl3"]
+
+[ext_resource type="PackedScene" uid="uid://b11s6bm66u8db" path="res://Scenes/creature.tscn" id="1_8oxol"]
+
+[sub_resource type="Animation" id="Animation_eeflw"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_f3fw4"]
+resource_name = "attack"
+
+[sub_resource type="Animation" id="Animation_n4hsu"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_fmi6t"]
+resource_name = "stunned"
+
+[sub_resource type="Animation" id="Animation_mqlt5"]
+resource_name = "walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ht8c1"]
+_data = {
+"RESET": SubResource("Animation_eeflw"),
+"attack": SubResource("Animation_f3fw4"),
+"idle": SubResource("Animation_n4hsu"),
+"stunned": SubResource("Animation_fmi6t"),
+"walk": SubResource("Animation_mqlt5")
+}
+
+[node name="Dino" instance=ExtResource("1_8oxol")]
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_ht8c1")
+}
