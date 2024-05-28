@@ -60,7 +60,8 @@ func onSlotClicked(slot):
 		
 	if !itemInHand:
 		takeItemFromSlot(slot)
-
+		return
+	swapItems(slot)
 func takeItemFromSlot(slot):
 	itemInHand = slot.takeItem()
 	itemInHandSize = itemInHand.size/2
@@ -99,7 +100,7 @@ func useItemFrom(slotNumber: int):
 		summon.emit(itemName)
 		
 func swapItems(slot):
-	var tempItem = slot.takeItemFromSlot()
+	var tempItem = slot.takeItem()
 	insertItemOnSlot(slot)
 	itemInHand=tempItem
 	add_child(itemInHand)
