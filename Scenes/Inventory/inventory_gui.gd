@@ -2,6 +2,7 @@ extends Control
 
 signal opened
 signal closed
+signal summon(itemName: String)
 
 var isOpen: bool = true
 var itemInHand: ItemStackGui
@@ -63,8 +64,10 @@ func onSlotClicked(slot):
 func takeItemFromSlot(slot):
 	itemInHand = slot.takeItem()
 	itemInHandSize = itemInHand.size/2
+	inventory.removeItemAtIndex(slot.index)
 	add_child(itemInHand)
 	updateItemInHand()
+	
 
 func insertItemOnSlot(slot):
 	var item = itemInHand
@@ -76,6 +79,7 @@ func updateItemInHand():
 	if !itemInHand: return
 	itemInHand.global_position = get_global_mouse_position() - itemInHandSize
 	
+	
 func _input(event):
 	updateItemInHand()
 	if event is InputEventKey and event.pressed:
@@ -85,7 +89,7 @@ func _input(event):
 			useItemFrom(event.keycode % KEY_1)
 
 
-signal summon(itemName: String)
+
 func useItemFrom(slotNumber: int):
 	if slots[slotNumber].isEmpty(): #si no hay nada en el slot...
 		print("no item")
@@ -94,5 +98,10 @@ func useItemFrom(slotNumber: int):
 		#print("you tried to summon ",slots[slotNumber].itemStackGui.inventorySlot.item.creatureName) # si hay item en el slot...
 		summon.emit(itemName)
 		
-	
+func swapItems(slot):
+	var tempItem = slot.takeItemFromSlot()
+	insertItemOnSlot(slot)
+	itemInHand=tempItem
+	add_child(itemInHand)
+	updateItemInHand()
 	
