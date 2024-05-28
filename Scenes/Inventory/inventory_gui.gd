@@ -61,6 +61,10 @@ func onSlotClicked(slot):
 	if !itemInHand:
 		takeItemFromSlot(slot)
 		return
+	
+	if itemInHand.inventorySlot.item.creatureName == slot.itemStackGui.inventorySlot.item.creatureName:
+		stackItems(slot)
+		return
 	swapItems(slot)
 func takeItemFromSlot(slot):
 	itemInHand = slot.takeItem()
@@ -92,11 +96,11 @@ func _input(event):
 
 
 func useItemFrom(slotNumber: int):
-	if slots[slotNumber].isEmpty(): #si no hay nada en el slot...
+	var slotUsed = slots[slotNumber]
+	if slotUsed.isEmpty(): #si no hay nada en el slot...
 		print("no item")
 	else:
-		var itemName = slots[slotNumber].itemStackGui.inventorySlot.item.creatureName
-		#print("you tried to summon ",slots[slotNumber].itemStackGui.inventorySlot.item.creatureName) # si hay item en el slot...
+		var itemName = slotUsed.itemStackGui.inventorySlot.item.creatureName
 		summon.emit(itemName)
 		
 func swapItems(slot):
@@ -105,4 +109,36 @@ func swapItems(slot):
 	itemInHand=tempItem
 	add_child(itemInHand)
 	updateItemInHand()
+	
+func stackItems(slot):
+	var slotItem: ItemStackGui = slot.itemStackGui
+	var maxAmount:int = slotItem.inventorySlot.item.maxStackAmount
+	var totalAmount = slotItem.inventorySlot.amount + itemInHand.inventorySlot.amount
+	
+	if slotItem.inventorySlot.amount == maxAmount:
+		swapItems(slot)
+		return
+		
+	if totalAmount <= maxAmount:
+		slotItem.inventorySlot.amount = totalAmount
+		remove_child(itemInHand)
+		itemInHand=null
+		
+	else:
+		slotItem.inventorySlot.amount = maxAmount
+		itemInHand.inventorySlot.amount = totalAmount - maxAmount
+	
+	slotItem.update()
+	if itemInHand:
+		itemInHand.update()
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	

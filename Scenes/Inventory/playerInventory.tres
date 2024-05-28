@@ -17,15 +17,18 @@ amount = 1
 
 [sub_resource type="Resource" id="Resource_dd7aa"]
 script = ExtResource("2_3ameu")
-amount = 0
+item = ExtResource("2_o318l")
+amount = 4
 
 [sub_resource type="Resource" id="Resource_116l8"]
 script = ExtResource("2_3ameu")
-amount = 0
+item = ExtResource("2_o318l")
+amount = 1
 
 [sub_resource type="Resource" id="Resource_ll66n"]
 script = ExtResource("2_3ameu")
-amount = 0
+item = ExtResource("2_o318l")
+amount = 3
 
 [sub_resource type="Resource" id="Resource_fwppu"]
 script = ExtResource("2_3ameu")

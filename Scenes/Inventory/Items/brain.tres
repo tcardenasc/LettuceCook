@@ -9,4 +9,4 @@ texture = ExtResource("2_ahciw")
 creatureName = "Brain"
 description = "Not so smart for a brain..."
 type = "Creature"
-maxStackAmount = 2
+maxStackAmount = 4
