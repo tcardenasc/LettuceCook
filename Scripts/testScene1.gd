@@ -58,8 +58,8 @@ func spawnerDefeated():
 		print("Felicitaciones!!")
 
 func updatePlayerInfo():
-	inventory._update_health(player.health)
-	inventory._update_gems(player.gems)
+	playerStatus._update_health(player.health)
+	playerStatus._update_gems(player.gems)
 	
 func playerDefeated():
 	main.get_tree().change_scene_to_packed(gameOverScene)
