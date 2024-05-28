@@ -1,0 +1,41 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ohqqda0lrcc1"]
+
+[ext_resource type="FontFile" uid="uid://s6dqutlw1h50" path="res://Assets/Fonts/DungeonFont.ttf" id="1_hwj7d"]
+[ext_resource type="Texture2D" uid="uid://bcot8t1h2fwml" path="res://Assets/Graphical user interface/Spritesheets/UI books & more.png" id="1_pkqy2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q0l37"]
+texture = ExtResource("1_pkqy2")
+region_rect = Rect2(81, 336, 30, 16)
+modulate_color = Color(1, 1, 1, 0.686275)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhcxp"]
+texture = ExtResource("1_pkqy2")
+region_rect = Rect2(81, 336, 30, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tkh3u"]
+texture = ExtResource("1_pkqy2")
+region_rect = Rect2(81, 336, 30, 16)
+modulate_color = Color(0.621524, 0.621524, 0.621524, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8va3m"]
+texture = ExtResource("1_pkqy2")
+region_rect = Rect2(17, 32, 93, 45)
+
+[resource]
+Button/fonts/font = ExtResource("1_hwj7d")
+Button/styles/hover = SubResource("StyleBoxTexture_q0l37")
+Button/styles/normal = SubResource("StyleBoxTexture_nhcxp")
+Button/styles/pressed = SubResource("StyleBoxTexture_tkh3u")
+Panel/styles/panel = SubResource("StyleBoxTexture_8va3m")
+RichTextLabel/colors/default_color = Color(1, 0.576471, 0.00784314, 1)
+RichTextLabel/colors/font_outline_color = Color(0.422635, 0.230588, 4.33177e-07, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.590809, 0.331143, 2.88785e-07, 1)
+RichTextLabel/constants/outline_size = 10
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 6
+RichTextLabel/constants/shadow_outline_size = 6
+RichTextLabel/fonts/bold_font = ExtResource("1_hwj7d")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_hwj7d")
+RichTextLabel/fonts/italics_font = ExtResource("1_hwj7d")
+RichTextLabel/fonts/mono_font = ExtResource("1_hwj7d")
+RichTextLabel/fonts/normal_font = ExtResource("1_hwj7d")

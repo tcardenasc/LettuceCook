@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://n3qvwunpsdfr"]
+
+[ext_resource type="Texture2D" uid="uid://b3h1nmpxe6cyj" path="res://Assets/Background/pixel-art-fantasy-lands-1/828x512/021.large.png" id="1_8ubta"]
+[ext_resource type="Theme" uid="uid://ohqqda0lrcc1" path="res://Assets/Themes/GameOverMenu.tres" id="1_jem3v"]
+[ext_resource type="Script" path="res://Scripts/gameOverMenu.gd" id="1_pqtxi"]
+[ext_resource type="AudioStream" uid="uid://b1wfomomloruw" path="res://Assets/Graphical user interface/Sounds/Wood Block1.wav" id="4_yqeiq"]
+[ext_resource type="AudioStream" uid="uid://dni6rskc4jou2" path="res://Assets/Graphical user interface/Sounds/Wood Block2.wav" id="5_jdvsq"]
+[ext_resource type="AudioStream" uid="uid://bj6j675yfjxp2" path="res://Assets/Background music/降りしきる、白.mp3" id="6_tx27f"]
+
+[node name="GameOverMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pqtxi")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 600.0
+texture = ExtResource("1_8ubta")
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_top = -443.0
+offset_right = 1024.0
+offset_bottom = 463.0
+theme = ExtResource("1_jem3v")
+bbcode_enabled = true
+text = "[center][b][font_size=150]
+[wave amp=50.0 freq=5.0 connected=1]
+
+Game Over
+
+[/wave]
+[/font_size][/b][/center]"
+fit_content = true
+scroll_active = false
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -120.0
+offset_right = 400.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jem3v")
+metadata/_edit_lock_ = true
+
+[node name="MainMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 643.0
+offset_top = 320.0
+offset_right = 2143.0
+offset_bottom = 820.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("1_jem3v")
+theme_override_font_sizes/font_size = 200
+text = "Main Menu"
+
+[node name="NewGame" type="Button" parent="."]
+layout_mode = 2
+offset_left = 643.0
+offset_top = 232.0
+offset_right = 2143.0
+offset_bottom = 732.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("1_jem3v")
+theme_override_font_sizes/font_size = 200
+text = "New Game"
+
+[node name="ExitGame" type="Button" parent="."]
+layout_mode = 2
+offset_left = 643.0
+offset_top = 416.0
+offset_right = 2143.0
+offset_bottom = 916.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("1_jem3v")
+theme_override_font_sizes/font_size = 200
+text = "Exit"
+
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yqeiq")
+bus = &"Sound Effects"
+
+[node name="PressSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_jdvsq")
+bus = &"Sound Effects"
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tx27f")
+autoplay = true
+
+[connection signal="mouse_entered" from="MainMenu" to="." method="_on_main_menu_mouse_entered"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="mouse_entered" from="NewGame" to="." method="_on_new_game_mouse_entered"]
+[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="ExitGame" to="." method="_on_exit_game_mouse_entered"]
+[connection signal="pressed" from="ExitGame" to="." method="_on_exit_game_pressed"]

@@ -109,10 +109,11 @@ func _input(event: InputEvent) -> void:
 		picked(player_inventory)
 
 func picked(inventory: Inventory):
+	get_parent().creatureDefeated()
 	inventory.insert(itemResource)
-	queue_free()
 
 
 func _on_timer_timeout():
+	get_parent().creatureDefeated()
 	queue_free()
 	pass # Replace with function body.

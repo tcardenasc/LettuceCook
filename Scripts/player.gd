@@ -32,6 +32,7 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("Gemas"):
 		body.queue_free()
 		gems = gems + 1
+		get_parent().updatePlayerInfo()
 	pass # Replace with function body.
 
 func _physics_process(delta):
@@ -57,6 +58,9 @@ func _physics_process(delta):
 
 func receive_damage(amount):
 	health = max(health - amount, 0)
+	get_parent().updatePlayerInfo()
+	if(health == 0):
+		get_parent().playerDefeated()
 	print("health: ",health)
  
 func shoot_lettuce():

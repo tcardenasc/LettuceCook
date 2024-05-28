@@ -21,6 +21,7 @@ offset_bottom = 576.0
 script = ExtResource("1_rorm8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="SettingsMenu" parent="CanvasLayer" instance=ExtResource("2_rvta1")]
 

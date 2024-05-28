@@ -18,10 +18,10 @@ metadata/_edit_lock_ = true
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 300.0
-offset_top = 70.0
-offset_right = 704.0
-offset_bottom = 490.0
+offset_left = 310.0
+offset_top = 66.0
+offset_right = 714.0
+offset_bottom = 486.0
 theme = ExtResource("1_30et1")
 
 [node name="Resume" type="Button" parent="."]
