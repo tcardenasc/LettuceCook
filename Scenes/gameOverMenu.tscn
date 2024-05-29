@@ -110,21 +110,6 @@ bus = &"Music"
 
 [node name="SaveManager" parent="." instance=ExtResource("7_ubp7d")]
 
-[node name="PfpPanel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 112.0
-offset_top = 96.0
-offset_right = 208.0
-offset_bottom = 192.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_daiir")
-
-[node name="PlayerPfp" type="Sprite2D" parent="PfpPanel"]
-position = Vector2(48, 48)
-scale = Vector2(3.525, 3.417)
-texture = ExtResource("9_c68qt")
-region_enabled = true
-region_rect = Rect2(6, 3, 20, 18)
-
 [node name="RunStatsLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 152.0
@@ -339,6 +324,21 @@ offset_bottom = 162.0
 theme = ExtResource("4_jnkj7")
 theme_override_font_sizes/font_size = 30
 text = "0"
+
+[node name="PfpPanel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 96.0
+offset_right = 208.0
+offset_bottom = 192.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_daiir")
+
+[node name="PlayerPfp" type="Sprite2D" parent="Control/PfpPanel"]
+position = Vector2(48, 48)
+scale = Vector2(3.525, 3.417)
+texture = ExtResource("9_c68qt")
+region_enabled = true
+region_rect = Rect2(6, 3, 20, 18)
 
 [connection signal="mouse_entered" from="MainMenu" to="." method="_on_main_menu_mouse_entered"]
 [connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
