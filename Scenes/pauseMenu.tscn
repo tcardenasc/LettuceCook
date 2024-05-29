@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdr2jyfx3kn18"]
+[gd_scene load_steps=7 format=3 uid="uid://bdr2jyfx3kn18"]
 
 [ext_resource type="Script" path="res://Scripts/pauseMenu.gd" id="1_3nbtw"]
 [ext_resource type="Theme" uid="uid://qmhi4o7wdtce" path="res://Assets/Themes/PauseMenu.tres" id="1_30et1"]
 [ext_resource type="AudioStream" uid="uid://i6x51548nve8" path="res://Assets/Soud effects/171697__nenadsimic__menu-selection-click.wav" id="3_bk81x"]
 [ext_resource type="AudioStream" uid="uid://b22pgl4snqnao" path="res://Assets/Soud effects/448080__breviceps__wet-click.wav" id="4_kkc1l"]
 [ext_resource type="PackedScene" uid="uid://c182stu20qtgv" path="res://Scenes/settings.tscn" id="5_mief2"]
+[ext_resource type="PackedScene" uid="uid://o0m5u0nfy62q" path="res://Scenes/SaveManager.tscn" id="6_7jjxc"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -81,6 +82,8 @@ bus = &"Sound Effects"
 [node name="SettingsMenu" parent="." instance=ExtResource("5_mief2")]
 visible = false
 layout_mode = 1
+
+[node name="SaveManager" parent="." instance=ExtResource("6_7jjxc")]
 
 [connection signal="mouse_entered" from="Resume" to="." method="_on_resume_mouse_entered"]
 [connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]

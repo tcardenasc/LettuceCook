@@ -1,6 +1,7 @@
 extends Control
 
 const TEST_SCENE_1 = preload("res://Scenes/testScene1.tscn")
+@onready var saveManager = $SaveManager
 
 func _ready():
 	var button1 = $Start
@@ -9,6 +10,7 @@ func _ready():
 	var button4 = $Exit
 
 func _on_start_pressed():
+	saveManager.delete_data()
 	_button_pressed_sound()
 	get_tree().change_scene_to_packed(TEST_SCENE_1)
 

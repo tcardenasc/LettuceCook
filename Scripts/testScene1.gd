@@ -8,6 +8,7 @@ extends Node2D
 @onready var playerStatus = $CanvasLayer/Inventory
 @onready var inventoryGui = $CanvasLayer/InventoryGui
 @onready var summoner = $Summoner
+@onready var saveManager = $SaveManager
 
 var gameOverScene = load("res://Scenes/gameOverMenu.tscn")
 
@@ -42,7 +43,7 @@ func pause_game():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	playerStatus._update_health(player.health)
-	playerStatus._update_gems(player.gems)
+	playerStatus._update_gems(player.current_gems)
 	if Input.is_action_just_pressed("escape"):
 		pause_game()
 	pass
@@ -57,13 +58,18 @@ func spawnerDefeated():
 		if(spawner.defeated == false):
 			levelCompleated = false
 	if(levelCompleated):
+		player.won_level(saveManager)
 		main.get_tree().change_scene_to_packed(levelCompleatedScene)
 		print("Felicitaciones!!")
 
 func updatePlayerInfo():
 	playerStatus._update_health(player.health)
-	playerStatus._update_gems(player.gems)
+	playerStatus._update_gems(player.current_gems)
+	player.brain_defeated = brain_spawner.creatures_defeated
+	player.eduardo_defeated = eduardo_spawner.creatures_defeated
+	print("brain derrotados: " + str(player.brain_defeated))
 	
 func playerDefeated():
+	player.lost_game(saveManager)
 	main.get_tree().change_scene_to_packed(gameOverScene)
 	print("game over")

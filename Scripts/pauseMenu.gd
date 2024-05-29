@@ -1,6 +1,7 @@
 extends Control
 
 @onready var main = $"../.."
+@onready var saveManager = $SaveManager
 
 var mainMenu = load("res://Scenes/MainTitle.tscn")
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +27,7 @@ func _on_resume_pressed():
 
 
 func _on_restart_pressed():
+	saveManager.delete_data()
 	_button_pressed_sound()
 	main.pause_game()
 	main.get_tree().reload_current_scene()

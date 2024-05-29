@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dcmgov7nsxsl7"]
+[gd_scene load_steps=25 format=3 uid="uid://dcmgov7nsxsl7"]
 
 [ext_resource type="PackedScene" uid="uid://gosldyeqg71c" path="res://Scenes/player.tscn" id="1_82fhd"]
 [ext_resource type="Script" path="res://Scripts/testScene1.gd" id="1_boitp"]
@@ -13,9 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://upaq8dya7jrt" path="res://Scenes/Inventory.tscn" id="10_nqbqf"]
 [ext_resource type="PackedScene" uid="uid://cksh4cpo3gkqc" path="res://Scenes/eduardo_spawner.tscn" id="10_pnxtb"]
 [ext_resource type="Script" path="res://Scenes/CanvasLayer.gd" id="11_ip4ju"]
-[ext_resource type="PackedScene" uid="uid://b8wqyx684klcb" path="res://Scenes/summoner.tscn" id="11_qa6at"]
+[ext_resource type="PackedScene" uid="uid://c3uhdeluijb2b" path="res://Scenes/summoner.tscn" id="11_qa6at"]
 [ext_resource type="AudioStream" uid="uid://ce5fxk0nniyw5" path="res://Assets/Background music/Magical_Upbeat_Gangs.mp3" id="13_h5cgt"]
 [ext_resource type="PackedScene" uid="uid://6jaib5wo360c" path="res://Scenes/Inventory/inventory_gui.tscn" id="13_m255c"]
+[ext_resource type="PackedScene" uid="uid://o0m5u0nfy62q" path="res://Scenes/SaveManager.tscn" id="17_5w8op"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wbxaf"]
 texture = ExtResource("3_8ac5w")
@@ -1782,3 +1783,5 @@ grow_vertical = 0
 stream = ExtResource("13_h5cgt")
 autoplay = true
 bus = &"Music"
+
+[node name="SaveManager" parent="." instance=ExtResource("17_5w8op")]

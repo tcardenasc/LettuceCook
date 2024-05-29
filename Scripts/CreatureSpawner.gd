@@ -8,6 +8,7 @@ class_name CreatureSpawner
 @export var spawn_limit: int
 var defeated = false
 var remaining_creatures = spawn_limit
+var creatures_defeated = 0
 
 var spawned = 0
 
@@ -25,6 +26,8 @@ func _on_timer_timeout():
 
 func creatureDefeated():
 	remaining_creatures -= 1
+	creatures_defeated = spawn_limit - remaining_creatures
+	get_parent().updatePlayerInfo()
 	if(remaining_creatures == 0):
 		defeated = true
 		get_parent().spawnerDefeated()

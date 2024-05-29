@@ -97,9 +97,6 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
-libraries = {
-"": SubResource("AnimationLibrary_wfdpy")
-}
 tree_root = SubResource("AnimationNodeStateMachine_gifvk")
 anim_player = NodePath("../AnimationPlayer")
 

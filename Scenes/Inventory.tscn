@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://upaq8dya7jrt"]
+[gd_scene load_steps=8 format=3 uid="uid://upaq8dya7jrt"]
 
 [ext_resource type="Script" path="res://Scenes/Inventory.gd" id="1_2qbxw"]
 [ext_resource type="Script" path="res://Scripts/MonsterInventory.gd" id="1_w77m5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://b4jmac6dul4w6" path="res://Assets/Themes/Inventory.tres" id="3_w1vee"]
 [ext_resource type="Texture2D" uid="uid://d22ufrv51q0l3" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster.png" id="4_8c6up"]
 [ext_resource type="Texture2D" uid="uid://bykq43s1igudu" path="res://Assets/Graphical user interface/GUI.png" id="5_y8ew5"]
+[ext_resource type="Texture2D" uid="uid://dmjk33nosu5j2" path="res://Assets/Icons/SpriteSheet.png" id="7_jpne4"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -203,11 +204,11 @@ region_rect = Rect2(116, 67, 8, 8)
 [node name="GemIcon" type="Sprite2D" parent="PlayerInformation"]
 modulate = Color(0.680717, 0.928888, 0.954977, 1)
 position = Vector2(8, 192)
-scale = Vector2(4, 4.57143)
-texture = ExtResource("5_y8ew5")
+scale = Vector2(0.820513, 0.820513)
+texture = ExtResource("7_jpne4")
 centered = false
 region_enabled = true
-region_rect = Rect2(68, 68, 8, 7)
+region_rect = Rect2(339, 435, 39, 39)
 
 [node name="Health" type="Label" parent="PlayerInformation"]
 layout_mode = 0

@@ -45,6 +45,7 @@ offset_bottom = 560.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_fkvin")
 
 [node name="Inventory" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 304.0
 offset_top = 56.0
 offset_right = 808.0
@@ -52,6 +53,7 @@ offset_bottom = 568.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_4dkrg")
 
 [node name="Player" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 56.0
 offset_right = 296.0
@@ -72,6 +74,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
+layout_mode = 0
 offset_left = 40.0
 offset_top = 72.0
 offset_right = 2540.0
@@ -103,6 +106,7 @@ theme_override_font_sizes/font_size = 200
 text = "Continue"
 
 [node name="MainMenu" type="Button" parent="."]
+layout_mode = 0
 offset_left = 848.0
 offset_top = 320.0
 offset_right = 2348.0
@@ -113,6 +117,7 @@ theme_override_font_sizes/font_size = 200
 text = "Main menu"
 
 [node name="Exit" type="Button" parent="."]
+layout_mode = 0
 offset_left = 848.0
 offset_top = 424.0
 offset_right = 2348.0
@@ -124,6 +129,7 @@ text = "Exit
 "
 
 [node name="NewGame" type="Button" parent="."]
+layout_mode = 0
 offset_left = 848.0
 offset_top = 216.0
 offset_right = 2348.0
