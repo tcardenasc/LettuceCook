@@ -11,6 +11,8 @@ extends Node2D
 
 var gameOverScene = load("res://Scenes/gameOverMenu.tscn")
 
+var levelCompleatedScene = load("res://Scenes/levelCompleated.tscn")
+
 var paused = false
 
 func _ready():
@@ -55,6 +57,7 @@ func spawnerDefeated():
 		if(spawner.defeated == false):
 			levelCompleated = false
 	if(levelCompleated):
+		main.get_tree().change_scene_to_packed(levelCompleatedScene)
 		print("Felicitaciones!!")
 
 func updatePlayerInfo():

@@ -1,0 +1,143 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2w00jpk26oul"]
+
+[ext_resource type="Script" path="res://Scripts/levelCompleated.gd" id="1_cvaqb"]
+[ext_resource type="Texture2D" uid="uid://dipkp7lmwyj1n" path="res://Assets/Background/pixel-art-fantasy-lands-1/828x512/029.large.png" id="1_yrbd2"]
+[ext_resource type="Texture2D" uid="uid://bcot8t1h2fwml" path="res://Assets/Graphical user interface/Spritesheets/UI books & more.png" id="2_21k6m"]
+[ext_resource type="Theme" uid="uid://ckrbxy7dsad0u" path="res://Assets/Themes/LevelCompleated.tres" id="3_bsm8i"]
+[ext_resource type="AudioStream" uid="uid://de2t3laj2cwa7" path="res://Assets/Background music/flowers_pouring_down.mp3" id="5_ubqo5"]
+[ext_resource type="AudioStream" uid="uid://b1wfomomloruw" path="res://Assets/Graphical user interface/Sounds/Wood Block1.wav" id="6_fraw6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fkvin"]
+texture = ExtResource("2_21k6m")
+region_rect = Rect2(656, 81, 48, 62)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4dkrg"]
+texture = ExtResource("2_21k6m")
+region_rect = Rect2(769, 65, 45, 47)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cdnt1"]
+texture = ExtResource("2_21k6m")
+region_rect = Rect2(512, 82, 47, 61)
+
+[node name="LevelCompleated" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cvaqb")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 600.0
+texture = ExtResource("1_yrbd2")
+metadata/_edit_lock_ = true
+
+[node name="Menu" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 56.0
+offset_right = 1032.0
+offset_bottom = 560.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_fkvin")
+
+[node name="Inventory" type="Panel" parent="."]
+offset_left = 304.0
+offset_top = 56.0
+offset_right = 808.0
+offset_bottom = 568.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4dkrg")
+
+[node name="Player" type="Panel" parent="."]
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 296.0
+offset_bottom = 576.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_cdnt1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 96.0
+offset_right = 2940.0
+offset_bottom = 596.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("3_bsm8i")
+theme_override_font_sizes/font_size = 260
+text = "Beasts Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 72.0
+offset_right = 2540.0
+offset_bottom = 572.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("3_bsm8i")
+theme_override_font_sizes/font_size = 260
+text = "Upgrade Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ubqo5")
+autoplay = true
+bus = &"Music"
+
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_fraw6")
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 848.0
+offset_top = 112.0
+offset_right = 2348.0
+offset_bottom = 912.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("3_bsm8i")
+theme_override_font_sizes/font_size = 200
+text = "Continue"
+
+[node name="MainMenu" type="Button" parent="."]
+offset_left = 848.0
+offset_top = 320.0
+offset_right = 2348.0
+offset_bottom = 1120.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("3_bsm8i")
+theme_override_font_sizes/font_size = 200
+text = "Main menu"
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 848.0
+offset_top = 424.0
+offset_right = 2348.0
+offset_bottom = 1224.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("3_bsm8i")
+theme_override_font_sizes/font_size = 200
+text = "Exit
+"
+
+[node name="NewGame" type="Button" parent="."]
+offset_left = 848.0
+offset_top = 216.0
+offset_right = 2348.0
+offset_bottom = 1016.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("3_bsm8i")
+theme_override_font_sizes/font_size = 200
+text = "New game"
+
+[connection signal="mouse_entered" from="Continue" to="." method="_on_continue_mouse_entered"]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="mouse_entered" from="MainMenu" to="." method="_on_mainmenu_mouse_entered"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_mainmenu_pressed"]
+[connection signal="mouse_entered" from="Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="NewGame" to="." method="_on_new_game_mouse_entered"]
+[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]

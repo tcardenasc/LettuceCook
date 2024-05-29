@@ -102,6 +102,7 @@ bus = &"Sound Effects"
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_tx27f")
 autoplay = true
+bus = &"Music"
 
 [connection signal="mouse_entered" from="MainMenu" to="." method="_on_main_menu_mouse_entered"]
 [connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]

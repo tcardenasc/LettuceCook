@@ -21,20 +21,20 @@ func _hover_button():
 	$HoverSound.play()
 	
 func _on_main_menu_pressed():
-	main.get_tree().change_scene_to_packed(mainMenu)
 	_press_button()
+	main.get_tree().change_scene_to_packed(mainMenu)
 	pass # Replace with function body.
 
 
 func _on_new_game_pressed():
-	main.get_tree().change_scene_to_packed(firstLevel)
 	_press_button()
+	main.get_tree().change_scene_to_packed(firstLevel)
 	pass # Replace with function body.
 
 
 func _on_exit_game_pressed():
-	main.get_tree().quit()
 	_press_button()
+	main.get_tree().quit()
 	pass # Replace with function body.
 
 func _on_exit_game_mouse_entered():
