@@ -6,7 +6,7 @@ class_name Creature
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot = $pivot
 @onready var tameLabel: Label = $tameLabel
-@onready var timer = $Timer
+@onready var vanishTimer = $vanishTimer
 @onready var attackSfx = $AttackSFX
 
 @export var MAX_HEALTH = 0
@@ -30,6 +30,7 @@ var health:
 			health = value
 			set_health_bar()
 			if (health == 0):
+				defeated()
 				for n in 5:
 					soltar_gema()				
 				var probability = randi() % 100
@@ -37,9 +38,11 @@ var health:
 					stunned = true;
 					tameLabel.show()
 				else:
-					timer.start()
+					vanishTimer.start()
 					
-
+func defeated():
+	get_parent().creatureDefeated()
+	
 func soltar_gema():
 	var gema_instancia = gema.instantiate()
 	get_parent().add_child(gema_instancia)
@@ -105,15 +108,12 @@ func attack():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use") and stunned and in_tame_range:
-		#player.picked.emit(name)
 		picked(player_inventory)
 
 func picked(inventory: Inventory):
-	get_parent().creatureDefeated()
 	inventory.insert(itemResource)
-
+	queue_free()
 
 func _on_timer_timeout():
-	get_parent().creatureDefeated()
 	queue_free()
 	pass # Replace with function body.

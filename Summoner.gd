@@ -22,8 +22,10 @@ func summonEduardo():
 	add_child(eduardoSummon)
 	
 func summon(mob_scene):
-	
 	var mob = dict[mob_scene].instantiate() as Creature
 	mob.global_position = player.global_position
 	mob.target = player
 	add_child(mob)
+
+func creatureDefeated():
+	pass
