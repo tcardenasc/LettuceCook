@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c2w00jpk26oul"]
+[gd_scene load_steps=22 format=3 uid="uid://c2w00jpk26oul"]
 
 [ext_resource type="Script" path="res://Scripts/levelCompleated.gd" id="1_cvaqb"]
 [ext_resource type="Texture2D" uid="uid://dipkp7lmwyj1n" path="res://Assets/Background/pixel-art-fantasy-lands-1/828x512/029.large.png" id="1_yrbd2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dmjk33nosu5j2" path="res://Assets/Icons/SpriteSheet.png" id="8_xdrah"]
 [ext_resource type="Theme" uid="uid://b4jmac6dul4w6" path="res://Assets/Themes/Inventory.tres" id="9_ra2na"]
 [ext_resource type="Texture2D" uid="uid://cfb3gpv2e8ivu" path="res://Assets/Graphical user interface/Spritesheets/PixelUI.png" id="10_j4s05"]
+[ext_resource type="Theme" uid="uid://g17khyquf3wg" path="res://Assets/Themes/SettingsMenu.tres" id="11_otrgv"]
 [ext_resource type="PackedScene" uid="uid://o0m5u0nfy62q" path="res://Scenes/SaveManager.tscn" id="11_uwpw3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fkvin"]
@@ -191,14 +192,13 @@ region_rect = Rect2(116, 67, 8, 8)
 
 [node name="GemIcon" type="Sprite2D" parent="Control"]
 modulate = Color(0.680717, 0.928888, 0.954977, 1)
-position = Vector2(104, 472)
-scale = Vector2(1.232, 1.232)
+position = Vector2(104, 488)
 texture = ExtResource("8_xdrah")
 centered = false
 region_enabled = true
 region_rect = Rect2(339, 435, 39, 39)
 
-[node name="Health" type="Label" parent="Control"]
+[node name="HealthLabel" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 104.0
 offset_top = 168.0
@@ -212,15 +212,16 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Gem" type="Label" parent="Control"]
+[node name="GemsLabel" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 472.0
-offset_right = 179.0
-offset_bottom = 539.0
+offset_left = 152.0
+offset_top = 480.0
+offset_right = 171.0
+offset_bottom = 547.0
+scale = Vector2(0.1, 0.1)
 theme = ExtResource("9_ra2na")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 500
 text = "0
 "
 horizontal_alignment = 1
@@ -232,7 +233,7 @@ texture = ExtResource("8_xdrah")
 region_enabled = true
 region_rect = Rect2(720, 960, 48, 49)
 
-[node name="Damage" type="Label" parent="Control"]
+[node name="SpeedLabel" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 104.48
 offset_top = 320.486
@@ -253,7 +254,7 @@ texture = ExtResource("8_xdrah")
 region_enabled = true
 region_rect = Rect2(723, 153, 45, 33)
 
-[node name="Speed" type="Label" parent="Control"]
+[node name="DamageLabel" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 104.0
 offset_top = 244.5
@@ -309,7 +310,7 @@ text = "La velocidad de movimiento del
 personaje, cada incremento la 
 aumenta en 30."
 
-[node name="Cost" type="Label" parent="Control"]
+[node name="CostLabel" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 335.0
 offset_top = 100.0
@@ -357,6 +358,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_yp1dh")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5nf4h")
 
 [node name="DownDamage" type="Button" parent="Control"]
+layout_mode = 0
 offset_left = 384.0
 offset_top = 224.0
 offset_right = 404.0
@@ -369,39 +371,91 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_7av0m")
 [node name="UpSpeed" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = 384.0
-offset_top = 264.0
+offset_top = 269.0
 offset_right = 404.0
-offset_bottom = 284.0
+offset_bottom = 289.0
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = SubResource("StyleBoxTexture_2ouo3")
 theme_override_styles/hover = SubResource("StyleBoxTexture_yp1dh")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5nf4h")
 
 [node name="DownSpeed" type="Button" parent="Control"]
+layout_mode = 0
 offset_left = 384.0
-offset_top = 296.0
+offset_top = 304.0
 offset_right = 404.0
-offset_bottom = 316.0
+offset_bottom = 324.0
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = SubResource("StyleBoxTexture_llq2r")
 theme_override_styles/hover = SubResource("StyleBoxTexture_xthmr")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7av0m")
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Confirm" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 200.0
-offset_top = 480.0
-offset_right = 296.0
-offset_bottom = 511.0
+offset_left = 208.0
+offset_top = 496.0
+offset_right = 1210.0
+offset_bottom = 796.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("11_otrgv")
+theme_override_font_sizes/font_size = 300
 text = "Confirm"
 
-[node name="Button2" type="Button" parent="Control"]
+[node name="Reset" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 328.0
-offset_top = 480.0
-offset_right = 379.0
-offset_bottom = 511.0
+offset_left = 320.0
+offset_top = 496.0
+offset_right = 1137.0
+offset_bottom = 796.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("11_otrgv")
+theme_override_font_sizes/font_size = 300
 text = "Reset"
+
+[node name="HealthCostLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 133.0
+offset_right = 694.0
+offset_bottom = 686.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("9_ra2na")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 500
+text = "5
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamageCostLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 201.0
+offset_right = 694.0
+offset_bottom = 754.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("9_ra2na")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 500
+text = "5
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedCostLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 278.0
+offset_right = 694.0
+offset_bottom = 831.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("9_ra2na")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 500
+text = "5
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SaveManager" parent="." instance=ExtResource("11_uwpw3")]
 
@@ -413,3 +467,11 @@ text = "Reset"
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="NewGame" to="." method="_on_new_game_mouse_entered"]
 [connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Control/UpHealth" to="." method="_on_up_health_pressed"]
+[connection signal="pressed" from="Control/DownHealth" to="." method="_on_down_health_pressed"]
+[connection signal="pressed" from="Control/UpDamage" to="." method="_on_up_damage_pressed"]
+[connection signal="pressed" from="Control/DownDamage" to="." method="_on_down_damage_pressed"]
+[connection signal="pressed" from="Control/UpSpeed" to="." method="_on_up_speed_pressed"]
+[connection signal="pressed" from="Control/DownSpeed" to="." method="_on_down_speed_pressed"]
+[connection signal="pressed" from="Control/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="Control/Reset" to="." method="_on_reset_pressed"]
