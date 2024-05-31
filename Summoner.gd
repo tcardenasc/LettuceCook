@@ -29,6 +29,7 @@ func summon(mob_scene):
 	mob.collision_mask = 0b101
 	add_child(mob)
 	mob.attack_area.collision_mask = 0b100
+	mob.find_target()
 
 func creatureDefeated():
 	pass

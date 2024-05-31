@@ -32,22 +32,24 @@ var health:
 			health = value
 			set_health_bar()
 			if (health == 0):
-				remove_from_group("allies")
-				remove_from_group("enemies")
-				defeated()
-				for n in 5:
-					soltar_gema()				
-				var probability = randi() % 100
-				if(probability >= 80):		
-					stunned = true;
-					tameLabel.show()
-				else:
+				if is_in_group("allies"):
+					remove_from_group("allies")
 					vanishTimer.start()
+				elif is_in_group("enemies"): 
+					remove_from_group("enemies")
+					defeated()
+					for n in 5:
+						soltar_gema()
+					var probability = randi() % 100
+					if(probability >= 80):		
+						stunned = true;
+						tameLabel.show()
+					else:
+						vanishTimer.start()
 					
 func defeated():
 	get_parent().creatureDefeated()
 
-	
 func soltar_gema():
 	var gema_instancia = gema.instantiate()
 	get_parent().add_child(gema_instancia)
