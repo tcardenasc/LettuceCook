@@ -142,12 +142,10 @@ func find_target():
 	else:
 		return
 		
-	var nearest: CharacterBody2D = null
+	var nearest: CharacterBody2D = target if is_instance_valid(target) else null
 	while(!target_group.is_empty()):
 		var tmp = target_group.pop_back() as Creature
-			
-		if (!is_instance_valid(target) or global_position.distance_to(tmp.global_position) < global_position.distance_to(target.global_position)) and target != tmp:
+		if (!is_instance_valid(nearest) or global_position.distance_to(tmp.global_position) < global_position.distance_to(nearest.global_position)):
 			nearest = tmp
-
 	if nearest != null:
 		target = nearest
