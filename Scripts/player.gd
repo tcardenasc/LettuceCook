@@ -64,7 +64,6 @@ func receive_damage(amount):
 	get_parent().updatePlayerInfo()
 	if(health == 0):
 		get_parent().playerDefeated()
-	print("health: ",health)
  
 func shoot_lettuce():
 	var bullet = bulletPath.instantiate()
