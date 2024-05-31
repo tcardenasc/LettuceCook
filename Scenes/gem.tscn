@@ -6,6 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_nkvn8"]
 
 [node name="Gem" type="RigidBody2D" groups=["Gemas"]]
+collision_layer = 8
 mass = 0.01
 script = ExtResource("1_xlp2s")
 
