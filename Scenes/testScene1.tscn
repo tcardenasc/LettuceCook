@@ -1785,3 +1785,5 @@ autoplay = true
 bus = &"Music"
 
 [node name="SaveManager" parent="." instance=ExtResource("17_5w8op")]
+
+[connection signal="ready" from="." to="." method="_on_ready"]

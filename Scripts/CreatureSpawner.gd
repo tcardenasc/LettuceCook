@@ -15,12 +15,14 @@ var spawned = 0
 func _ready():
 	remaining_creatures = spawn_limit
 
+# Spawn creature as enemy
 func _on_timer_timeout():
 	if (spawned == spawn_limit):
 		timer.stop()
 		return
 	var mob = mob_scene.instantiate() as Creature
-	mob.target = player
+	mob.player = player
+	mob.add_to_group("enemies")
 	add_child(mob)
 	spawned += 1
 

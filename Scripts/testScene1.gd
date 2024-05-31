@@ -73,3 +73,16 @@ func playerDefeated():
 	player.lost_game(saveManager)
 	main.get_tree().change_scene_to_packed(gameOverScene)
 	print("game over")
+	
+# make the tree notify all creatures to update their targets
+# when another creature 
+func _on_ready():
+	var tree = get_tree()
+	tree.node_added.connect(_on_creature_entered_or_exited)
+	tree.node_removed.connect(_on_creature_entered_or_exited)
+	
+func _on_creature_entered_or_exited(node):
+	if is_instance_of(node, Creature):
+		if is_inside_tree():
+			get_tree().call_group("allies", "find_target")
+			get_tree().call_group("enemies", "find_target")

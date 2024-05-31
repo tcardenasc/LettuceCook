@@ -24,8 +24,11 @@ func summonEduardo():
 func summon(mob_scene):
 	var mob = dict[mob_scene].instantiate() as Creature
 	mob.global_position = player.global_position
-	mob.target = player
+	mob.add_to_group("allies")
+	mob.collision_layer = 0b10
+	mob.collision_mask = 0b101
 	add_child(mob)
+	mob.attack_area.collision_mask = 0b100
 
 func creatureDefeated():
 	pass
