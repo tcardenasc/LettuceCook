@@ -30,7 +30,9 @@ func connectSlots():
 func update():
 	for i in range(min(inventory.slots.size(), slots.size())):
 		var inventorySlot: InventorySlot = inventory.slots[i]
-		if !inventorySlot.item: continue
+		if !inventorySlot.item: 
+			slots[i].clear()
+			continue
 		
 		var itemStackGui: ItemStackGui = slots[i].itemStackGui
 		if !itemStackGui: # si no hay, hay que crearla
@@ -66,19 +68,20 @@ func onSlotClicked(slot):
 		stackItems(slot)
 		return
 	swapItems(slot)
+
 func takeItemFromSlot(slot):
 	itemInHand = slot.takeItem()
 	itemInHandSize = itemInHand.size/2
-	inventory.removeItemAtIndex(slot.index)
+	inventory.removeAtIndex(slot.index)
 	add_child(itemInHand)
 	updateItemInHand()
 	
-
 func insertItemOnSlot(slot):
 	var item = itemInHand
 	remove_child(itemInHand)
 	itemInHand = null
 	slot.insert(item)
+	update()
 
 func updateItemInHand():
 	if !itemInHand: return
@@ -96,11 +99,13 @@ func _input(event):
 
 
 func useItemFrom(slotNumber: int):
-	var slotUsed = slots[slotNumber]
+	var slotUsed: Button = slots[slotNumber]
 	if slotUsed.isEmpty(): #si no hay nada en el slot...
 		print("no item")
 	else:
 		var itemName = slotUsed.itemStackGui.inventorySlot.item.creatureName
+		#print(slotUsed.itemStackGui.inventorySlot.amount," ", itemName, " remaining")
+		inventory.useItemAtIndex(slotNumber)
 		summon.emit(itemName)
 		
 func swapItems(slot):

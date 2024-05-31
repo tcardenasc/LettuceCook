@@ -15,10 +15,15 @@ func insert(isg: ItemStackGui):
 		
 func takeItem():
 	var item = itemStackGui
-	container.remove_child(itemStackGui)
-	itemStackGui=null
+	inventory.removeSlot(itemStackGui.inventorySlot)
+	#container.remove_child(itemStackGui)
+	#itemStackGui=null
 	return item
-
+func clear():
+	if itemStackGui:
+		container.remove_child(itemStackGui)
+		itemStackGui=null
+	
 func isEmpty():
 	return !itemStackGui
 

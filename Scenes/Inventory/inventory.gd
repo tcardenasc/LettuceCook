@@ -20,13 +20,29 @@ func insert(item: InventoryItem):
 		else:
 			print("no hay espacio en el inventario D:")
 	updated.emit()
-	
-func removeItemAtIndex(index: int):
-	slots[index] = InventorySlot.new()
 
+func removeSlot(inventorySlot: InventorySlot):
+	var index = slots.find(inventorySlot)
+	if index < 0: return
+	removeAtIndex(index)
+	
+func removeAtIndex(index: int)->void:
+	slots[index] = InventorySlot.new()
+	updated.emit()
+
+func useItemAtIndex(index: int):
+	if index<0 || index>=slots.size() || !slots[index].item:
+		return
+	if slots[index].amount == 1:
+		slots[index].amount-=1
+		removeAtIndex(index)
+	else:
+		slots[index].amount -= 1
+		updated.emit()
+		
 func insertSlot(index: int, inventorySlot: InventorySlot):
 	var oldIndex: int = slots.find(inventorySlot)
-	removeItemAtIndex(index)
+	removeAtIndex(index)
 	slots[index] = inventorySlot
 	
 
