@@ -94,7 +94,11 @@ func set_health_bar():
 
 func receive_damage(damage):
 	health = max(health - damage, 0)
-
+	
+func receive_heal(heal):
+	health=min(health+heal, MAX_HEALTH)
+	$HealingParticles.emitting = true
+	
 func _on_attack_area_body_entered(body):
 	if (body == target):
 		movementSpeed-=movementAttackPenalty

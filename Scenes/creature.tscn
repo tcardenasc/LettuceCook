@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b11s6bm66u8db"]
+[gd_scene load_steps=24 format=3 uid="uid://b11s6bm66u8db"]
 
 [ext_resource type="Script" path="res://Scripts/Creature.gd" id="1_vrcqj"]
 
@@ -75,9 +75,25 @@ emission_box_extents = Vector3(1, 1, 1)
 direction = Vector3(10, 0, 0)
 gravity = Vector3(0, -20, 0)
 
+[sub_resource type="Curve" id="Curve_5ddf8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0982143), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xawju"]
+curve = SubResource("Curve_5ddf8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pmtrr"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 16.0
+gravity = Vector3(0, -98, 0)
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_xawju")
+color = Color(0, 0.972549, 0.0352941, 1)
+
 [node name="Creature" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 5
+collision_layer = 36
+collision_mask = 37
 script = ExtResource("1_vrcqj")
 
 [node name="pivot" type="Node2D" parent="."]
@@ -112,7 +128,8 @@ show_percentage = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="StunnedParticles" type="GPUParticles2D" parent="."]
+visible = false
 process_material = SubResource("ParticleProcessMaterial_d65ar")
 lifetime = 1.5
 
@@ -130,6 +147,13 @@ one_shot = true
 
 [node name="AttackSFX" type="AudioStreamPlayer" parent="."]
 bus = &"Sound Effects"
+
+[node name="HealingParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_pmtrr")
+lifetime = 0.7
+one_shot = true
 
 [connection signal="body_entered" from="pivot/AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="pivot/AttackArea" to="." method="_on_attack_area_body_exited"]

@@ -29,6 +29,11 @@ func summon(mob_scene):
 	mob.collision_mask = 0b101
 	add_child(mob)
 	mob.attack_area.collision_mask = 0b100
+	
+	# lettuces are in layer 6, this makes it so that they can be hit by lettuces
+	mob.set_collision_layer_value(0b110, true)
+	#mob.set_collision_mask_value(0b110, true)
+	# #########################
 	mob.find_target()
 
 func creatureDefeated():
