@@ -22,8 +22,8 @@ func _on_timer_timeout():
 		return
 	var mob = mob_scene.instantiate() as Creature
 	mob.player = player
-	mob.add_to_group("enemies")
 	add_child(mob)
+	mob.add_to_group("enemies")
 	spawned += 1
 
 func creatureDefeated():

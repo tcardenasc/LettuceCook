@@ -24,10 +24,12 @@ func summonEduardo():
 func summon(mob_scene):
 	var mob = dict[mob_scene].instantiate() as Creature
 	mob.global_position = player.global_position
-	mob.add_to_group("allies")
 	mob.collision_layer = 0b10
 	mob.collision_mask = 0b101
+	
 	add_child(mob)
+	mob.add_to_group("allies")
+	mob.sprite.self_modulate=Color.GREEN_YELLOW
 	mob.attack_area.collision_mask = 0b100
 	
 	# lettuces are in layer 6, this makes it so that they can be hit by lettuces

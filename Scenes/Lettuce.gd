@@ -1,7 +1,7 @@
 extends CharacterBody2D
 #var bullet_velocity = Vector2(0,0)
 var speed = 300
-var healing_amount = 5
+var healing_amount = 15
 
 func _physics_process(delta):
 	#position += speed*delta

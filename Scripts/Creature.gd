@@ -10,6 +10,8 @@ class_name Creature
 @onready var attackSfx = $AttackSFX
 @onready var attack_area: Area2D = $pivot/AttackArea
 
+@onready var sprite = $pivot/Sprite
+
 @export var MAX_HEALTH = 0
 @export var target: CharacterBody2D = null
 @export var player: Player = null
@@ -41,13 +43,15 @@ var health:
 					for n in 5:
 						soltar_gema()
 					var probability = randi() % 100
-					if(probability >= 80):		
+					if(probability >= 50):		
 						stunned = true;
 						tameLabel.show()
 					else:
 						vanishTimer.start()
-				get_tree().call_group("allies", "find_target")
-				get_tree().call_group("enemies", "find_target")
+						collision_layer=0
+				if (is_inside_tree()):
+					get_tree().call_group("allies", "find_target")
+					get_tree().call_group("enemies", "find_target")
 					
 func defeated():
 	get_parent().creatureDefeated()
@@ -148,10 +152,11 @@ func find_target():
 	else:
 		return
 		
-	var nearest: CharacterBody2D = target if is_instance_valid(target) else null
+	var nearest: CharacterBody2D = target if (is_instance_valid(target) and target.health>0) else null
 	while(!target_group.is_empty()):
 		var tmp = target_group.pop_back() as Creature
 		if (!is_instance_valid(nearest) or global_position.distance_to(tmp.global_position) < global_position.distance_to(nearest.global_position)):
 			nearest = tmp
 	if nearest != null:
+		#if is_instance_of(nearest, Creature) and !nearest.stunned:
 		target = nearest

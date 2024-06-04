@@ -145,7 +145,7 @@ height = 80.0
 
 [node name="Eduardo" instance=ExtResource("1_6yfjx")]
 script = ExtResource("2_lfk7c")
-MAX_HEALTH = 20
+MAX_HEALTH = 50
 itemResource = ExtResource("3_4gx7g")
 
 [node name="CollisionShape2D" parent="pivot/AttackArea" index="0"]
@@ -170,9 +170,6 @@ libraries = {
 
 [node name="CollisionShape2D" parent="." index="4"]
 shape = SubResource("CapsuleShape2D_ql7wh")
-
-[node name="GPUParticles2D" parent="." index="5"]
-emitting = false
 
 [node name="AttackSFX" parent="." index="8"]
 stream = ExtResource("4_hcx6v")

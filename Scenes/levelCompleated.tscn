@@ -122,6 +122,7 @@ vertical_alignment = 1
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_ubqo5")
+volume_db = 2.0
 autoplay = true
 bus = &"Music"
 

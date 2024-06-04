@@ -144,7 +144,7 @@ radius = 32.0
 
 [node name="Brain" instance=ExtResource("1_5nuhc")]
 script = ExtResource("2_imapt")
-MAX_HEALTH = 20
+MAX_HEALTH = 50
 itemResource = ExtResource("3_q6awj")
 
 [node name="CollisionShape2D" parent="pivot/AttackArea" index="0"]
@@ -174,9 +174,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" parent="." index="4"]
 shape = SubResource("CircleShape2D_duxsb")
-
-[node name="GPUParticles2D" parent="." index="5"]
-emitting = false
 
 [node name="AttackSFX" parent="." index="8"]
 stream = ExtResource("4_y8m4f")
