@@ -46,6 +46,8 @@ var health:
 						tameLabel.show()
 					else:
 						vanishTimer.start()
+				get_tree().call_group("allies", "find_target")
+				get_tree().call_group("enemies", "find_target")
 					
 func defeated():
 	get_parent().creatureDefeated()
