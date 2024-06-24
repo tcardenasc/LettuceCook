@@ -43,7 +43,7 @@ var health:
 					for n in 5:
 						soltar_gema()
 					var probability = randi() % 100
-					if(probability >= 50):		
+					if(probability >= 50):
 						stunned = true;
 						tameLabel.show()
 					else:
@@ -76,9 +76,10 @@ func _physics_process(delta):
 	
 	if is_instance_valid(target) and global_position.distance_to(target.global_position) > 20:
 		var direction = global_position.direction_to(target.global_position)
-		velocity = direction * movementSpeed + knockback
+		velocity = direction * movementSpeed
 	else:
-		velocity = Vector2.ZERO + knockback
+		velocity = Vector2.ZERO
+	velocity += knockback
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
 	
@@ -160,3 +161,7 @@ func find_target():
 	if nearest != null:
 		#if is_instance_of(nearest, Creature) and !nearest.stunned:
 		target = nearest
+
+
+func _on_ready():
+	find_target()
