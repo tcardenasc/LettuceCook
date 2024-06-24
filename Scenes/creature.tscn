@@ -113,9 +113,6 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
-libraries = {
-"": SubResource("AnimationLibrary_wfdpy")
-}
 tree_root = SubResource("AnimationNodeStateMachine_gifvk")
 anim_player = NodePath("../AnimationPlayer")
 
@@ -155,6 +152,7 @@ process_material = SubResource("ParticleProcessMaterial_pmtrr")
 lifetime = 0.7
 one_shot = true
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="body_entered" from="pivot/AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="pivot/AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="timeout" from="vanishTimer" to="." method="_on_timer_timeout"]
