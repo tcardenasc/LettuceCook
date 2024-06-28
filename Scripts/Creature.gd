@@ -22,6 +22,8 @@ class_name Creature
 var player_inventory: Inventory = preload("res://Scenes/Inventory/playerInventory.tres")
 const gema = preload("res://Scenes/gem.tscn")
 
+signal born_or_died
+
 var target_detected = false
 var target_on_attack_range = false
 var movementAttackPenalty = 50
@@ -37,24 +39,33 @@ var health:
 				if is_in_group("allies"):
 					remove_from_group("allies")
 					vanishTimer.start()
-				elif is_in_group("enemies"): 
+				elif is_in_group("enemies"):
 					remove_from_group("enemies")
 					defeated()
-					for n in 5:
-						soltar_gema()
-					var probability = randi() % 100
-					if(probability >= 50):
-						stunned = true;
-						tameLabel.show()
-					else:
-						vanishTimer.start()
-						collision_layer=0
-				if (is_inside_tree()):
-					get_tree().call_group("allies", "find_target")
-					get_tree().call_group("enemies", "find_target")
-					
+					stunned_or_dead()
+				born_or_died.emit()
+
+func stunned_or_dead():
+	for n in 5:
+		soltar_gema()
+	var probability = randi() % 100
+	if(probability >= 50):
+		stunned = true;
+		tameLabel.show()
+	else:
+		vanishTimer.start()
+		collision_layer=0
+
 func defeated():
 	get_parent().creatureDefeated()
+
+func _on_ready():
+	born_or_died.emit()
+	
+func _on_born_or_died():
+	if (is_inside_tree()):
+		get_tree().call_group("allies", "find_target")
+		get_tree().call_group("enemies", "find_target")
 
 func soltar_gema():
 	var gema_instancia = gema.instantiate()
@@ -68,6 +79,8 @@ func _ready():
 	health = MAX_HEALTH
 	health_bar.max_value = MAX_HEALTH
 	set_health_bar()
+	ready.connect(_on_ready)
+	born_or_died.connect(_on_born_or_died)
 
 func _physics_process(delta):
 	if health == 0:
@@ -105,18 +118,6 @@ func receive_damage(damage):
 func receive_heal(heal):
 	health=min(health+heal, MAX_HEALTH)
 	$HealingParticles.emitting = true
-	
-func _on_attack_area_body_entered(body):
-	if (body == target):
-		movementSpeed-=movementAttackPenalty
-		target_on_attack_range = true
-		in_tame_range = true
-
-func _on_attack_area_body_exited(body):
-	if (body == target):
-		movementSpeed+=movementAttackPenalty
-		target_on_attack_range = false
-		in_tame_range = false
 
 func target_on_range():
 	return attack_area.overlaps_body(target)
@@ -125,8 +126,6 @@ func attack():
 	attackSfx.play()
 	if is_instance_valid(target) and target_on_range():
 		target.receive_damage(basicDamage)
-		if target.health == 0:
-			find_target()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use") and stunned and in_tame_range:
@@ -138,16 +137,16 @@ func picked(inventory: Inventory):
 
 func _on_timer_timeout():
 	queue_free()
-	pass # Replace with function body.
 
 func find_target():
 	var target_group: Array[Node]
-	var groups = get_groups()
 	if is_in_group("enemies") and is_inside_tree():
 		target_group = get_tree().get_nodes_in_group("allies")
 		if target_group.is_empty():
 			target = player
 			return
+		elif target == player:
+			target = null
 	elif is_in_group("allies") and is_inside_tree():
 		target_group = get_tree().get_nodes_in_group("enemies")
 	else:
@@ -161,7 +160,3 @@ func find_target():
 	if nearest != null:
 		#if is_instance_of(nearest, Creature) and !nearest.stunned:
 		target = nearest
-
-
-func _on_ready():
-	find_target()
