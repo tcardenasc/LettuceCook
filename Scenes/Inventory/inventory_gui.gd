@@ -105,8 +105,9 @@ func useItemFrom(slotNumber: int):
 	else:
 		var itemName = slotUsed.itemStackGui.inventorySlot.item.creatureName
 		#print(slotUsed.itemStackGui.inventorySlot.amount," ", itemName, " remaining")
-		inventory.useItemAtIndex(slotNumber)
-		summon.emit(itemName)
+		if itemName != "":
+			inventory.useItemAtIndex(slotNumber)
+			summon.emit(itemName)
 		
 func swapItems(slot):
 	var tempItem = slot.takeItem()
