@@ -4,11 +4,13 @@ class_name Summoner
 
 const brain = preload("res://Scenes/brain.tscn") 
 const eduardo = preload("res://Scenes/eduardo.tscn")
+const lettuce = preload("res://Scenes/Lettuce.tscn")
 @export var player: CharacterBody2D
 
 var dict ={
 	"Brain":brain,
-	"Eduardo":eduardo
+	"Eduardo":eduardo,
+	"Lettuce":lettuce
 }
 
 func summonBrain():
@@ -21,7 +23,10 @@ func summonEduardo():
 	eduardoSummon.global_position = player.global_position
 	add_child(eduardoSummon)
 	
-func summon(mob_scene):
+func summon(mob_scene: String):
+	if mob_scene=="Lettuce":
+		player.shoot_lettuce()
+		return
 	var mob = dict[mob_scene].instantiate() as Creature
 	mob.global_position = player.global_position
 	mob.collision_layer = 0b10

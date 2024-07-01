@@ -45,4 +45,17 @@ func insertSlot(index: int, inventorySlot: InventorySlot):
 	removeAtIndex(index)
 	slots[index] = inventorySlot
 	
-
+func getItemIndex(name: String):
+	var index=0
+	for i in slots:
+		if i.item.creatureName == name:
+			return index
+		index+=1
+		
+func removeItemByName(name: String):
+	useItemAtIndex(getItemIndex(name))
+	
+func hasLettuce():
+	for i in slots:
+		if not(i.item == null) and i.item.creatureName == "Lettuce":
+			return true

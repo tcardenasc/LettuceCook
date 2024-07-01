@@ -36,7 +36,8 @@ func _on_area_2d_body_entered(body):
 		current_gems += 1
 		all_gems_collected += 1 
 		get_parent().updatePlayerInfo()
-	pass # Replace with function body.
+
+
 
 func _physics_process(delta):
 	velocity = Input.get_vector("left", "right", "up", "down")*speed
@@ -48,7 +49,9 @@ func _physics_process(delta):
 		return
 	
 	if(Input.is_action_just_pressed("shoot")):
-		shoot_lettuce()
+		if inventory.hasLettuce():
+			shoot_lettuce()
+			inventory.removeItemByName("Lettuce")
 	
 	# animation
 	if velocity.x or velocity.y:
