@@ -30,10 +30,10 @@ func summon(mob_scene: String):
 	var mob = dict[mob_scene].instantiate() as Creature
 	mob.global_position = player.global_position
 	mob.collision_layer = 0b10
-	mob.collision_mask = 0b101
+	mob.collision_mask = 0b100
 	
-	add_child(mob)
 	mob.add_to_group("allies")
+	add_child(mob)
 	mob.sprite.self_modulate=Color.GREEN_YELLOW
 	mob.attack_area.collision_mask = 0b100
 	

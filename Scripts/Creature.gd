@@ -12,8 +12,8 @@ class_name Creature
 @export var capturedSfx : AudioStream
 @export var stunnedSfx : AudioStream
 @onready var attack_area: Area2D = $pivot/AttackArea
-
 @onready var sprite = $pivot/Sprite
+@onready var navigation_agent_2d = $NavigationAgent2D
 
 @export var MAX_HEALTH = 0
 @export var target: CharacterBody2D = null
@@ -21,12 +21,12 @@ class_name Creature
 @export var movementSpeed = 100
 @export var basicDamage = 10
 @export var itemResource: InventoryItem
+@export var use_path_finding: bool = true
 
 var player_inventory: Inventory = preload("res://Scenes/Inventory/playerInventory.tres")
 const gema = preload("res://Scenes/gem.tscn")
 
 signal born_or_died
-
 
 var target_detected = false
 var target_on_attack_range = false
@@ -65,13 +65,13 @@ func stunned_or_dead():
 func defeated():
 	get_parent().creatureDefeated()
 
-func _on_ready():
-	born_or_died.emit()
-	
 func _on_born_or_died():
 	if (is_inside_tree()):
 		get_tree().call_group("allies", "find_target")
 		get_tree().call_group("enemies", "find_target")
+
+func _on_ready():
+	born_or_died.emit()
 
 func soltar_gema():
 	var gema_instancia = gema.instantiate()
@@ -85,7 +85,6 @@ func _ready():
 	health = MAX_HEALTH
 	health_bar.max_value = MAX_HEALTH
 	set_health_bar()
-	ready.connect(_on_ready)
 	born_or_died.connect(_on_born_or_died)
 
 func _physics_process(delta):
@@ -94,8 +93,14 @@ func _physics_process(delta):
 		return
 	
 	if is_instance_valid(target) and global_position.distance_to(target.global_position) > 20:
-		var direction = global_position.direction_to(target.global_position)
-		velocity = direction * movementSpeed
+		navigation_agent_2d.target_position = target.global_position
+		var next_path_position = navigation_agent_2d.get_next_path_position()
+		var direction = global_position.direction_to(next_path_position)
+		var new_velocity = direction * movementSpeed
+		if navigation_agent_2d.avoidance_enabled:
+			navigation_agent_2d.set_velocity(new_velocity)
+		else:
+			velocity = new_velocity
 	else:
 		velocity = Vector2.ZERO
 	velocity += knockback
@@ -151,6 +156,7 @@ func find_target():
 	var target_group: Array[Node]
 	if is_in_group("enemies") and is_inside_tree():
 		target_group = get_tree().get_nodes_in_group("allies")
+		print("target_group ", target_group)
 		if target_group.is_empty():
 			target = player
 			return
@@ -160,6 +166,7 @@ func find_target():
 		target_group = get_tree().get_nodes_in_group("enemies")
 	else:
 		return
+	
 		
 	var nearest: CharacterBody2D = target if (is_instance_valid(target) and target.health>0) else null
 	while(!target_group.is_empty()):
@@ -169,3 +176,7 @@ func find_target():
 	if nearest != null:
 		#if is_instance_of(nearest, Creature) and !nearest.stunned:
 		target = nearest
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	velocity = safe_velocity
