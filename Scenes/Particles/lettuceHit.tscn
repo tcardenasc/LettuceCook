@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1rbqt3qbj3q4"]
+
+[sub_resource type="Gradient" id="Gradient_14rva"]
+offsets = PackedFloat32Array(0.542714, 0.869347)
+colors = PackedColorArray(0.0784314, 0.423529, 0.294118, 1, 0.513726, 0.788235, 0.67451, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_84g0y"]
+gradient = SubResource("Gradient_14rva")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_waaww"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 11.58
+spread = 50.21
+gravity = Vector3(0, 12, 0)
+scale_min = 2.0
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_84g0y")
+
+[node name="HitParticles" type="GPUParticles2D"]
+position = Vector2(0, -2)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_waaww")
+lifetime = 5.0
+preprocess = 0.5
+explosiveness = 0.45

@@ -1,8 +1,23 @@
 extends CharacterBody2D
-#var bullet_velocity = Vector2(0,0)
+
 var speed = 300
 var healing_amount = 15
+@export var traveling_particles : PackedScene
+@export var hit_particles : PackedScene
+var _traveling_particles : GPUParticles2D
 
+func _ready():
+	spawn_travel_particles()
+
+func spawn_travel_particles():
+	
+	_traveling_particles = traveling_particles.instantiate()
+	_traveling_particles.position = global_position
+	_traveling_particles.emitting = true 
+	add_child(_traveling_particles)	
+	#_traveling_particles.rotation = global_rotation
+	
+		
 func _physics_process(delta):
 	#position += speed*delta
 	var collision_info = move_and_collide(velocity.normalized()*delta*speed)
@@ -15,7 +30,11 @@ func _on_area_2d_body_entered(body):
 		elif body.is_in_group("allies"):
 			body.receive_heal(healing_amount)
 			print("healed")
-	queue_free()
+	hit_object()
 
+func hit_object():
+	_traveling_particles.emitting = false
+	queue_free()
+	
 func _on_vanish_lettuce_timeout():
 	queue_free()

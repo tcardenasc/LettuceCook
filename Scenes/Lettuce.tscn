@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce3go45kpt6xp"]
+[gd_scene load_steps=6 format=3 uid="uid://ce3go45kpt6xp"]
 
 [ext_resource type="Texture2D" uid="uid://vmfakqxrfaee" path="res://Assets/Projectile/Lettuce.png" id="1_22qjc"]
 [ext_resource type="Script" path="res://Scenes/Lettuce.gd" id="1_sg7d7"]
+[ext_resource type="PackedScene" uid="uid://b2hvjmvt4n4jb" path="res://Scenes/Particles/lettuceTravel.tscn" id="2_n2lgg"]
+[ext_resource type="PackedScene" uid="uid://b1rbqt3qbj3q4" path="res://Scenes/Particles/lettuceHit.tscn" id="3_x5rsp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uaop2"]
 radius = 10.0499
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_sg7d7")
+traveling_particles = ExtResource("2_n2lgg")
+hit_particles = ExtResource("3_x5rsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.01, 0.01)
@@ -17,7 +21,7 @@ texture = ExtResource("1_22qjc")
 collision_layer = 2
 collision_mask = 37
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="HitBox" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_uaop2")
 
 [node name="vanishLettuce" type="Timer" parent="."]
