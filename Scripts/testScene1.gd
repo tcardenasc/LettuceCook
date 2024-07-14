@@ -20,6 +20,7 @@ func _ready():
 	# Assign player scene to creature spawners
 	for spawner:CreatureSpawner in find_children("*", "CreatureSpawner"):
 		spawner.player = player
+	summoner.player = player
 		
 	updatePlayerInfo()
 	
