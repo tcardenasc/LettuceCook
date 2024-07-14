@@ -122,7 +122,7 @@ func receive_damage(damage):
 	health = max(health - damage, 0)
 	
 func receive_heal(heal):
-	Dj.play_sound(healSfx, -1)
+	Dj.play_sound(healSfx, -2)
 	health=min(health+heal, MAX_HEALTH)
 	$HealingParticles.emitting = true
 	
@@ -140,7 +140,7 @@ func _input(event: InputEvent) -> void:
 
 func picked(inventory: Inventory):
 	#player.play_captured()
-	Dj
+	Dj.play_sound(capturedSfx, -3)
 	inventory.insert(itemResource)
 	queue_free()
 
