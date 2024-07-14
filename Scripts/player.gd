@@ -108,3 +108,6 @@ func won_level(saveManager):
 		"eduardo_defeated": eduardo_defeated
 	}
 	saveManager.save_data(save_data)
+
+func play_captured():
+	$CapturedSFX.play()

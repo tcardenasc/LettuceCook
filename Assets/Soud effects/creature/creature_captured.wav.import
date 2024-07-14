@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://877f2o7tusuf"
+path="res://.godot/imported/creature_captured.wav-50fae87b57697b9b1eb38dad8977b924.sample"
+
+[deps]
+
+source_file="res://Assets/Soud effects/creature/creature_captured.wav"
+dest_files=["res://.godot/imported/creature_captured.wav-50fae87b57697b9b1eb38dad8977b924.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

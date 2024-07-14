@@ -26,6 +26,7 @@ const gema = preload("res://Scenes/gem.tscn")
 
 signal born_or_died
 
+
 var target_detected = false
 var target_on_attack_range = false
 var movementAttackPenalty = 50
@@ -54,6 +55,7 @@ func stunned_or_dead():
 	if(probability >= 50):
 		stunnedSfx.play()
 		stunned = true;
+		$StunnedParticles.emitting = true
 		#tameLabel.show()
 	else:
 		vanishTimer.start()
@@ -136,6 +138,7 @@ func _input(event: InputEvent) -> void:
 		picked(player_inventory)
 
 func picked(inventory: Inventory):
+	player.play_captured()
 	inventory.insert(itemResource)
 	queue_free()
 
