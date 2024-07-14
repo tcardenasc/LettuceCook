@@ -5,6 +5,7 @@ var healing_amount = 15
 @export var traveling_particles : PackedScene
 @export var hit_particles : PackedScene
 var _traveling_particles : GPUParticles2D
+var _hit_particles : GPUParticles2D
 
 func _ready():
 	spawn_travel_particles()
@@ -12,6 +13,7 @@ func _ready():
 func spawn_travel_particles():
 	
 	_traveling_particles = traveling_particles.instantiate()
+	_hit_particles = hit_particles.instantiate()
 	_traveling_particles.position = global_position
 	_traveling_particles.emitting = true 
 	add_child(_traveling_particles)	
@@ -33,6 +35,10 @@ func _on_area_2d_body_entered(body):
 	hit_object()
 
 func hit_object():
+	_hit_particles = hit_particles.instantiate()
+	_hit_particles.position = global_position
+	_hit_particles.emitting = true
+	get_tree().current_scene.add_child(_hit_particles)
 	_traveling_particles.emitting = false
 	queue_free()
 	
