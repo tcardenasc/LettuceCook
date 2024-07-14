@@ -4,6 +4,7 @@ var speed = 300
 var healing_amount = 15
 @export var traveling_particles : PackedScene
 @export var hit_particles : PackedScene
+@export var hit_sound : AudioStream
 var _traveling_particles : GPUParticles2D
 var _hit_particles : GPUParticles2D
 
@@ -31,7 +32,6 @@ func _on_area_2d_body_entered(body):
 			body.queue_free()
 		elif body.is_in_group("allies"):
 			body.receive_heal(healing_amount)
-			print("healed")
 	hit_object()
 
 func hit_object():
@@ -40,6 +40,8 @@ func hit_object():
 	_hit_particles.emitting = true
 	get_tree().current_scene.add_child(_hit_particles)
 	_traveling_particles.emitting = false
+	Dj.play_sound(hit_sound,0)
+	
 	queue_free()
 	
 func _on_vanish_lettuce_timeout():

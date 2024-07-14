@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsma7w7dp7o3h"]
+
+[ext_resource type="Script" path="res://Scripts/dj.gd" id="1_sa7h2"]
+
+[node name="DJ" type="Node2D"]
+script = ExtResource("1_sa7h2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Sound Effects"

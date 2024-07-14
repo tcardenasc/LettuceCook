@@ -8,8 +8,9 @@ class_name Creature
 @onready var tameLabel: Label = $tameLabel
 @onready var vanishTimer = $vanishTimer
 @onready var attackSfx = $AttackSFX
-@onready var healSfx = $HealSFX
-@onready var stunnedSfx = $StunnedSFX
+@export var healSfx : AudioStream
+@export var capturedSfx : AudioStream
+@export var stunnedSfx : AudioStream
 @onready var attack_area: Area2D = $pivot/AttackArea
 
 @onready var sprite = $pivot/Sprite
@@ -53,7 +54,7 @@ func stunned_or_dead():
 		soltar_gema()
 	var probability = randi() % 100
 	if(probability >= 50):
-		stunnedSfx.play()
+		Dj.play_sound(stunnedSfx, -2)
 		stunned = true;
 		$StunnedParticles.emitting = true
 		#tameLabel.show()
@@ -121,7 +122,7 @@ func receive_damage(damage):
 	health = max(health - damage, 0)
 	
 func receive_heal(heal):
-	healSfx.play()
+	Dj.play_sound(healSfx, -1)
 	health=min(health+heal, MAX_HEALTH)
 	$HealingParticles.emitting = true
 	
@@ -138,7 +139,8 @@ func _input(event: InputEvent) -> void:
 		picked(player_inventory)
 
 func picked(inventory: Inventory):
-	player.play_captured()
+	#player.play_captured()
+	Dj
 	inventory.insert(itemResource)
 	queue_free()
 

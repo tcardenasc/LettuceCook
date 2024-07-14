@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://b11s6bm66u8db"]
+[gd_scene load_steps=27 format=3 uid="uid://b11s6bm66u8db"]
 
 [ext_resource type="Script" path="res://Scripts/Creature.gd" id="1_vrcqj"]
-[ext_resource type="AudioStream" uid="uid://dii0qfvb5y3h5" path="res://Assets/Soud effects/lettuce/heal_1.wav" id="2_xegbo"]
+[ext_resource type="AudioStream" uid="uid://dii0qfvb5y3h5" path="res://Assets/Soud effects/lettuce/heal_1.wav" id="2_vmjfp"]
 [ext_resource type="AudioStream" uid="uid://b1w7fykcx23kt" path="res://Assets/Soud effects/creature/creature_stunned.wav" id="3_u8f5i"]
+[ext_resource type="AudioStream" uid="uid://877f2o7tusuf" path="res://Assets/Soud effects/creature/creature_captured.wav" id="3_xhts0"]
 
 [sub_resource type="Animation" id="Animation_lu3qm"]
 length = 0.001
@@ -97,6 +98,9 @@ color = Color(0, 0.972549, 0.0352941, 1)
 collision_layer = 36
 collision_mask = 37
 script = ExtResource("1_vrcqj")
+healSfx = ExtResource("2_vmjfp")
+capturedSfx = ExtResource("3_xhts0")
+stunnedSfx = ExtResource("3_u8f5i")
 
 [node name="pivot" type="Node2D" parent="."]
 
@@ -145,16 +149,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="AttackSFX" type="AudioStreamPlayer" parent="."]
-bus = &"Sound Effects"
-
-[node name="HealSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_xegbo")
-bus = &"Sound Effects"
-
-[node name="StunnedSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_u8f5i")
-volume_db = -3.0
-pitch_scale = 0.58
 bus = &"Sound Effects"
 
 [node name="HealingParticles" type="GPUParticles2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://gosldyeqg71c"]
+[gd_scene load_steps=28 format=3 uid="uid://gosldyeqg71c"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lt40r"]
 [ext_resource type="Resource" uid="uid://bnacd1yphrvow" path="res://Scenes/Inventory/playerInventory.tres" id="2_jtr3j"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://4h47dd0atdj8" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Walk_6.png" id="5_wwe03"]
 [ext_resource type="AudioStream" uid="uid://8xdxa1eet3b0" path="res://Assets/Soud effects/punch.wav" id="6_qy0me"]
 [ext_resource type="AudioStream" uid="uid://877f2o7tusuf" path="res://Assets/Soud effects/creature/creature_captured.wav" id="8_cl8ps"]
+[ext_resource type="AudioStream" uid="uid://bgfqmnyis27ff" path="res://Assets/Soud effects/lettuce/lettuce_hit_wall.wav" id="9_1pe18"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nad7p"]
 size = Vector2(26.5, 42)
@@ -343,6 +344,10 @@ stream = ExtResource("6_qy0me")
 [node name="CapturedSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_cl8ps")
 volume_db = -2.0
+
+[node name="LettuceImpactSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_1pe18")
+volume_db = 1.0
 
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
 [connection signal="animation_started" from="AnimationTree" to="." method="_on_animation_tree_animation_started"]
