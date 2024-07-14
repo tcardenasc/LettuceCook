@@ -9,6 +9,7 @@ class_name Creature
 @onready var vanishTimer = $vanishTimer
 @onready var attackSfx = $AttackSFX
 @onready var healSfx = $HealSFX
+@onready var stunnedSfx = $StunnedSFX
 @onready var attack_area: Area2D = $pivot/AttackArea
 
 @onready var sprite = $pivot/Sprite
@@ -51,8 +52,9 @@ func stunned_or_dead():
 		soltar_gema()
 	var probability = randi() % 100
 	if(probability >= 50):
+		stunnedSfx.play()
 		stunned = true;
-		tameLabel.show()
+		#tameLabel.show()
 	else:
 		vanishTimer.start()
 		collision_layer=0
