@@ -8,6 +8,7 @@ class_name Creature
 @onready var tameLabel: Label = $tameLabel
 @onready var vanishTimer = $vanishTimer
 @onready var attackSfx = $AttackSFX
+@onready var healSfx = $HealSFX
 @onready var attack_area: Area2D = $pivot/AttackArea
 
 @onready var sprite = $pivot/Sprite
@@ -116,9 +117,10 @@ func receive_damage(damage):
 	health = max(health - damage, 0)
 	
 func receive_heal(heal):
+	healSfx.play()
 	health=min(health+heal, MAX_HEALTH)
 	$HealingParticles.emitting = true
-
+	
 func target_on_range():
 	return attack_area.overlaps_body(target)
 
