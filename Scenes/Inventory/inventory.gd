@@ -48,7 +48,7 @@ func insertSlot(index: int, inventorySlot: InventorySlot):
 func getItemIndex(name: String):
 	var index=0
 	for i in slots:
-		if i.item.creatureName == name:
+		if i.item and i.item.creatureName == name:
 			return index
 		index+=1
 		
