@@ -4,10 +4,9 @@
 [ext_resource type="Script" path="res://Scenes/Lettuce.gd" id="1_sg7d7"]
 [ext_resource type="PackedScene" uid="uid://b2hvjmvt4n4jb" path="res://Scenes/Particles/lettuceTravel.tscn" id="2_n2lgg"]
 [ext_resource type="PackedScene" uid="uid://b1rbqt3qbj3q4" path="res://Scenes/Particles/lettuceHit.tscn" id="3_x5rsp"]
-[ext_resource type="AudioStream" uid="uid://bgfqmnyis27ff" path="res://Assets/Soud effects/lettuce/lettuce_hit_wall.wav" id="4_lkw5b"]
+[ext_resource type="AudioStream" uid="uid://tjkoi1by286t" path="res://Assets/Soud effects/lettuce/lettuce_hit.wav" id="4_lkw5b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uaop2"]
-radius = 10.0499
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_sg7d7")

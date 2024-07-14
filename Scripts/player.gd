@@ -109,5 +109,3 @@ func won_level(saveManager):
 	}
 	saveManager.save_data(save_data)
 
-func play_captured():
-	$CapturedSFX.play()
