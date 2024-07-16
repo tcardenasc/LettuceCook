@@ -7,6 +7,7 @@ class_name Creature
 @onready var pivot = $pivot
 @onready var tameLabel: Label = $tameLabel
 @onready var vanishTimer = $vanishTimer
+@onready var attackTimer = $attackTimer
 @onready var attackSfx = $AttackSFX
 @export var healSfx : AudioStream
 @export var capturedSfx : AudioStream
@@ -22,6 +23,7 @@ class_name Creature
 @export var basicDamage = 10
 @export var itemResource: InventoryItem
 @export var use_path_finding: bool = true
+@export var attack_cooldown : float = 1
 
 var player_inventory: Inventory = preload("res://Scenes/Inventory/playerInventory.tres")
 const gema = preload("res://Scenes/gem.tscn")
@@ -30,6 +32,7 @@ signal born_or_died
 
 var target_detected = false
 var target_on_attack_range = false
+var attack_cd_up : bool = true
 var movementAttackPenalty = 50
 var knockback = Vector2.ZERO
 var stunned = false
@@ -86,6 +89,7 @@ func _ready():
 	health_bar.max_value = MAX_HEALTH
 	set_health_bar()
 	born_or_died.connect(_on_born_or_died)
+	attackTimer.wait_time = attack_cooldown
 
 func _physics_process(delta):
 	if health == 0:
@@ -116,8 +120,11 @@ func _physics_process(delta):
 	if (velocity.x):
 		pivot.scale.x = sign(velocity.x)
 		
-	if(target_on_range()):
+	if(attack_cd_up and target_on_range()):
+	#if(target_on_range()):
 		playback.travel("attack")
+		
+		
 		return
 
 func set_health_bar():
@@ -138,6 +145,8 @@ func attack():
 	attackSfx.play()
 	if is_instance_valid(target) and target_on_range():
 		target.receive_damage(basicDamage)
+	attack_cd_up = false
+	attackTimer.start()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use") and stunned and in_tame_range:
@@ -156,7 +165,6 @@ func find_target():
 	var target_group: Array[Node]
 	if is_in_group("enemies") and is_inside_tree():
 		target_group = get_tree().get_nodes_in_group("allies")
-		print("target_group ", target_group)
 		if target_group.is_empty():
 			target = player
 			return
@@ -180,3 +188,7 @@ func find_target():
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity
+
+
+func _on_attack_timer_timeout():
+	attack_cd_up = true

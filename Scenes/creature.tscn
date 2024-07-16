@@ -135,6 +135,13 @@ emitting = false
 process_material = SubResource("ParticleProcessMaterial_d65ar")
 lifetime = 1.5
 
+[node name="HealingParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_pmtrr")
+lifetime = 0.7
+one_shot = true
+
 [node name="tameLabel" type="Label" parent="."]
 visible = false
 offset_left = -29.0
@@ -147,15 +154,12 @@ text = "press F"
 wait_time = 2.0
 one_shot = true
 
+[node name="attackTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [node name="AttackSFX" type="AudioStreamPlayer" parent="."]
 bus = &"Sound Effects"
-
-[node name="HealingParticles" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 10
-process_material = SubResource("ParticleProcessMaterial_pmtrr")
-lifetime = 0.7
-one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
@@ -164,4 +168,5 @@ debug_enabled = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="vanishTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
