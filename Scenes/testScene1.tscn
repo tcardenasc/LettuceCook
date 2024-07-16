@@ -36,10 +36,12 @@ position = Vector2(4256, -2472)
 [node name="BrainSpawner" parent="." instance=ExtResource("9_tgqi2")]
 position = Vector2(4568, -2432)
 spawn_limit = 2
+spawn_sound = null
 
 [node name="EduardoSpawner" parent="." instance=ExtResource("10_pnxtb")]
 position = Vector2(4112, -2616)
 spawn_limit = 2
+spawn_sound = null
 
 [node name="Summoner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_qa6at")]
 player = NodePath("../Player")

@@ -142,5 +142,5 @@ libraries = {
 [node name="CollisionShape2D" parent="." index="4"]
 shape = SubResource("CapsuleShape2D_ql7wh")
 
-[node name="AttackSFX" parent="." index="8"]
+[node name="AttackSFX" parent="." index="10"]
 stream = ExtResource("4_hcx6v")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://gosldyeqg71c"]
+[gd_scene load_steps=27 format=3 uid="uid://gosldyeqg71c"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lt40r"]
 [ext_resource type="Resource" uid="uid://bnacd1yphrvow" path="res://Scenes/Inventory/playerInventory.tres" id="2_jtr3j"]
 [ext_resource type="Texture2D" uid="uid://omdg15n7fl4v" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Idle_4.png" id="2_rmpbm"]
+[ext_resource type="AudioStream" uid="uid://xbihcak4r55f" path="res://Assets/Soud effects/lettuce/lettuce_throw.wav" id="3_005ul"]
 [ext_resource type="Texture2D" uid="uid://807mgoepc8i7" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Attack1_4.png" id="3_6ks3l"]
 [ext_resource type="Texture2D" uid="uid://bnrtvvra35by1" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Run_6.png" id="4_ltxox"]
 [ext_resource type="Texture2D" uid="uid://4h47dd0atdj8" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Walk_6.png" id="5_wwe03"]
@@ -290,6 +291,7 @@ height = 46.0
 collision_layer = 2
 script = ExtResource("1_lt40r")
 inventory = ExtResource("2_jtr3j")
+lettuce_throw_sound = ExtResource("3_005ul")
 
 [node name="pivot" type="Node2D" parent="."]
 

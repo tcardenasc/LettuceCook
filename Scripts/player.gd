@@ -11,6 +11,7 @@ class_name Player
 @export var damage = 5
 @export var knockback_strenght = 1000
 @export var inventory: Inventory
+@export var lettuce_throw_sound: AudioStream
 
 const MAX_HEALTH = 500
 var current_gems = 0
@@ -73,7 +74,7 @@ func shoot_lettuce():
 	get_parent().add_child(bullet)
 	bullet.position = $aim/BulletPosition.global_position
 	bullet.velocity = get_global_mouse_position() - bullet.position
-	
+	Dj.play_sound(lettuce_throw_sound,0)
 
 func _on_animation_player_animation_started(anim_name):
 	pass # Replace with function body.
