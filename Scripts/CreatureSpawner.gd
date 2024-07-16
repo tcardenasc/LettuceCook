@@ -6,6 +6,7 @@ class_name CreatureSpawner
 @export var mob_scene: PackedScene
 @export var player: CharacterBody2D
 @export var spawn_limit: int
+@export var spawn_sound: AudioStream
 var defeated = false
 var remaining_creatures = spawn_limit
 var creatures_defeated = 0
@@ -24,6 +25,7 @@ func _on_timer_timeout():
 	mob.player = player
 	mob.add_to_group("enemies")
 	add_child(mob)
+	Dj.play_sound(spawn_sound,-1)
 	spawned += 1
 
 func creatureDefeated():

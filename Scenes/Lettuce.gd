@@ -40,7 +40,7 @@ func hit_object():
 	_hit_particles.emitting = true
 	get_tree().current_scene.add_child(_hit_particles)
 	_traveling_particles.emitting = false
-	Dj.play_sound(hit_sound,1)
+	Dj.play_sound(hit_sound,7)
 	
 	queue_free()
 	
