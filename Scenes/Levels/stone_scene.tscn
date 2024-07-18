@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl84gch7jne08"]
+
+[ext_resource type="PackedScene" uid="uid://cgqapypvkq0q2" path="res://Scenes/Levels/template_scene.tscn" id="1_yqwpx"]
+[ext_resource type="TileSet" uid="uid://cuv2gncl01pj7" path="res://tileset_stone.tres" id="2_5k27u"]
+
+[node name="StoneScene" instance=ExtResource("1_yqwpx")]
+
+[node name="TileMap" parent="." index="0"]
+tile_set = ExtResource("2_5k27u")
