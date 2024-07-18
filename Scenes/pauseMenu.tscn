@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdr2jyfx3kn18"]
+[gd_scene load_steps=8 format=3 uid="uid://bdr2jyfx3kn18"]
 
 [ext_resource type="Script" path="res://Scripts/pauseMenu.gd" id="1_3nbtw"]
 [ext_resource type="Theme" uid="uid://qmhi4o7wdtce" path="res://Assets/Themes/PauseMenu.tres" id="1_30et1"]
 [ext_resource type="AudioStream" uid="uid://i6x51548nve8" path="res://Assets/Soud effects/171697__nenadsimic__menu-selection-click.wav" id="3_bk81x"]
 [ext_resource type="AudioStream" uid="uid://b22pgl4snqnao" path="res://Assets/Soud effects/448080__breviceps__wet-click.wav" id="4_kkc1l"]
 [ext_resource type="PackedScene" uid="uid://c182stu20qtgv" path="res://Scenes/settings.tscn" id="5_mief2"]
+[ext_resource type="PackedScene" uid="uid://dk2ykmm1u1ua8" path="res://Scenes/Tutorial.tscn" id="5_nu7v1"]
 [ext_resource type="PackedScene" uid="uid://o0m5u0nfy62q" path="res://Scenes/SaveManager.tscn" id="6_7jjxc"]
 
 [node name="PauseMenu" type="Control"]
@@ -19,10 +20,10 @@ metadata/_edit_lock_ = true
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 310.0
-offset_top = 66.0
-offset_right = 714.0
-offset_bottom = 486.0
+offset_left = 309.0
+offset_top = 33.0
+offset_right = 713.0
+offset_bottom = 573.0
 theme = ExtResource("1_30et1")
 
 [node name="Resume" type="Button" parent="."]
@@ -52,21 +53,30 @@ offset_bottom = 300.0
 theme = ExtResource("1_30et1")
 text = "Settings"
 
-[node name="QuitToMenu" type="Button" parent="."]
+[node name="Tutorial" type="Button" parent="."]
 layout_mode = 0
 offset_left = 412.0
 offset_top = 320.0
 offset_right = 612.0
 offset_bottom = 360.0
 theme = ExtResource("1_30et1")
-text = "Return to Menu"
+text = "Tutorial"
 
-[node name="QuitGame" type="Button" parent="."]
+[node name="QuitToMenu" type="Button" parent="."]
 layout_mode = 0
 offset_left = 412.0
 offset_top = 380.0
 offset_right = 612.0
 offset_bottom = 420.0
+theme = ExtResource("1_30et1")
+text = "Return to Menu"
+
+[node name="QuitGame" type="Button" parent="."]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 440.0
+offset_right = 612.0
+offset_bottom = 480.0
 theme = ExtResource("1_30et1")
 text = "Quit Game"
 
@@ -78,6 +88,11 @@ bus = &"Sound Effects"
 stream = ExtResource("4_kkc1l")
 volume_db = -10.0
 bus = &"Sound Effects"
+
+[node name="TutorialMenu" parent="." instance=ExtResource("5_nu7v1")]
+visible = false
+layout_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="SettingsMenu" parent="." instance=ExtResource("5_mief2")]
 visible = false
@@ -91,6 +106,8 @@ layout_mode = 1
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
 [connection signal="mouse_entered" from="Settings" to="." method="_on_settings_mouse_entered"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="Tutorial" to="." method="_on_tutorial_mouse_entered"]
+[connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="mouse_entered" from="QuitToMenu" to="." method="_on_quit_to_menu_mouse_entered"]
 [connection signal="pressed" from="QuitToMenu" to="." method="_on_quit_to_menu_pressed"]
 [connection signal="mouse_entered" from="QuitGame" to="." method="_on_quit_game_mouse_entered"]

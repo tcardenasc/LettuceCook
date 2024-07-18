@@ -3,9 +3,17 @@ extends Control
 @onready var main = $"../.."
 @onready var saveManager = $SaveManager
 
+var images = [	preload("res://Assets/Images/Tutorial/Slide0.png"),
+				preload("res://Assets/Images/Tutorial/Slide1.png"),
+				preload("res://Assets/Images/Tutorial/Slide2.png"),
+				preload("res://Assets/Images/Tutorial/Slide3_0.png")]
+
 var mainMenu = load("res://Scenes/MainTitle.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	$TutorialMenu.load_images(images)
+	
 	visible = false
 	pass # Replace with function body.
 	
@@ -76,4 +84,15 @@ func _on_quit_game_mouse_entered():
 func _on_settings_pressed():
 	_button_pressed_sound()
 	$SettingsMenu.show()
+	pass # Replace with function body.
+
+
+func _on_tutorial_pressed():
+	$TutorialMenu.show()
+	_button_pressed_sound()
+	pass # Replace with function body.
+
+
+func _on_tutorial_mouse_entered():
+	_button_hover_sound()
 	pass # Replace with function body.
