@@ -131,6 +131,7 @@ visible = false
 shape = SubResource("CircleShape2D_x1j5n")
 
 [node name="Sprite" parent="pivot" index="1"]
+self_modulate = Color(0.913725, 0.0509804, 1, 1)
 scale = Vector2(3, 3)
 texture = ExtResource("4_j3sqk")
 hframes = 6
