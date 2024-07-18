@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://7i7tl4jtlxl3"]
+[gd_scene load_steps=14 format=3 uid="uid://7i7tl4jtlxl3"]
 
 [ext_resource type="PackedScene" uid="uid://b11s6bm66u8db" path="res://Scenes/Creatures/creature.tscn" id="1_jw1ii"]
 [ext_resource type="AudioStream" uid="uid://vdq7oom7cf6l" path="res://Assets/Soud effects/creature/dino/dino_scream.wav" id="2_h86oh"]
+[ext_resource type="AudioStream" uid="uid://dimukb7xatabj" path="res://Assets/Soud effects/creature/dino/dino_attack_boosted.wav" id="3_551fg"]
 [ext_resource type="Resource" uid="uid://em00ta5dhcpx" path="res://Scenes/Inventory/Items/dino.tres" id="3_w5uhy"]
 [ext_resource type="Texture2D" uid="uid://cq7fvpsornidk" path="res://Assets/Characters/dinos/female/nico/dino_nico_spritesheet.png" id="4_j3sqk"]
 
@@ -118,6 +119,7 @@ height = 50.0
 [node name="Dino" instance=ExtResource("1_jw1ii")]
 position = Vector2(0, -24)
 summonSfx = ExtResource("2_h86oh")
+attackingSfx = ExtResource("3_551fg")
 MAX_HEALTH = 50
 movementSpeed = 150
 itemResource = ExtResource("3_w5uhy")

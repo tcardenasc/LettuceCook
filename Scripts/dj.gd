@@ -3,6 +3,7 @@ class_name DJ
 
 func play_sound(stream: AudioStream, dB: int):
 	var instance = AudioStreamPlayer.new()
+	instance.bus = "Sound Effects"
 	instance.volume_db=dB
 	instance.stream=stream
 	instance.finished.connect(remove_node.bind(instance))

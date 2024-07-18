@@ -29,3 +29,6 @@ spawn_limit = 1
 y_sort_enabled = true
 position = Vector2(656, -160)
 spawn_limit = 1
+
+[node name="BGM" parent="." index="7"]
+volume_db = -6.0
