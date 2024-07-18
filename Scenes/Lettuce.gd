@@ -1,19 +1,22 @@
 extends CharacterBody2D
-
+class_name Lettuce
 var speed = 300
 var healing_amount = 15
 @export var traveling_particles : PackedScene
 @export var hit_particles : PackedScene
 @export var hit_sound : AudioStream
-var _traveling_particles : GPUParticles2D
+@onready var _traveling_particles : GPUParticles2D = traveling_particles.instantiate()
 var _hit_particles : GPUParticles2D
+@onready var vanish_timer: Timer = $vanishLettuce
+var collectable:bool = true
+var player_inventory: Inventory = preload("res://Scenes/Inventory/playerInventory.tres")
+@export var itemResource: InventoryItem
 
 func _ready():
-	spawn_travel_particles()
+	vanish_timer.stop()
+	
 
 func spawn_travel_particles():
-	
-	_traveling_particles = traveling_particles.instantiate()
 	_hit_particles = hit_particles.instantiate()
 	_traveling_particles.position = global_position
 	_traveling_particles.emitting = true 
@@ -26,15 +29,21 @@ func _physics_process(delta):
 	var collision_info = move_and_collide(velocity.normalized()*delta*speed)
 
 func _on_area_2d_body_entered(body):
+	if (body is Player and collectable):
+		picked()
+		return
 	if(body is Creature):
 		if (body.stunned):
 			body.picked(body.player_inventory)
 			body.queue_free()
 		elif body.is_in_group("allies"):
 			body.receive_heal(healing_amount)
-	hit_object()
+		hit_object()
+	else:
+		hit_object()
 
 func hit_object():
+
 	_hit_particles = hit_particles.instantiate()
 	_hit_particles.position = global_position
 	_hit_particles.emitting = true
@@ -46,3 +55,8 @@ func hit_object():
 	
 func _on_vanish_lettuce_timeout():
 	queue_free()
+
+func picked():
+	player_inventory.insert(itemResource)
+	queue_free()
+	

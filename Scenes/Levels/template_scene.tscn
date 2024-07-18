@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cgqapypvkq0q2"]
+[gd_scene load_steps=14 format=3 uid="uid://cgqapypvkq0q2"]
 
 [ext_resource type="Script" path="res://Scripts/testScene1.gd" id="1_tmt8f"]
 [ext_resource type="PackedScene" uid="uid://gosldyeqg71c" path="res://Scenes/Player/player.tscn" id="2_5g8cc"]
 [ext_resource type="PackedScene" uid="uid://b5378h7fio6j5" path="res://Scenes/Spawners/brain_spawner.tscn" id="3_mt2s3"]
 [ext_resource type="PackedScene" uid="uid://cksh4cpo3gkqc" path="res://Scenes/Spawners/eduardo_spawner.tscn" id="4_5dlfg"]
+[ext_resource type="PackedScene" uid="uid://crw4n0o65iv6r" path="res://Scenes/Spawners/dino_spawner.tscn" id="5_lvtiw"]
 [ext_resource type="PackedScene" uid="uid://c3uhdeluijb2b" path="res://Scenes/Player/summoner.tscn" id="5_r0rcl"]
+[ext_resource type="PackedScene" uid="uid://c2jpxhglrw2gw" path="res://Scenes/Spawners/lettuce_spawner.tscn" id="6_jf3r6"]
 [ext_resource type="Script" path="res://Scenes/CanvasLayer.gd" id="6_mmolo"]
 [ext_resource type="PackedScene" uid="uid://bdr2jyfx3kn18" path="res://Scenes/pauseMenu.tscn" id="7_32gpc"]
 [ext_resource type="PackedScene" uid="uid://upaq8dya7jrt" path="res://Scenes/Inventory.tscn" id="8_pjbfa"]
@@ -28,6 +30,12 @@ spawn_limit = 2
 [node name="EduardoSpawner" parent="." instance=ExtResource("4_5dlfg")]
 position = Vector2(288, -464)
 spawn_limit = 2
+
+[node name="DinoSpawner" parent="." instance=ExtResource("5_lvtiw")]
+spawn_limit = 2
+
+[node name="LettuceSpawner" parent="." instance=ExtResource("6_jf3r6")]
+spawn_limit = 30
 
 [node name="Summoner" parent="." instance=ExtResource("5_r0rcl")]
 

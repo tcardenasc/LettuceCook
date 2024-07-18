@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://rqt13sud2glh"]
+[gd_scene load_steps=3 format=3 uid="uid://rqt13sud2glh"]
 
 [ext_resource type="PackedScene" uid="uid://cgqapypvkq0q2" path="res://Scenes/Levels/template_scene.tscn" id="1_apkkm"]
 [ext_resource type="TileSet" uid="uid://bbneo6o1mu6wu" path="res://Scenes/Levels/tileset_grass.tres" id="2_5wh3b"]
-[ext_resource type="PackedScene" uid="uid://crw4n0o65iv6r" path="res://Scenes/Spawners/dino_spawner.tscn" id="3_11s1s"]
 
 [node name="GrassScene" instance=ExtResource("1_apkkm")]
 y_sort_enabled = true
@@ -15,20 +14,15 @@ layer_0/tile_data = PackedInt32Array(-1310726, 2, 3, -1245190, 2, 1, -1179654, 4
 [node name="Player" parent="." index="1"]
 position = Vector2(488, -328)
 
-[node name="DinoSpawner" parent="." index="2" instance=ExtResource("3_11s1s")]
-y_sort_enabled = true
-position = Vector2(602, -160)
-spawn_limit = 1
-
-[node name="BrainSpawner" parent="." index="3"]
+[node name="BrainSpawner" parent="." index="2"]
 y_sort_enabled = true
 position = Vector2(712, -424)
 spawn_limit = 1
 
-[node name="EduardoSpawner" parent="." index="4"]
+[node name="EduardoSpawner" parent="." index="3"]
 y_sort_enabled = true
 position = Vector2(656, -160)
 spawn_limit = 1
 
-[node name="BGM" parent="." index="7"]
+[node name="BGM" parent="." index="8"]
 volume_db = -6.0

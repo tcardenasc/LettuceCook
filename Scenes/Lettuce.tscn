@@ -1,31 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://ce3go45kpt6xp"]
+[gd_scene load_steps=8 format=3 uid="uid://ce3go45kpt6xp"]
 
 [ext_resource type="Texture2D" uid="uid://vmfakqxrfaee" path="res://Assets/Projectile/Lettuce.png" id="1_22qjc"]
 [ext_resource type="Script" path="res://Scenes/Lettuce.gd" id="1_sg7d7"]
 [ext_resource type="PackedScene" uid="uid://b2hvjmvt4n4jb" path="res://Scenes/Particles/lettuceTravel.tscn" id="2_n2lgg"]
 [ext_resource type="PackedScene" uid="uid://b1rbqt3qbj3q4" path="res://Scenes/Particles/lettuceHit.tscn" id="3_x5rsp"]
 [ext_resource type="AudioStream" uid="uid://tjkoi1by286t" path="res://Assets/Soud effects/lettuce/lettuce_hit.wav" id="4_lkw5b"]
+[ext_resource type="Resource" uid="uid://calwnp8gfdnfl" path="res://Scenes/Inventory/Items/lettuce.tres" id="5_y4kk8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uaop2"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Lettuces"]]
+collision_layer = 8
 script = ExtResource("1_sg7d7")
 traveling_particles = ExtResource("2_n2lgg")
 hit_particles = ExtResource("3_x5rsp")
 hit_sound = ExtResource("4_lkw5b")
+itemResource = ExtResource("5_y4kk8")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Lettuces"]]
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("1_22qjc")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 37
+[node name="Area2D" type="Area2D" parent="." groups=["Lettuces"]]
+collision_layer = 0
+collision_mask = 7
 
-[node name="HitBox" type="CollisionShape2D" parent="Area2D"]
+[node name="HitBox" type="CollisionShape2D" parent="Area2D" groups=["Lettuces"]]
 shape = SubResource("CircleShape2D_uaop2")
 
-[node name="vanishLettuce" type="Timer" parent="."]
+[node name="vanishLettuce" type="Timer" parent="." groups=["Lettuces"]]
 wait_time = 2.0
 one_shot = true
 autostart = true

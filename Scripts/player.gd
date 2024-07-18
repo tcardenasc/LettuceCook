@@ -13,6 +13,7 @@ class_name Player
 @export var inventory: Inventory
 @export var lettuce_throw_sound: AudioStream
 
+
 const MAX_HEALTH = 500
 var current_gems = 0
 var all_gems_collected = 0
@@ -32,14 +33,16 @@ func _on_attack_body_entered(body: Node2D):
 		body.knockback = direction * knockback_strenght 
 		body.receive_damage(damage)
 		
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(body):	
 	if body.is_in_group("Gemas"):
 		body.queue_free()
 		current_gems += 1
 		all_gems_collected += 1 
 		get_parent().updatePlayerInfo()
+		
 
-
+func pick_lettuce():
+	pass
 
 func _physics_process(delta):
 	velocity = Input.get_vector("left", "right", "up", "down")*speed
@@ -71,11 +74,16 @@ func receive_damage(amount):
 		get_parent().playerDefeated()
  
 func shoot_lettuce():
+	Dj.play_sound(lettuce_throw_sound,0)
 	var bullet = bulletPath.instantiate()
 	get_parent().add_child(bullet)
 	bullet.position = $aim/BulletPosition.global_position
 	bullet.velocity = get_global_mouse_position() - bullet.position
-	Dj.play_sound(lettuce_throw_sound,0)
+	bullet.vanish_timer.start()
+	bullet.spawn_travel_particles()
+	bullet.collectable = false
+	#bullet.set_collision_layer_value(1,false)
+	#bullet.set_collision_mask_value(1,false)
 
 func _on_animation_player_animation_started(anim_name):
 	pass # Replace with function body.

@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2jpxhglrw2gw"]
+
+[ext_resource type="PackedScene" uid="uid://dym4bs3gw2gpt" path="res://Scenes/Spawners/creature_spawner.tscn" id="1_qqcwy"]
+[ext_resource type="Script" path="res://Scripts/lettuce_spawner.gd" id="2_w78mr"]
+[ext_resource type="PackedScene" uid="uid://ce3go45kpt6xp" path="res://Scenes/Lettuce.tscn" id="3_3ewpj"]
+[ext_resource type="AudioStream" uid="uid://c5iytf4okr7d1" path="res://Assets/Soud effects/lettuce/lettuce_spawn.wav" id="4_iksuc"]
+
+[node name="LettuceSpawner" instance=ExtResource("1_qqcwy")]
+script = ExtResource("2_w78mr")
+mob_scene = ExtResource("3_3ewpj")
+spawn_sound = ExtResource("4_iksuc")
