@@ -120,6 +120,7 @@ radius = 32.0
 
 [node name="Brain" instance=ExtResource("1_5nuhc")]
 script = ExtResource("2_imapt")
+attackingSfx = ExtResource("4_y8m4f")
 MAX_HEALTH = 50
 itemResource = ExtResource("3_q6awj")
 

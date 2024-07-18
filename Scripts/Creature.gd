@@ -144,7 +144,8 @@ func target_on_range():
 	return attack_area.overlaps_body(target)
 
 func attack():
-	attackSfx.play()
+	#attackSfx.play()
+	Dj.play_sound(attackingSfx, 0)
 	if is_instance_valid(target) and target_on_range():
 		target.receive_damage(basicDamage)
 	attack_cd_up = false

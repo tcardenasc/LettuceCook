@@ -121,6 +121,7 @@ height = 80.0
 
 [node name="Eduardo" instance=ExtResource("1_6yfjx")]
 script = ExtResource("2_lfk7c")
+attackingSfx = ExtResource("4_hcx6v")
 MAX_HEALTH = 50
 itemResource = ExtResource("3_4gx7g")
 
