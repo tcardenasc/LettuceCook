@@ -288,6 +288,7 @@ radius = 17.0
 height = 46.0
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -32)
 collision_layer = 2
 script = ExtResource("1_j0awk")
 inventory = ExtResource("2_qaxws")
@@ -305,6 +306,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/AttackArea"]
+position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_k1orl")
 disabled = true
 

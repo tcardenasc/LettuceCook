@@ -116,6 +116,7 @@ radius = 16.0
 height = 50.0
 
 [node name="Dino" instance=ExtResource("1_jw1ii")]
+position = Vector2(0, -24)
 summonSfx = ExtResource("2_h86oh")
 MAX_HEALTH = 50
 movementSpeed = 150

@@ -120,6 +120,7 @@ radius = 40.0
 height = 80.0
 
 [node name="Eduardo" instance=ExtResource("1_vaurn")]
+position = Vector2(0, -32)
 script = ExtResource("2_mfosq")
 MAX_HEALTH = 50
 itemResource = ExtResource("3_yyklv")

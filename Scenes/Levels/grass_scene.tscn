@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://crw4n0o65iv6r" path="res://Scenes/Spawners/dino_spawner.tscn" id="3_11s1s"]
 
 [node name="GrassScene" instance=ExtResource("1_apkkm")]
+y_sort_enabled = true
 
 [node name="TileMap" parent="." index="0"]
 z_index = -1
@@ -15,10 +16,16 @@ layer_0/tile_data = PackedInt32Array(-1310726, 2, 3, -1245190, 2, 1, -1179654, 4
 position = Vector2(488, -328)
 
 [node name="DinoSpawner" parent="." index="2" instance=ExtResource("3_11s1s")]
+y_sort_enabled = true
 position = Vector2(602, -160)
+spawn_limit = 1
 
 [node name="BrainSpawner" parent="." index="3"]
+y_sort_enabled = true
 position = Vector2(712, -424)
+spawn_limit = 1
 
 [node name="EduardoSpawner" parent="." index="4"]
+y_sort_enabled = true
 position = Vector2(656, -160)
+spawn_limit = 1
