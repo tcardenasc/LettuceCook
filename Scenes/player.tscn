@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://4h47dd0atdj8" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Walk_6.png" id="5_wwe03"]
 [ext_resource type="AudioStream" uid="uid://8xdxa1eet3b0" path="res://Assets/Soud effects/punch.wav" id="6_qy0me"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nad7p"]
-size = Vector2(26.5, 42)
+[sub_resource type="CircleShape2D" id="CircleShape2D_eo5jw"]
+radius = 24.0
 
 [sub_resource type="Animation" id="Animation_slwym"]
 length = 0.001
@@ -288,6 +288,7 @@ radius = 17.0
 height = 46.0
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -32)
 collision_layer = 42
 collision_mask = 9
 script = ExtResource("1_lt40r")
@@ -306,8 +307,8 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/AttackArea"]
-position = Vector2(24, 8)
-shape = SubResource("RectangleShape2D_nad7p")
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_eo5jw")
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -335,7 +336,7 @@ shape = SubResource("CircleShape2D_7jg38")
 position = Vector2(25, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 8)
+position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_4rg2j")
 
 [node name="AttackSFX" type="AudioStreamPlayer" parent="."]
