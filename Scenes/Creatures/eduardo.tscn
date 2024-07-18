@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://csak43125sjd7"]
 
-[ext_resource type="PackedScene" uid="uid://b11s6bm66u8db" path="res://Scenes/creature.tscn" id="1_6yfjx"]
-[ext_resource type="Texture2D" uid="uid://cpv0ou6krcbns" path="res://Assets/Characters/Eduardo/Dwarf Sprite Sheet 1.3v.png" id="2_1wqol"]
-[ext_resource type="Script" path="res://Scripts/eduardo.gd" id="2_lfk7c"]
-[ext_resource type="Resource" uid="uid://dw7l57pjidk1e" path="res://Scenes/Inventory/Items/eduardo.tres" id="3_4gx7g"]
-[ext_resource type="AudioStream" uid="uid://djksuledm0jcp" path="res://Assets/Soud effects/eduardoAttack.wav" id="4_hcx6v"]
+[ext_resource type="PackedScene" uid="uid://b11s6bm66u8db" path="res://Scenes/Creatures/creature.tscn" id="1_vaurn"]
+[ext_resource type="Script" path="res://Scripts/eduardo.gd" id="2_mfosq"]
+[ext_resource type="Resource" uid="uid://dw7l57pjidk1e" path="res://Scenes/Inventory/Items/eduardo.tres" id="3_yyklv"]
+[ext_resource type="Texture2D" uid="uid://cpv0ou6krcbns" path="res://Assets/Characters/Eduardo/Dwarf Sprite Sheet 1.3v.png" id="4_r33je"]
+[ext_resource type="AudioStream" uid="uid://djksuledm0jcp" path="res://Assets/Soud effects/eduardoAttack.wav" id="5_w617j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oim2m"]
 radius = 56.5685
@@ -119,18 +119,17 @@ _data = {
 radius = 40.0
 height = 80.0
 
-[node name="Eduardo" instance=ExtResource("1_6yfjx")]
-script = ExtResource("2_lfk7c")
-attackingSfx = ExtResource("4_hcx6v")
+[node name="Eduardo" instance=ExtResource("1_vaurn")]
+script = ExtResource("2_mfosq")
 MAX_HEALTH = 50
-itemResource = ExtResource("3_4gx7g")
+itemResource = ExtResource("3_yyklv")
 
 [node name="CollisionShape2D" parent="pivot/AttackArea" index="0"]
 shape = SubResource("CircleShape2D_oim2m")
 
 [node name="Sprite" parent="pivot" index="1"]
 scale = Vector2(4, 4)
-texture = ExtResource("2_1wqol")
+texture = ExtResource("4_r33je")
 offset = Vector2(0, -3.5)
 hframes = 8
 vframes = 8
@@ -140,8 +139,11 @@ libraries = {
 "": SubResource("AnimationLibrary_fv7y5")
 }
 
+[node name="HealthBar" parent="." index="3"]
+metadata/_edit_use_anchors_ = true
+
 [node name="CollisionShape2D" parent="." index="4"]
 shape = SubResource("CapsuleShape2D_ql7wh")
 
 [node name="AttackSFX" parent="." index="10"]
-stream = ExtResource("4_hcx6v")
+stream = ExtResource("5_w617j")

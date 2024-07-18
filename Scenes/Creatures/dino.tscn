@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://7i7tl4jtlxl3"]
+[gd_scene load_steps=13 format=3 uid="uid://7i7tl4jtlxl3"]
 
-[ext_resource type="PackedScene" uid="uid://b11s6bm66u8db" path="res://Scenes/creature.tscn" id="1_8oxol"]
-[ext_resource type="Texture2D" uid="uid://cq7fvpsornidk" path="res://Assets/Characters/dinos/female/nico/dino_nico_spritesheet.png" id="2_5i72y"]
-[ext_resource type="Resource" uid="uid://em00ta5dhcpx" path="res://Scenes/Inventory/Items/dino.tres" id="2_hrqg8"]
-[ext_resource type="AudioStream" uid="uid://vdq7oom7cf6l" path="res://Assets/Soud effects/creature/dino/dino_scream.wav" id="2_mm2mr"]
-[ext_resource type="AudioStream" uid="uid://dimukb7xatabj" path="res://Assets/Soud effects/creature/dino/dino_attack_boosted.wav" id="3_j8npo"]
+[ext_resource type="PackedScene" uid="uid://b11s6bm66u8db" path="res://Scenes/Creatures/creature.tscn" id="1_jw1ii"]
+[ext_resource type="AudioStream" uid="uid://vdq7oom7cf6l" path="res://Assets/Soud effects/creature/dino/dino_scream.wav" id="2_h86oh"]
+[ext_resource type="Resource" uid="uid://em00ta5dhcpx" path="res://Scenes/Inventory/Items/dino.tres" id="3_w5uhy"]
+[ext_resource type="Texture2D" uid="uid://cq7fvpsornidk" path="res://Assets/Characters/dinos/female/nico/dino_nico_spritesheet.png" id="4_j3sqk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x1j5n"]
 radius = 40.0125
@@ -116,12 +115,11 @@ _data = {
 radius = 16.0
 height = 50.0
 
-[node name="Dino" instance=ExtResource("1_8oxol")]
-summonSfx = ExtResource("2_mm2mr")
-attackingSfx = ExtResource("3_j8npo")
+[node name="Dino" instance=ExtResource("1_jw1ii")]
+summonSfx = ExtResource("2_h86oh")
 MAX_HEALTH = 50
 movementSpeed = 150
-itemResource = ExtResource("2_hrqg8")
+itemResource = ExtResource("3_w5uhy")
 
 [node name="AttackArea" parent="pivot" index="0"]
 visible = false
@@ -131,7 +129,7 @@ shape = SubResource("CircleShape2D_x1j5n")
 
 [node name="Sprite" parent="pivot" index="1"]
 scale = Vector2(3, 3)
-texture = ExtResource("2_5i72y")
+texture = ExtResource("4_j3sqk")
 hframes = 6
 vframes = 10
 frame = 24
@@ -144,6 +142,7 @@ libraries = {
 [node name="HealthBar" parent="." index="3"]
 offset_top = -43.0
 offset_bottom = -27.0
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" parent="." index="4"]
 position = Vector2(1, 0)

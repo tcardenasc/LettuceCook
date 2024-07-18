@@ -1,10 +1,10 @@
 [gd_scene load_steps=28 format=3 uid="uid://b11s6bm66u8db"]
 
-[ext_resource type="Script" path="res://Scripts/Creature.gd" id="1_vrcqj"]
-[ext_resource type="AudioStream" uid="uid://dii0qfvb5y3h5" path="res://Assets/Soud effects/lettuce/heal_1.wav" id="2_vmjfp"]
-[ext_resource type="AudioStream" uid="uid://b1w7fykcx23kt" path="res://Assets/Soud effects/creature/creature_stunned.wav" id="3_u8f5i"]
-[ext_resource type="AudioStream" uid="uid://877f2o7tusuf" path="res://Assets/Soud effects/creature/creature_captured.wav" id="3_xhts0"]
-[ext_resource type="AudioStream" uid="uid://sf8to7fwt0th" path="res://Assets/Soud effects/creature/creature_summon.wav" id="5_qo280"]
+[ext_resource type="Script" path="res://Scripts/Creature.gd" id="1_i7eag"]
+[ext_resource type="AudioStream" uid="uid://dii0qfvb5y3h5" path="res://Assets/Soud effects/lettuce/heal_1.wav" id="2_tbgw8"]
+[ext_resource type="AudioStream" uid="uid://877f2o7tusuf" path="res://Assets/Soud effects/creature/creature_captured.wav" id="3_gcjov"]
+[ext_resource type="AudioStream" uid="uid://b1w7fykcx23kt" path="res://Assets/Soud effects/creature/creature_stunned.wav" id="4_lxks8"]
+[ext_resource type="AudioStream" uid="uid://sf8to7fwt0th" path="res://Assets/Soud effects/creature/creature_summon.wav" id="5_5ybjx"]
 
 [sub_resource type="Animation" id="Animation_lu3qm"]
 length = 0.001
@@ -97,11 +97,11 @@ color = Color(0, 0.972549, 0.0352941, 1)
 
 [node name="Creature" type="CharacterBody2D"]
 collision_layer = 36
-script = ExtResource("1_vrcqj")
-healSfx = ExtResource("2_vmjfp")
-capturedSfx = ExtResource("3_xhts0")
-stunnedSfx = ExtResource("3_u8f5i")
-summonSfx = ExtResource("5_qo280")
+script = ExtResource("1_i7eag")
+healSfx = ExtResource("2_tbgw8")
+capturedSfx = ExtResource("3_gcjov")
+stunnedSfx = ExtResource("4_lxks8")
+summonSfx = ExtResource("5_5ybjx")
 
 [node name="pivot" type="Node2D" parent="."]
 
@@ -166,7 +166,6 @@ bus = &"Sound Effects"
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
 radius = 30.0
-debug_enabled = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="vanishTimer" to="." method="_on_timer_timeout"]

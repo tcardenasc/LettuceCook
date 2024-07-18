@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://bsx7cxqsiig5f"]
 
-[ext_resource type="PackedScene" uid="uid://b11s6bm66u8db" path="res://Scenes/creature.tscn" id="1_5nuhc"]
-[ext_resource type="Texture2D" uid="uid://cse50planqusc" path="res://Assets/Characters/brainDevour/Intellect Devourer Sprites.png" id="2_d5nhq"]
-[ext_resource type="Script" path="res://Scripts/brain.gd" id="2_imapt"]
-[ext_resource type="Resource" uid="uid://ctqdu5s8nkpwy" path="res://Scenes/Inventory/Items/brain.tres" id="3_q6awj"]
-[ext_resource type="AudioStream" uid="uid://d2wekbjje37bh" path="res://Assets/Soud effects/ghoulAttack.mp3" id="4_y8m4f"]
+[ext_resource type="PackedScene" uid="uid://b11s6bm66u8db" path="res://Scenes/Creatures/creature.tscn" id="1_60vho"]
+[ext_resource type="Script" path="res://Scripts/brain.gd" id="2_xnveq"]
+[ext_resource type="Resource" uid="uid://ctqdu5s8nkpwy" path="res://Scenes/Inventory/Items/brain.tres" id="3_vwhik"]
+[ext_resource type="Texture2D" uid="uid://cse50planqusc" path="res://Assets/Characters/brainDevour/Intellect Devourer Sprites.png" id="4_6plmv"]
+[ext_resource type="AudioStream" uid="uid://d2wekbjje37bh" path="res://Assets/Soud effects/ghoulAttack.mp3" id="5_yod4x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o35cf"]
 radius = 57.1402
@@ -118,18 +118,17 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_duxsb"]
 radius = 32.0
 
-[node name="Brain" instance=ExtResource("1_5nuhc")]
-script = ExtResource("2_imapt")
-attackingSfx = ExtResource("4_y8m4f")
+[node name="Brain" instance=ExtResource("1_60vho")]
+script = ExtResource("2_xnveq")
 MAX_HEALTH = 50
-itemResource = ExtResource("3_q6awj")
+itemResource = ExtResource("3_vwhik")
 
 [node name="CollisionShape2D" parent="pivot/AttackArea" index="0"]
 shape = SubResource("CircleShape2D_o35cf")
 
 [node name="Sprite" parent="pivot" index="1"]
 scale = Vector2(4, 4)
-texture = ExtResource("2_d5nhq")
+texture = ExtResource("4_6plmv")
 offset = Vector2(1, -9)
 hframes = 8
 vframes = 6
@@ -148,5 +147,5 @@ metadata/_edit_use_anchors_ = true
 shape = SubResource("CircleShape2D_duxsb")
 
 [node name="AttackSFX" parent="." index="10"]
-stream = ExtResource("4_y8m4f")
+stream = ExtResource("5_yod4x")
 volume_db = 3.0

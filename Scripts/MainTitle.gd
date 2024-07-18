@@ -1,7 +1,6 @@
 extends Control
-
-const TEST_SCENE_1 = preload("res://Scenes/testScene1.tscn")
-const GRASS_SCENE = preload("res://Scenes/grass_scene.tscn")
+const TEST_SCENE_1 = preload("res://Scenes/Levels/testScene1.tscn")
+const GRASS_SCENE = preload("res://Scenes/Levels/grass_scene.tscn")
 @onready var saveManager = $SaveManager
 
 func _ready():

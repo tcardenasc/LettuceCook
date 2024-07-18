@@ -31,9 +31,8 @@ var health_cost = 5
 var damage_cost = 5
 var speed_cost = 5
 
-var mainTitle = load("res://Scenes/MainTitle.tscn")
-
-var firstLevel = load("res://Scenes/testScene1.tscn")
+const mainTitle = preload("res://Scenes/MainTitle.tscn")
+const firstLevel = preload("res://Scenes/Levels/grass_scene.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,16 +1,16 @@
 [gd_scene load_steps=27 format=3 uid="uid://gosldyeqg71c"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_lt40r"]
-[ext_resource type="Resource" uid="uid://bnacd1yphrvow" path="res://Scenes/Inventory/playerInventory.tres" id="2_jtr3j"]
-[ext_resource type="Texture2D" uid="uid://omdg15n7fl4v" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Idle_4.png" id="2_rmpbm"]
-[ext_resource type="AudioStream" uid="uid://xbihcak4r55f" path="res://Assets/Soud effects/lettuce/lettuce_throw.wav" id="3_005ul"]
-[ext_resource type="Texture2D" uid="uid://807mgoepc8i7" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Attack1_4.png" id="3_6ks3l"]
-[ext_resource type="Texture2D" uid="uid://bnrtvvra35by1" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Run_6.png" id="4_ltxox"]
-[ext_resource type="Texture2D" uid="uid://4h47dd0atdj8" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Walk_6.png" id="5_wwe03"]
-[ext_resource type="AudioStream" uid="uid://8xdxa1eet3b0" path="res://Assets/Soud effects/punch.wav" id="6_qy0me"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_j0awk"]
+[ext_resource type="Resource" uid="uid://bnacd1yphrvow" path="res://Scenes/Inventory/playerInventory.tres" id="2_qaxws"]
+[ext_resource type="AudioStream" uid="uid://xbihcak4r55f" path="res://Assets/Soud effects/lettuce/lettuce_throw.wav" id="3_idr1u"]
+[ext_resource type="Texture2D" uid="uid://omdg15n7fl4v" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Idle_4.png" id="4_lcjyh"]
+[ext_resource type="Texture2D" uid="uid://807mgoepc8i7" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Attack1_4.png" id="5_wvegf"]
+[ext_resource type="Texture2D" uid="uid://bnrtvvra35by1" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Run_6.png" id="6_rebyu"]
+[ext_resource type="Texture2D" uid="uid://4h47dd0atdj8" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Walk_6.png" id="7_nj2l8"]
+[ext_resource type="AudioStream" uid="uid://8xdxa1eet3b0" path="res://Assets/Soud effects/punch.wav" id="8_4mebj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nad7p"]
-size = Vector2(26.5, 42)
+[sub_resource type="CircleShape2D" id="CircleShape2D_k1orl"]
+radius = 24.0
 
 [sub_resource type="Animation" id="Animation_slwym"]
 length = 0.001
@@ -36,7 +36,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_rmpbm")]
+"values": [ExtResource("4_lcjyh")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -88,7 +88,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_6ks3l")]
+"values": [ExtResource("5_wvegf")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -141,7 +141,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_rmpbm")]
+"values": [ExtResource("4_lcjyh")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -182,7 +182,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_ltxox")]
+"values": [ExtResource("6_rebyu")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -223,7 +223,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_wwe03")]
+"values": [ExtResource("7_nj2l8")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -289,15 +289,15 @@ height = 46.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_lt40r")
-inventory = ExtResource("2_jtr3j")
-lettuce_throw_sound = ExtResource("3_005ul")
+script = ExtResource("1_j0awk")
+inventory = ExtResource("2_qaxws")
+lettuce_throw_sound = ExtResource("3_idr1u")
 
 [node name="pivot" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="pivot"]
 scale = Vector2(2, 2)
-texture = ExtResource("2_rmpbm")
+texture = ExtResource("4_lcjyh")
 hframes = 4
 
 [node name="AttackArea" type="Area2D" parent="pivot"]
@@ -305,8 +305,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/AttackArea"]
-position = Vector2(24, 8)
-shape = SubResource("RectangleShape2D_nad7p")
+shape = SubResource("CircleShape2D_k1orl")
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -325,6 +324,7 @@ collision_layer = 33
 collision_mask = 41
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(-2, 4)
 shape = SubResource("CircleShape2D_7jg38")
 
@@ -339,7 +339,7 @@ position = Vector2(-2, 8)
 shape = SubResource("CapsuleShape2D_4rg2j")
 
 [node name="AttackSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_qy0me")
+stream = ExtResource("8_4mebj")
 
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
 [connection signal="animation_started" from="AnimationTree" to="." method="_on_animation_tree_animation_started"]

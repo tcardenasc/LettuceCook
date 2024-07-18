@@ -10,7 +10,7 @@ extends Control
 @onready var totalGemsLabel = $Control/Gem2
 @onready var maxHealthLabel = $Control/Health
 
-var firstLevel = load("res://Scenes/testScene1.tscn")
+const firstLevel = preload("res://Scenes/Levels/grass_scene.tscn")
 var mainMenu = load("res://Scenes/MainTitle.tscn")
 var current_gems = 0
 var all_gems_collected = 0

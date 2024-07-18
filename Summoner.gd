@@ -1,10 +1,10 @@
 extends Node2D
 
 class_name Summoner
+const brain = preload("res://Scenes/Creatures/brain.tscn")
+const dino = preload("res://Scenes/Creatures/dino.tscn")
+const eduardo = preload("res://Scenes/Creatures/eduardo.tscn")
 
-const brain = preload("res://Scenes/brain.tscn") 
-const eduardo = preload("res://Scenes/eduardo.tscn")
-const dino = preload("res://Scenes/dino.tscn")
 const lettuce = preload("res://Scenes/Lettuce.tscn")
 @export var player: CharacterBody2D
 var dict ={
