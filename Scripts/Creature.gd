@@ -12,6 +12,8 @@ class_name Creature
 @export var healSfx : AudioStream
 @export var capturedSfx : AudioStream
 @export var stunnedSfx : AudioStream
+@export var summonSfx : AudioStream
+@export var attackingSfx : AudioStream
 @onready var attack_area: Area2D = $pivot/AttackArea
 @onready var sprite = $pivot/Sprite
 @onready var navigation_agent_2d = $NavigationAgent2D

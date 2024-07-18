@@ -5,6 +5,7 @@ extends Node2D
 @onready var player = $Player
 @onready var brain_spawner = $BrainSpawner
 @onready var eduardo_spawner = $EduardoSpawner
+@onready var dino_spawner = $DinoSpawner
 @onready var playerStatus = $CanvasLayer/Inventory
 @onready var inventoryGui = $CanvasLayer/InventoryGui
 @onready var summoner = $Summoner
@@ -68,6 +69,7 @@ func updatePlayerInfo():
 	playerStatus._update_gems(player.current_gems)
 	player.brain_defeated = brain_spawner.creatures_defeated
 	player.eduardo_defeated = eduardo_spawner.creatures_defeated
+	player.dino_defeated = dino_spawner.creatures_defeated
 
 func playerDefeated():
 	player.lost_game(saveManager)

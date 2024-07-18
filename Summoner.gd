@@ -4,12 +4,13 @@ class_name Summoner
 
 const brain = preload("res://Scenes/brain.tscn") 
 const eduardo = preload("res://Scenes/eduardo.tscn")
+const dino = preload("res://Scenes/dino.tscn")
 const lettuce = preload("res://Scenes/Lettuce.tscn")
 @export var player: CharacterBody2D
-@export var summon_sound: AudioStream
 var dict ={
 	"Brain":brain,
 	"Eduardo":eduardo,
+	"Dino":dino,
 	"Lettuce":lettuce
 }
 
@@ -22,6 +23,11 @@ func summonEduardo():
 	var eduardoSummon = eduardo.instantiate() as Creature
 	eduardoSummon.global_position = player.global_position
 	add_child(eduardoSummon)
+	
+func summonDino():
+	var dinoSummon = dino.instantiate() as Creature
+	dinoSummon.global_position = player.global_position
+	add_child(dinoSummon)
 	
 func summon(mob_scene: String):
 	if mob_scene=="Lettuce":
@@ -37,7 +43,7 @@ func summon(mob_scene: String):
 	mob.sprite.self_modulate=Color.GREEN_YELLOW
 	mob.attack_area.collision_mask = 0b100
 	
-	Dj.play_sound(summon_sound, -1)
+	Dj.play_sound(mob.summonSfx, -1)
 	# lettuces are in layer 6, this makes it so that they can be hit by lettuces
 	mob.set_collision_layer_value(0b110, true)
 	#mob.set_collision_mask_value(0b110, true)

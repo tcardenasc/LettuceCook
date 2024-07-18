@@ -19,6 +19,7 @@ var all_gems_collected = 0
 var health = MAX_HEALTH
 var brain_defeated = 0
 var eduardo_defeated = 0
+var dino_defeated = 0
 
 const bulletPath = preload('res://Scenes/Lettuce.tscn')
 
@@ -94,7 +95,8 @@ func lost_game(saveManager):
 		"current_gems": current_gems,
 		"all_gems_collected": all_gems_collected,
 		"brain_defeated": brain_defeated,
-		"eduardo_defeated": eduardo_defeated
+		"eduardo_defeated": eduardo_defeated,
+		"dino_defeated": dino_defeated
 	}
 	saveManager.save_data(save_data)
 
@@ -106,7 +108,8 @@ func won_level(saveManager):
 		"current_gems": current_gems,
 		"all_gems_collected": all_gems_collected,
 		"brain_defeated": brain_defeated,
-		"eduardo_defeated": eduardo_defeated
+		"eduardo_defeated": eduardo_defeated,
+		"dino_defeated": dino_defeated
 	}
 	saveManager.save_data(save_data)
 

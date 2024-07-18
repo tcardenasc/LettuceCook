@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dcmgov7nsxsl7"]
+[gd_scene load_steps=15 format=3 uid="uid://dcmgov7nsxsl7"]
 
 [ext_resource type="PackedScene" uid="uid://gosldyeqg71c" path="res://Scenes/player.tscn" id="1_82fhd"]
 [ext_resource type="Script" path="res://Scripts/testScene1.gd" id="1_boitp"]
 [ext_resource type="TileSet" uid="uid://bbneo6o1mu6wu" path="res://Scenes/tileset_grass.tres" id="2_sfk4y"]
+[ext_resource type="PackedScene" uid="uid://crw4n0o65iv6r" path="res://Scenes/dino_spawner.tscn" id="6_7xi1c"]
+[ext_resource type="PackedScene" uid="uid://7i7tl4jtlxl3" path="res://Scenes/dino.tscn" id="7_vl5rd"]
 [ext_resource type="PackedScene" uid="uid://bdr2jyfx3kn18" path="res://Scenes/pauseMenu.tscn" id="9_fujf8"]
 [ext_resource type="PackedScene" uid="uid://b5378h7fio6j5" path="res://Scenes/brain_spawner.tscn" id="9_tgqi2"]
 [ext_resource type="PackedScene" uid="uid://upaq8dya7jrt" path="res://Scenes/Inventory.tscn" id="10_nqbqf"]
@@ -35,13 +37,18 @@ position = Vector2(4256, -2472)
 
 [node name="BrainSpawner" parent="." instance=ExtResource("9_tgqi2")]
 position = Vector2(4568, -2432)
-spawn_limit = 2
+spawn_limit = 1
 spawn_sound = null
 
 [node name="EduardoSpawner" parent="." instance=ExtResource("10_pnxtb")]
 position = Vector2(4112, -2616)
-spawn_limit = 2
+spawn_limit = 1
 spawn_sound = null
+
+[node name="DinoSpawner" parent="." instance=ExtResource("6_7xi1c")]
+position = Vector2(4112, -2630)
+mob_scene = ExtResource("7_vl5rd")
+spawn_limit = 1
 
 [node name="Summoner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_qa6at")]
 player = NodePath("../Player")

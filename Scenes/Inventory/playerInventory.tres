@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=21 format=3 uid="uid://bnacd1yphrvow"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=22 format=3 uid="uid://bnacd1yphrvow"]
 
 [ext_resource type="Script" path="res://Scenes/Inventory/inventorySlot.gd" id="2_3ameu"]
 [ext_resource type="Resource" uid="uid://ctqdu5s8nkpwy" path="res://Scenes/Inventory/Items/brain.tres" id="2_o318l"]
 [ext_resource type="Script" path="res://Scenes/Inventory/inventory.gd" id="3_cjdvp"]
 [ext_resource type="Resource" uid="uid://dw7l57pjidk1e" path="res://Scenes/Inventory/Items/eduardo.tres" id="4_8hi80"]
+[ext_resource type="Resource" uid="uid://em00ta5dhcpx" path="res://Scenes/Inventory/Items/dino.tres" id="6_8whxx"]
 [ext_resource type="Resource" uid="uid://calwnp8gfdnfl" path="res://Scenes/Inventory/Items/lettuce.tres" id="6_pkfga"]
 
 [sub_resource type="Resource" id="Resource_bbvdo"]
@@ -23,7 +24,8 @@ amount = 20
 
 [sub_resource type="Resource" id="Resource_cu1op"]
 script = ExtResource("2_3ameu")
-amount = 0
+item = ExtResource("6_8whxx")
+amount = 3
 
 [sub_resource type="Resource" id="Resource_ay47r"]
 script = ExtResource("2_3ameu")
