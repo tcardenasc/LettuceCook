@@ -29,10 +29,10 @@ func _physics_process(delta):
 	var collision_info = move_and_collide(velocity.normalized()*delta*speed)
 
 func _on_area_2d_body_entered(body):
-	if (body is Player and collectable):
-		picked()
-		return
-	if(body is Creature):
+	if (body is Player):
+		if collectable:
+			picked()
+	elif (body is Creature):
 		if (body.stunned):
 			body.picked(body.player_inventory)
 			body.queue_free()
@@ -43,7 +43,6 @@ func _on_area_2d_body_entered(body):
 		hit_object()
 
 func hit_object():
-
 	_hit_particles = hit_particles.instantiate()
 	_hit_particles.position = global_position
 	_hit_particles.emitting = true
