@@ -31,8 +31,10 @@ var health_cost = 5
 var damage_cost = 5
 var speed_cost = 5
 
-const mainTitle = preload("res://Scenes/MainTitle.tscn")
-const firstLevel = preload("res://Scenes/Levels/grass_scene.tscn")
+const GRASS_SCENE = preload("res://Scenes/Levels/grass_scene.tscn")
+const STONE_SCENE = preload("res://Scenes/Levels/stone_scene.tscn")
+var mainTitle = load("res://Scenes/MainTitle.tscn")
+var firstLevel = STONE_SCENE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,7 +52,7 @@ func _hover_button():
 
 
 func _on_continue_pressed():
-	pass # Replace with function body.
+	main.get_tree().change_scene_to_packed(GRASS_SCENE)
 
 
 func _on_continue_mouse_entered():

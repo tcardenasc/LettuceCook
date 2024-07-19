@@ -10,8 +10,11 @@ extends Control
 @onready var totalGemsLabel = $Control/Gem2
 @onready var maxHealthLabel = $Control/Health
 
-const firstLevel = preload("res://Scenes/Levels/grass_scene.tscn")
+const GRASS_SCENE = preload("res://Scenes/Levels/grass_scene.tscn")
+const STONE_SCENE = preload("res://Scenes/Levels/stone_scene.tscn")
 var mainMenu = load("res://Scenes/MainTitle.tscn")
+const firstLevel = STONE_SCENE
+
 var current_gems = 0
 var all_gems_collected = 0
 var brain_defeated = 0

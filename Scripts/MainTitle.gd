@@ -1,6 +1,10 @@
 extends Control
 const TEST_SCENE_1 = preload("res://Scenes/Levels/testScene1.tscn")
 const GRASS_SCENE = preload("res://Scenes/Levels/grass_scene.tscn")
+const STONE_SCENE = preload("res://Scenes/Levels/stone_scene.tscn")
+var mainTitle = load("res://Scenes/MainTitle.tscn")
+const firstLevel = STONE_SCENE
+
 @onready var saveManager = $SaveManager
 
 func _ready():
@@ -12,7 +16,7 @@ func _ready():
 func _on_start_pressed():
 	saveManager.delete_data()
 	_button_pressed_sound()
-	get_tree().change_scene_to_packed(GRASS_SCENE)
+	get_tree().change_scene_to_packed(firstLevel)
 
 func _on_continue_pressed():
 	_button_pressed_sound()
