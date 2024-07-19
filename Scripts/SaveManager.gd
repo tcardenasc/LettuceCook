@@ -24,6 +24,23 @@ func save_data(data):
 		file.store_string(JSON.stringify(saved_data))
 		file.close()
 
+func save_data_player(data):
+	var saved_data = load_data()
+	if saved_data.is_empty():
+		# Si save_data estaba vacío, guarda los datos tal como están
+		var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+		file.store_string(JSON.stringify(data))
+		file.close()
+	else:
+		# Si save_data no estaba vacío, actualiza los datos existentes
+		saved_data["max_health"] = data["max_health"]
+		saved_data["speed"] = data["speed"]
+		saved_data["damage"] = data["damage"]
+		saved_data["current_gems"] = data["current_gems"]
+
+		var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+		file.store_string(JSON.stringify(saved_data))
+		file.close()
 
 func update_player(data):
 	var saved_data = load_data()
@@ -31,7 +48,7 @@ func update_player(data):
 	saved_data["damage"] = data.get("damage", 0)
 	saved_data["speed"] = data.get("speed",0)
 	saved_data["current_gems"] = data.get("current_gems",0)
-	save_data(saved_data)
+	save_data_player(saved_data)
 
 func load_data():
 	if FileAccess.file_exists(SAVE_FILE_PATH):
