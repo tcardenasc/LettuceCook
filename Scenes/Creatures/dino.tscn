@@ -128,6 +128,7 @@ itemResource = ExtResource("3_w5uhy")
 visible = false
 
 [node name="CollisionShape2D" parent="pivot/AttackArea" index="0"]
+scale = Vector2(1.25, 1.25)
 shape = SubResource("CircleShape2D_x1j5n")
 
 [node name="Sprite" parent="pivot" index="1"]
@@ -150,4 +151,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" parent="." index="4"]
 position = Vector2(1, 0)
+scale = Vector2(1.25, 1.25)
 shape = SubResource("CapsuleShape2D_xm12u")
+
+[node name="NavigationAgent2D" parent="." index="11"]
+path_postprocessing = 1

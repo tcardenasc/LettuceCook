@@ -38,6 +38,7 @@ func _on_area_2d_body_entered(body):
 		body.queue_free()
 		current_gems += 1
 		all_gems_collected += 1 
+		Dj.play_sound(body.picked_sfx, 3)
 		get_parent().updatePlayerInfo()
 		
 

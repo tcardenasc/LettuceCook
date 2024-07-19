@@ -4,7 +4,6 @@
 [ext_resource type="TileSet" uid="uid://bbneo6o1mu6wu" path="res://Scenes/Levels/tileset_grass.tres" id="2_5wh3b"]
 
 [node name="GrassScene" instance=ExtResource("1_apkkm")]
-y_sort_enabled = true
 
 [node name="TileMap" parent="." index="0"]
 z_index = -1
@@ -15,17 +14,12 @@ layer_0/tile_data = PackedInt32Array(-1310726, 2, 3, -1245190, 2, 1, -1179654, 4
 position = Vector2(488, -328)
 
 [node name="BrainSpawner" parent="." index="2"]
-y_sort_enabled = true
 position = Vector2(712, -424)
 spawn_limit = 1
 
 [node name="EduardoSpawner" parent="." index="3"]
-y_sort_enabled = true
 position = Vector2(656, -160)
 spawn_limit = 1
-
-[node name="DinoSpawner" parent="." index="4"]
-y_sort_enabled = true
 
 [node name="BGM" parent="." index="8"]
 volume_db = -6.0

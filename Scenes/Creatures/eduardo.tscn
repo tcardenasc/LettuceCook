@@ -127,10 +127,11 @@ MAX_HEALTH = 50
 itemResource = ExtResource("3_yyklv")
 
 [node name="CollisionShape2D" parent="pivot/AttackArea" index="0"]
+scale = Vector2(0.75, 0.75)
 shape = SubResource("CircleShape2D_oim2m")
 
 [node name="Sprite" parent="pivot" index="1"]
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 texture = ExtResource("4_r33je")
 offset = Vector2(0, -3.5)
 hframes = 8
@@ -145,7 +146,11 @@ libraries = {
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" parent="." index="4"]
+scale = Vector2(0.75, 0.75)
 shape = SubResource("CapsuleShape2D_ql7wh")
 
 [node name="AttackSFX" parent="." index="10"]
 stream = ExtResource("5_w617j")
+
+[node name="NavigationAgent2D" parent="." index="11"]
+path_postprocessing = 1
