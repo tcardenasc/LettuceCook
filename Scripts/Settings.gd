@@ -35,24 +35,29 @@ func _process(delta):
 
 
 func _on_resolution_pressed():
+	$ButtonPressSound.play()
 	pass # Replace with function body.
 
 func _on_global_volume_value_changed(value):
+	$SlideSound.play()
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),linear_to_db($MasterVolume.value))
 	pass # Replace with function body.
 
 
 func _on_music_volume_value_changed(value):
+	$SlideSound.play()
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),linear_to_db($MusicVolume.value))
 	pass # Replace with function body.
 
 
 func _on_sfx_volume_value_changed(value):
+	$SlideSound.play()
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sound Effects"),linear_to_db($SfxVolume.value))
 	pass # Replace with function body.
 
 
 func _on_resolution_item_selected(index):
+	$ButtonPressSound.play()
 	var id = $Resolution.get_item_text(index)
 	$Resolution.select(index)
 	get_window().set_size(resolutions[id])
@@ -60,6 +65,7 @@ func _on_resolution_item_selected(index):
 	pass # Replace with function body.
 	
 func _on_fullscreen_mode_toggled(toggled_on):
+	$ButtonPressSound.play()
 	if toggled_on:
 		get_window().set_mode(Window.MODE_FULLSCREEN)
 		
@@ -121,6 +127,12 @@ func save_setting():
 		print("Error al guardar las configuraciones")
 
 func _on_close_pressed():
+	$ButtonPressSound.play()
 	save_setting()
 	hide()
+	pass # Replace with function body.
+
+
+func _on_close_mouse_entered():
+	$ButtonHoverSound.play()
 	pass # Replace with function body.

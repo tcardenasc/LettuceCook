@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://rv8jlg4atj3t"]
+
+[ext_resource type="Script" path="res://Scenes/CreditsScreen.gd" id="1_u31ja"]
+[ext_resource type="Texture2D" uid="uid://d16dk4ipefk1j" path="res://Assets/Background/pixel-art-fantasy-lands-1/828x512/007.large.png" id="2_hppk3"]
+[ext_resource type="Theme" uid="uid://dgq3f1dlfm1ss" path="res://Assets/Themes/MainMenu.tres" id="3_p67tb"]
+[ext_resource type="AudioStream" uid="uid://i6x51548nve8" path="res://Assets/Soud effects/171697__nenadsimic__menu-selection-click.wav" id="4_g1f35"]
+[ext_resource type="AudioStream" uid="uid://b22pgl4snqnao" path="res://Assets/Soud effects/448080__breviceps__wet-click.wav" id="5_br2y2"]
+
+[node name="CreditsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u31ja")
+
+[node name="Panel" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 600.0
+texture = ExtResource("2_hppk3")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 88.0
+offset_right = 816.0
+offset_bottom = 588.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 88.0
+offset_right = 816.0
+offset_bottom = 588.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 16.0
+offset_right = 643.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.00392157, 0.788235, 0.639216, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "Credits"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 544.0
+offset_right = 972.0
+offset_bottom = 584.0
+theme = ExtResource("3_p67tb")
+theme_override_font_sizes/font_size = 25
+text = "Exit"
+
+[node name="ButtonPressSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_g1f35")
+bus = &"Sound Effects"
+
+[node name="ButtonHoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_br2y2")
+volume_db = -10.0
+bus = &"Sound Effects"
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dw7l57pjidk1e"]
+
+[ext_resource type="Script" path="res://Scenes/Inventory/Items/inventoryItem.gd" id="1_0gpqi"]
+[ext_resource type="Texture2D" uid="uid://dpgjr183f76tl" path="res://Assets/Characters/Eduardo/eduardoIcon.png" id="2_fhrdm"]
+
+[resource]
+script = ExtResource("1_0gpqi")
+texture = ExtResource("2_fhrdm")
+creatureName = "Eduardo"
+description = "Eduardo"
+type = "Creature"
+maxStackAmount = 1

@@ -4,6 +4,7 @@ extends RigidBody2D
 @onready var timer2 = $Timer2
 @onready var body = $"."
 @onready var sprite = $Sprite2D
+@export var picked_sfx: AudioStream
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

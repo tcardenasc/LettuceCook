@@ -6,18 +6,35 @@ class_name Creature
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot = $pivot
 @onready var tameLabel: Label = $tameLabel
-@onready var timer = $Timer
+@onready var vanishTimer = $vanishTimer
+@onready var attackTimer = $attackTimer
 @onready var attackSfx = $AttackSFX
+@export var healSfx : AudioStream
+@export var capturedSfx : AudioStream
+@export var stunnedSfx : AudioStream
+@export var summonSfx : AudioStream
+@export var attackingSfx : AudioStream
+@onready var attack_area: Area2D = $pivot/AttackArea
+@onready var sprite = $pivot/Sprite
+@onready var navigation_agent_2d = $NavigationAgent2D
 
 @export var MAX_HEALTH = 0
 @export var target: CharacterBody2D = null
+@export var player: Player = null
 @export var movementSpeed = 100
 @export var basicDamage = 10
+@export var itemResource: InventoryItem
+@export var use_path_finding: bool = true
+@export var attack_cooldown : float = 1
 
+var player_inventory: Inventory = preload("res://Scenes/Inventory/playerInventory.tres")
 const gema = preload("res://Scenes/gem.tscn")
+
+signal born_or_died
 
 var target_detected = false
 var target_on_attack_range = false
+var attack_cd_up : bool = true
 var movementAttackPenalty = 50
 var knockback = Vector2.ZERO
 var stunned = false
@@ -28,15 +45,38 @@ var health:
 			health = value
 			set_health_bar()
 			if (health == 0):
-				for n in 5:
-					soltar_gema()				
-				var probability = randi() % 100
-				if(probability >= 80):		
-					stunned = true;
-					tameLabel.show()
-				else:
-					timer.start()
-					
+				if is_in_group("allies"):
+					remove_from_group("allies")
+					vanishTimer.start()
+				elif is_in_group("enemies"):
+					remove_from_group("enemies")
+					defeated()
+					stunned_or_dead()
+				born_or_died.emit()
+
+func stunned_or_dead():
+	for n in 5:
+		soltar_gema()
+	var probability = randi() % 100
+	if(probability >= 50):
+		Dj.play_sound(stunnedSfx, -2)
+		stunned = true;
+		$StunnedParticles.emitting = true
+		#tameLabel.show()
+	else:
+		vanishTimer.start()
+		collision_layer=0
+
+func defeated():
+	get_parent().creatureDefeated()
+
+func _on_born_or_died():
+	if (is_inside_tree()):
+		get_tree().call_group("allies", "find_target")
+		get_tree().call_group("enemies", "find_target")
+
+func _on_ready():
+	born_or_died.emit()
 
 func soltar_gema():
 	var gema_instancia = gema.instantiate()
@@ -50,17 +90,26 @@ func _ready():
 	health = MAX_HEALTH
 	health_bar.max_value = MAX_HEALTH
 	set_health_bar()
+	born_or_died.connect(_on_born_or_died)
+	attackTimer.wait_time = attack_cooldown
 
 func _physics_process(delta):
 	if health == 0:
 		playback.travel("stunned")
 		return
 	
-	if target and global_position.distance_to(target.global_position) > 20:
-		var direction = global_position.direction_to(target.global_position)
-		velocity = direction * movementSpeed + knockback
+	if is_instance_valid(target) and global_position.distance_to(target.global_position) > 20:
+		navigation_agent_2d.target_position = target.global_position
+		var next_path_position = navigation_agent_2d.get_next_path_position()
+		var direction = global_position.direction_to(next_path_position)
+		var new_velocity = direction * movementSpeed
+		if navigation_agent_2d.avoidance_enabled:
+			navigation_agent_2d.set_velocity(new_velocity)
+		else:
+			velocity = new_velocity
 	else:
-		velocity = Vector2.ZERO + knockback
+		velocity = Vector2.ZERO
+	velocity += knockback
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
 	
@@ -73,8 +122,11 @@ func _physics_process(delta):
 	if (velocity.x):
 		pivot.scale.x = sign(velocity.x)
 		
-	if(target_on_attack_range):
+	if(attack_cd_up and target_on_range()):
+	#if(target_on_range()):
 		playback.travel("attack")
+		
+		
 		return
 
 func set_health_bar():
@@ -82,34 +134,64 @@ func set_health_bar():
 
 func receive_damage(damage):
 	health = max(health - damage, 0)
-
-func _on_attack_area_body_entered(body):
-	if (body == target):
-		movementSpeed-=movementAttackPenalty
-		target_on_attack_range = true
-		in_tame_range = true
-
-func _on_attack_area_body_exited(body):
-	if (body == target):
-		movementSpeed+=movementAttackPenalty
-		target_on_attack_range = false
-		in_tame_range = false
+	
+func receive_heal(heal):
+	Dj.play_sound(healSfx, -2)
+	health=min(health+heal, MAX_HEALTH)
+	$HealingParticles.emitting = true
+	
+func target_on_range():
+	return attack_area.overlaps_body(target)
 
 func attack():
-	print("attack")
-	attackSfx.play()
-	if target_on_attack_range:
-		target.recieve_damage(basicDamage)
+	#attackSfx.play()
+	Dj.play_sound(attackingSfx, 0)
+	if is_instance_valid(target) and target_on_range():
+		target.receive_damage(basicDamage)
+	attack_cd_up = false
+	attackTimer.start()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use") and stunned and in_tame_range:
-		#player.picked.emit(name)
-		picked()
+		picked(player_inventory)
 
-func picked():
+func picked(inventory: Inventory):
+	#player.play_captured()
+	Dj.play_sound(capturedSfx, -3)
+	inventory.insert(itemResource)
 	queue_free()
-
 
 func _on_timer_timeout():
 	queue_free()
-	pass # Replace with function body.
+
+func find_target():
+	var target_group: Array[Node]
+	if is_in_group("enemies") and is_inside_tree():
+		target_group = get_tree().get_nodes_in_group("allies")
+		if target_group.is_empty():
+			target = player
+			return
+		elif target == player:
+			target = null
+	elif is_in_group("allies") and is_inside_tree():
+		target_group = get_tree().get_nodes_in_group("enemies")
+	else:
+		return
+	
+		
+	var nearest: CharacterBody2D = target if (is_instance_valid(target) and target.health>0) else null
+	while(!target_group.is_empty()):
+		var tmp = target_group.pop_back() as Creature
+		if (!is_instance_valid(nearest) or global_position.distance_to(tmp.global_position) < global_position.distance_to(nearest.global_position)):
+			nearest = tmp
+	if nearest != null:
+		#if is_instance_of(nearest, Creature) and !nearest.stunned:
+		target = nearest
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	velocity = safe_velocity
+
+
+func _on_attack_timer_timeout():
+	attack_cd_up = true

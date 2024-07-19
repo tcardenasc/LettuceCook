@@ -1,0 +1,159 @@
+[gd_scene load_steps=14 format=3 uid="uid://7i7tl4jtlxl3"]
+
+[ext_resource type="PackedScene" uid="uid://b11s6bm66u8db" path="res://Scenes/Creatures/creature.tscn" id="1_jw1ii"]
+[ext_resource type="AudioStream" uid="uid://vdq7oom7cf6l" path="res://Assets/Soud effects/creature/dino/dino_scream.wav" id="2_h86oh"]
+[ext_resource type="AudioStream" uid="uid://dimukb7xatabj" path="res://Assets/Soud effects/creature/dino/dino_attack_boosted.wav" id="3_551fg"]
+[ext_resource type="Resource" uid="uid://em00ta5dhcpx" path="res://Scenes/Inventory/Items/dino.tres" id="3_w5uhy"]
+[ext_resource type="Texture2D" uid="uid://cq7fvpsornidk" path="res://Assets/Characters/dinos/female/nico/dino_nico_spritesheet.png" id="4_j3sqk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x1j5n"]
+radius = 40.0125
+
+[sub_resource type="Animation" id="Animation_eeflw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+
+[sub_resource type="Animation" id="Animation_f3fw4"]
+resource_name = "attack"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 0, 1, 2, 2]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_n4hsu"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [24, 25, 26]
+}
+
+[sub_resource type="Animation" id="Animation_fmi6t"]
+resource_name = "stunned"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51, 50]
+}
+
+[sub_resource type="Animation" id="Animation_mqlt5"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [54, 55, 56, 57, 58, 59]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ht8c1"]
+_data = {
+"RESET": SubResource("Animation_eeflw"),
+"attack": SubResource("Animation_f3fw4"),
+"idle": SubResource("Animation_n4hsu"),
+"stunned": SubResource("Animation_fmi6t"),
+"walk": SubResource("Animation_mqlt5")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xm12u"]
+radius = 16.0
+height = 50.0
+
+[node name="Dino" instance=ExtResource("1_jw1ii")]
+position = Vector2(0, -24)
+summonSfx = ExtResource("2_h86oh")
+attackingSfx = ExtResource("3_551fg")
+MAX_HEALTH = 50
+movementSpeed = 250
+itemResource = ExtResource("3_w5uhy")
+
+[node name="AttackArea" parent="pivot" index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="pivot/AttackArea" index="0"]
+scale = Vector2(1.25, 1.25)
+shape = SubResource("CircleShape2D_x1j5n")
+
+[node name="Sprite" parent="pivot" index="1"]
+self_modulate = Color(0.913725, 0.0509804, 1, 1)
+scale = Vector2(3, 3)
+texture = ExtResource("4_j3sqk")
+hframes = 6
+vframes = 10
+frame = 24
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_ht8c1")
+}
+
+[node name="HealthBar" parent="." index="3"]
+offset_top = -43.0
+offset_bottom = -27.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(1, 0)
+scale = Vector2(1.25, 1.25)
+shape = SubResource("CapsuleShape2D_xm12u")
+
+[node name="NavigationAgent2D" parent="." index="11"]
+path_postprocessing = 1
+max_speed = 500.0

@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5378h7fio6j5"]
-
-[ext_resource type="PackedScene" uid="uid://dym4bs3gw2gpt" path="res://Scenes/creature_spawner.tscn" id="1_3y7i6"]
-[ext_resource type="PackedScene" uid="uid://bsx7cxqsiig5f" path="res://Scenes/brain.tscn" id="2_yio15"]
-
-[node name="BrainSpawner" instance=ExtResource("1_3y7i6")]
-mob_scene = ExtResource("2_yio15")
-spawn_limit = 10

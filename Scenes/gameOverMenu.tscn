@@ -1,0 +1,397 @@
+[gd_scene load_steps=18 format=3 uid="uid://n3qvwunpsdfr"]
+
+[ext_resource type="Texture2D" uid="uid://b3h1nmpxe6cyj" path="res://Assets/Background/pixel-art-fantasy-lands-1/828x512/021.large.png" id="1_8ubta"]
+[ext_resource type="Theme" uid="uid://ohqqda0lrcc1" path="res://Assets/Themes/GameOverMenu.tres" id="1_jem3v"]
+[ext_resource type="Script" path="res://Scripts/gameOverMenu.gd" id="1_pqtxi"]
+[ext_resource type="Theme" uid="uid://b4jmac6dul4w6" path="res://Assets/Themes/Inventory.tres" id="4_jnkj7"]
+[ext_resource type="AudioStream" uid="uid://b1wfomomloruw" path="res://Assets/Graphical user interface/Sounds/Wood Block1.wav" id="4_yqeiq"]
+[ext_resource type="AudioStream" uid="uid://dni6rskc4jou2" path="res://Assets/Graphical user interface/Sounds/Wood Block2.wav" id="5_jdvsq"]
+[ext_resource type="AudioStream" uid="uid://bj6j675yfjxp2" path="res://Assets/Background music/降りしきる、白.mp3" id="6_tx27f"]
+[ext_resource type="PackedScene" uid="uid://o0m5u0nfy62q" path="res://Scenes/SaveManager.tscn" id="7_ubp7d"]
+[ext_resource type="Texture2D" uid="uid://bcot8t1h2fwml" path="res://Assets/Graphical user interface/Spritesheets/UI books & more.png" id="8_ihvcx"]
+[ext_resource type="Texture2D" uid="uid://d22ufrv51q0l3" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster.png" id="9_c68qt"]
+[ext_resource type="Texture2D" uid="uid://c25kw3b1oqfta" path="res://Assets/Characters/dinos/male/nico/base/idle.png" id="9_q45wg"]
+[ext_resource type="Texture2D" uid="uid://dpgjr183f76tl" path="res://Assets/Characters/Eduardo/eduardoIcon.png" id="10_5ilqv"]
+[ext_resource type="Texture2D" uid="uid://bav2fsnm8n243" path="res://Assets/Characters/brainDevour/brainIcon.png" id="11_j0opo"]
+[ext_resource type="FontFile" uid="uid://s6dqutlw1h50" path="res://Assets/Fonts/DungeonFont.ttf" id="12_sbucr"]
+[ext_resource type="Texture2D" uid="uid://bykq43s1igudu" path="res://Assets/Graphical user interface/GUI.png" id="14_63ei8"]
+[ext_resource type="Texture2D" uid="uid://dmjk33nosu5j2" path="res://Assets/Icons/SpriteSheet.png" id="15_y2qo2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_daiir"]
+texture = ExtResource("8_ihvcx")
+region_rect = Rect2(721, 65, 46, 46)
+
+[node name="GameOverMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pqtxi")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 600.0
+texture = ExtResource("1_8ubta")
+metadata/_edit_lock_ = true
+
+[node name="Book" type="Panel" parent="."]
+layout_mode = 1
+offset_right = 1024.0
+offset_bottom = 600.0
+theme = ExtResource("1_jem3v")
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 536.0
+offset_top = -160.0
+offset_right = 1034.0
+offset_bottom = 266.0
+theme = ExtResource("1_jem3v")
+bbcode_enabled = true
+text = "[center][b][font_size=70]
+[wave amp=50.0 freq=5.0 connected=1]
+
+Game Over
+
+[/wave]
+[/font_size][/b][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="MainMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 232.0
+offset_right = 2488.0
+offset_bottom = 832.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("1_jem3v")
+theme_override_font_sizes/font_size = 256
+text = "Main Menu"
+
+[node name="NewGame" type="Button" parent="."]
+layout_mode = 2
+offset_left = 688.0
+offset_top = 144.0
+offset_right = 2488.0
+offset_bottom = 744.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("1_jem3v")
+theme_override_font_sizes/font_size = 256
+text = "New Game"
+
+[node name="ExitGame" type="Button" parent="."]
+layout_mode = 2
+offset_left = 688.0
+offset_top = 328.0
+offset_right = 2488.0
+offset_bottom = 928.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("1_jem3v")
+theme_override_font_sizes/font_size = 256
+text = "Exit"
+
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yqeiq")
+bus = &"Sound Effects"
+
+[node name="PressSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_jdvsq")
+bus = &"Sound Effects"
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tx27f")
+autoplay = true
+bus = &"Music"
+
+[node name="SaveManager" parent="." instance=ExtResource("7_ubp7d")]
+
+[node name="RunStatsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 56.0
+offset_right = 2352.0
+offset_bottom = 406.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("1_jem3v")
+theme_override_font_sizes/font_size = 250
+text = "Run stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dino" type="Panel" parent="."]
+offset_left = 112.0
+offset_top = 370.0
+offset_right = 176.0
+offset_bottom = 434.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_daiir")
+
+[node name="DinoPfp" type="Sprite2D" parent="Dino"]
+position = Vector2(33, 33)
+scale = Vector2(1.884, 2.236)
+texture = ExtResource("9_q45wg")
+region_enabled = true
+region_rect = Rect2(4, 4, 15, 18)
+
+[node name="Edu" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 213.0
+offset_right = 176.0
+offset_bottom = 277.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_daiir")
+
+[node name="EduardoPfp" type="Sprite2D" parent="Edu"]
+position = Vector2(33, 33)
+scale = Vector2(1.884, 2.236)
+texture = ExtResource("10_5ilqv")
+region_enabled = true
+region_rect = Rect2(2, 2, 24, 21)
+
+[node name="Brain" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 288.0
+offset_right = 176.0
+offset_bottom = 352.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_daiir")
+
+[node name="BrainPfp" type="Sprite2D" parent="Brain"]
+position = Vector2(32, 34)
+scale = Vector2(2.35, 2.278)
+texture = ExtResource("11_j0opo")
+region_enabled = true
+region_rect = Rect2(0, 0, 22, 22)
+
+[node name="EduKilledBadge" type="Sprite2D" parent="."]
+position = Vector2(225, 234)
+scale = Vector2(2.938, 2.438)
+texture = ExtResource("8_ihvcx")
+region_enabled = true
+region_rect = Rect2(192, 336, 32, 16)
+
+[node name="EduKilled" type="Label" parent="EduKilledBadge"]
+offset_left = -5.10638
+offset_top = -4.30769
+offset_right = 96.8936
+offset_bottom = 78.6923
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("12_sbucr")
+theme_override_font_sizes/font_size = 70
+text = "230"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="EduKilledBadge"]
+offset_left = -14.6358
+offset_top = 8.20344
+offset_right = 281.364
+offset_bottom = 129.203
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_sbucr")
+theme_override_font_sizes/font_size = 120
+text = "Killed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BrainKilledBadge" type="Sprite2D" parent="."]
+position = Vector2(225, 310)
+scale = Vector2(2.938, 2.438)
+texture = ExtResource("8_ihvcx")
+region_enabled = true
+region_rect = Rect2(192, 336, 32, 16)
+
+[node name="BrainKilled" type="Label" parent="BrainKilledBadge"]
+offset_left = -5.10638
+offset_top = -4.30769
+offset_right = 96.8936
+offset_bottom = 78.6923
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("12_sbucr")
+theme_override_font_sizes/font_size = 70
+text = "230"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="BrainKilledBadge"]
+offset_left = -14.6358
+offset_top = 8.20344
+offset_right = 281.364
+offset_bottom = 129.203
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_sbucr")
+theme_override_font_sizes/font_size = 120
+text = "Killed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthIcon" type="Sprite2D" parent="Control"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(210, 96)
+scale = Vector2(3, 3)
+texture = ExtResource("14_63ei8")
+centered = false
+region_enabled = true
+region_rect = Rect2(116, 67, 8, 8)
+
+[node name="GemIcon" type="Sprite2D" parent="Control"]
+modulate = Color(0.680717, 0.928888, 0.954977, 1)
+position = Vector2(210, 128)
+scale = Vector2(0.616, 0.616)
+texture = ExtResource("15_y2qo2")
+centered = false
+region_enabled = true
+region_rect = Rect2(339, 435, 39, 39)
+
+[node name="Health" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 96.0
+offset_right = 269.0
+offset_bottom = 130.0
+theme = ExtResource("4_jnkj7")
+theme_override_font_sizes/font_size = 30
+text = "1000
+"
+
+[node name="Gem" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 128.0
+offset_right = 246.0
+offset_bottom = 162.0
+theme = ExtResource("4_jnkj7")
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GemIcon2" type="Sprite2D" parent="Control"]
+modulate = Color(0.680717, 0.928888, 0.954977, 1)
+position = Vector2(210, 160)
+scale = Vector2(0.616, 0.616)
+texture = ExtResource("15_y2qo2")
+centered = false
+region_enabled = true
+region_rect = Rect2(387, 435, 39, 40)
+
+[node name="Gem2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 160.0
+offset_right = 246.0
+offset_bottom = 194.0
+theme = ExtResource("4_jnkj7")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamageIcon" type="Sprite2D" parent="Control"]
+position = Vector2(287, 109)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_y2qo2")
+region_enabled = true
+region_rect = Rect2(720, 960, 48, 49)
+
+[node name="Damage" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 97.0
+offset_right = 312.0
+offset_bottom = 131.0
+theme = ExtResource("4_jnkj7")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedIcon" type="Sprite2D" parent="Control"]
+position = Vector2(287, 140)
+scale = Vector2(0.544444, 0.742424)
+texture = ExtResource("15_y2qo2")
+region_enabled = true
+region_rect = Rect2(723, 153, 45, 33)
+
+[node name="Speed" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 128.0
+offset_right = 336.0
+offset_bottom = 162.0
+theme = ExtResource("4_jnkj7")
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="PfpPanel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 96.0
+offset_right = 208.0
+offset_bottom = 192.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_daiir")
+
+[node name="PlayerPfp" type="Sprite2D" parent="Control/PfpPanel"]
+position = Vector2(48, 48)
+scale = Vector2(3.525, 3.417)
+texture = ExtResource("9_c68qt")
+region_enabled = true
+region_rect = Rect2(6, 3, 20, 18)
+
+[node name="DinoKilledBadge" type="Sprite2D" parent="."]
+position = Vector2(225, 400)
+scale = Vector2(2.938, 2.438)
+texture = ExtResource("8_ihvcx")
+region_enabled = true
+region_rect = Rect2(192, 336, 32, 16)
+
+[node name="DinoKilled" type="Label" parent="DinoKilledBadge"]
+offset_left = -5.10638
+offset_top = -4.30769
+offset_right = 96.8936
+offset_bottom = 78.6923
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("12_sbucr")
+theme_override_font_sizes/font_size = 70
+text = "230"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="DinoKilledBadge"]
+offset_left = -14.6358
+offset_top = 8.20344
+offset_right = 281.364
+offset_bottom = 129.203
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_sbucr")
+theme_override_font_sizes/font_size = 120
+text = "Killed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="MainMenu" to="." method="_on_main_menu_mouse_entered"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="mouse_entered" from="NewGame" to="." method="_on_new_game_mouse_entered"]
+[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="ExitGame" to="." method="_on_exit_game_mouse_entered"]
+[connection signal="pressed" from="ExitGame" to="." method="_on_exit_game_pressed"]

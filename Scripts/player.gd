@@ -7,14 +7,20 @@ class_name Player
 @onready var pivot = $pivot
 @onready var attack_area = $pivot/AttackArea
 @onready var attack_sfx = $AttackSFX
-
 @export var speed = 300
 @export var damage = 5
 @export var knockback_strenght = 1000
+@export var inventory: Inventory
+@export var lettuce_throw_sound: AudioStream
 
-const MAX_HEALTH = 500
-var gems = 0
+
+const MAX_HEALTH = 150
+var current_gems = 0
+var all_gems_collected = 0
 var health = MAX_HEALTH
+var brain_defeated = 0
+var eduardo_defeated = 0
+var dino_defeated = 0
 
 const bulletPath = preload('res://Scenes/Lettuce.tscn')
 
@@ -27,11 +33,17 @@ func _on_attack_body_entered(body: Node2D):
 		body.knockback = direction * knockback_strenght 
 		body.receive_damage(damage)
 		
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(body):	
 	if body.is_in_group("Gemas"):
 		body.queue_free()
-		gems = gems + 1
-	pass # Replace with function body.
+		current_gems += 1
+		all_gems_collected += 1 
+		Dj.play_sound(body.picked_sfx, 3)
+		get_parent().updatePlayerInfo()
+		
+
+func pick_lettuce():
+	pass
 
 func _physics_process(delta):
 	velocity = Input.get_vector("left", "right", "up", "down")*speed
@@ -43,7 +55,9 @@ func _physics_process(delta):
 		return
 	
 	if(Input.is_action_just_pressed("shoot")):
-		shoot_lettuce()
+		if inventory.hasLettuce():
+			shoot_lettuce()
+			inventory.removeItemByName("Lettuce")
 	
 	# animation
 	if velocity.x or velocity.y:
@@ -54,16 +68,23 @@ func _physics_process(delta):
 	if (velocity.x):
 		pivot.scale.x = sign(velocity.x)
 
-func recieve_damage(amount):
+func receive_damage(amount):
 	health = max(health - amount, 0)
-	print("health: ",health)
+	get_parent().updatePlayerInfo()
+	if(health == 0):
+		get_parent().playerDefeated()
  
 func shoot_lettuce():
+	Dj.play_sound(lettuce_throw_sound,0)
 	var bullet = bulletPath.instantiate()
 	get_parent().add_child(bullet)
 	bullet.position = $aim/BulletPosition.global_position
 	bullet.velocity = get_global_mouse_position() - bullet.position
-	
+	bullet.vanish_timer.start()
+	bullet.spawn_travel_particles()
+	bullet.collectable = false
+	#bullet.set_collision_layer_value(1,false)
+	#bullet.set_collision_mask_value(1,false)
 
 func _on_animation_player_animation_started(anim_name):
 	pass # Replace with function body.
@@ -73,3 +94,31 @@ func _on_animation_tree_animation_started(anim_name):
 	if(anim_name=="attack_1"):
 		attack_sfx.play()
 	pass # Replace with function body.
+	
+	
+func lost_game(saveManager):
+	var save_data = {
+		"max_health" : MAX_HEALTH,
+		"speed" : speed,
+		"damage" : damage,
+		"current_gems": current_gems,
+		"all_gems_collected": all_gems_collected,
+		"brain_defeated": brain_defeated,
+		"eduardo_defeated": eduardo_defeated,
+		"dino_defeated": dino_defeated
+	}
+	saveManager.save_data(save_data)
+
+func won_level(saveManager):
+	var save_data = {
+		"max_health" : MAX_HEALTH,
+		"speed" : speed,
+		"damage" : damage,
+		"current_gems": current_gems,
+		"all_gems_collected": all_gems_collected,
+		"brain_defeated": brain_defeated,
+		"eduardo_defeated": eduardo_defeated,
+		"dino_defeated": dino_defeated
+	}
+	saveManager.save_data(save_data)
+

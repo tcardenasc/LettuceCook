@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://co5c5k73n1yu3"
+path="res://.godot/imported/lettuce_reload_1.wav-b70b2c0537b79a4f04b04d0720e24551.sample"
+
+[deps]
+
+source_file="res://Assets/Soud effects/lettuce/lettuce_reload_1.wav"
+dest_files=["res://.godot/imported/lettuce_reload_1.wav-b70b2c0537b79a4f04b04d0720e24551.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

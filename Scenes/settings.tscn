@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c182stu20qtgv"]
+[gd_scene load_steps=7 format=3 uid="uid://c182stu20qtgv"]
 
 [ext_resource type="Script" path="res://Scripts/Settings.gd" id="1_x77cm"]
 [ext_resource type="Theme" uid="uid://g17khyquf3wg" path="res://Assets/Themes/SettingsMenu.tres" id="2_e3b7t"]
 [ext_resource type="Theme" uid="uid://dgq3f1dlfm1ss" path="res://Assets/Themes/MainMenu.tres" id="3_eqqov"]
+[ext_resource type="AudioStream" uid="uid://i6x51548nve8" path="res://Assets/Soud effects/171697__nenadsimic__menu-selection-click.wav" id="4_mvs0j"]
+[ext_resource type="AudioStream" uid="uid://b22pgl4snqnao" path="res://Assets/Soud effects/448080__breviceps__wet-click.wav" id="5_4557j"]
+[ext_resource type="AudioStream" uid="uid://dhhw0csc8ql" path="res://Assets/Graphical user interface/Sounds/African2.wav" id="6_hdxw3"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -135,10 +138,24 @@ offset_bottom = 450.0
 theme = ExtResource("3_eqqov")
 text = "Close"
 
+[node name="ButtonPressSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mvs0j")
+bus = &"Sound Effects"
+
+[node name="ButtonHoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4557j")
+volume_db = -10.0
+bus = &"Sound Effects"
+
+[node name="SlideSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_hdxw3")
+bus = &"Sound Effects"
+
 [connection signal="toggled" from="FullscreenMode" to="." method="_on_fullscreen_mode_toggled"]
 [connection signal="item_selected" from="Resolution" to="." method="_on_resolution_item_selected"]
 [connection signal="pressed" from="Resolution" to="." method="_on_resolution_pressed"]
 [connection signal="value_changed" from="MasterVolume" to="." method="_on_global_volume_value_changed"]
 [connection signal="value_changed" from="MusicVolume" to="." method="_on_music_volume_value_changed"]
 [connection signal="value_changed" from="SfxVolume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="mouse_entered" from="Close" to="." method="_on_close_mouse_entered"]
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

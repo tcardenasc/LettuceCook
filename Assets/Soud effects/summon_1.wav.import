@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b12s4o3i8dbc5"
+path="res://.godot/imported/summon_1.wav-b340bb16923ae029f2dfc3ac6bbda350.sample"
+
+[deps]
+
+source_file="res://Assets/Soud effects/summon_1.wav"
+dest_files=["res://.godot/imported/summon_1.wav-b340bb16923ae029f2dfc3ac6bbda350.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

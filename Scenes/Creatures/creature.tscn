@@ -1,0 +1,173 @@
+[gd_scene load_steps=28 format=3 uid="uid://b11s6bm66u8db"]
+
+[ext_resource type="Script" path="res://Scripts/Creature.gd" id="1_i7eag"]
+[ext_resource type="AudioStream" uid="uid://dii0qfvb5y3h5" path="res://Assets/Soud effects/lettuce/heal_1.wav" id="2_tbgw8"]
+[ext_resource type="AudioStream" uid="uid://877f2o7tusuf" path="res://Assets/Soud effects/creature/creature_captured.wav" id="3_gcjov"]
+[ext_resource type="AudioStream" uid="uid://b1w7fykcx23kt" path="res://Assets/Soud effects/creature/creature_stunned.wav" id="4_lxks8"]
+[ext_resource type="AudioStream" uid="uid://sf8to7fwt0th" path="res://Assets/Soud effects/creature/creature_summon.wav" id="5_5ybjx"]
+
+[sub_resource type="Animation" id="Animation_lu3qm"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_3ya2t"]
+resource_name = "attack"
+
+[sub_resource type="Animation" id="Animation_hki55"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_k2vb8"]
+resource_name = "stunned"
+
+[sub_resource type="Animation" id="Animation_3alhe"]
+resource_name = "walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wfdpy"]
+resource_local_to_scene = true
+_data = {
+"RESET": SubResource("Animation_lu3qm"),
+"attack": SubResource("Animation_3ya2t"),
+"idle": SubResource("Animation_hki55"),
+"stunned": SubResource("Animation_k2vb8"),
+"walk": SubResource("Animation_3alhe")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qfygh"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1q7dt"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wgxlh"]
+animation = &"stunned"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5r2r3"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mons2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4agvm"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_frlf3"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hkqb6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6b1pa"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_riwgt"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tmqia"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gifvk"]
+states/Start/position = Vector2(98, 83)
+states/attack/node = SubResource("AnimationNodeAnimation_qfygh")
+states/attack/position = Vector2(499, 173)
+states/idle/node = SubResource("AnimationNodeAnimation_1q7dt")
+states/idle/position = Vector2(331, 83)
+states/stunned/node = SubResource("AnimationNodeAnimation_wgxlh")
+states/stunned/position = Vector2(499, 4)
+states/walk/node = SubResource("AnimationNodeAnimation_5r2r3")
+states/walk/position = Vector2(669, 83)
+transitions = ["idle", "attack", SubResource("AnimationNodeStateMachineTransition_mons2"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_4agvm"), "idle", "stunned", SubResource("AnimationNodeStateMachineTransition_frlf3"), "stunned", "idle", SubResource("AnimationNodeStateMachineTransition_hkqb6"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_6b1pa"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_riwgt"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_tmqia")]
+graph_offset = Vector2(28.1073, -49.8973)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d65ar"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(16, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(10, 0, 0)
+gravity = Vector3(0, -20, 0)
+
+[sub_resource type="Curve" id="Curve_5ddf8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0982143), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xawju"]
+curve = SubResource("Curve_5ddf8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pmtrr"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 16.0
+gravity = Vector3(0, -98, 0)
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_xawju")
+color = Color(0, 0.972549, 0.0352941, 1)
+
+[node name="Creature" type="CharacterBody2D"]
+collision_layer = 36
+script = ExtResource("1_i7eag")
+healSfx = ExtResource("2_tbgw8")
+capturedSfx = ExtResource("3_gcjov")
+stunnedSfx = ExtResource("4_lxks8")
+summonSfx = ExtResource("5_5ybjx")
+
+[node name="pivot" type="Node2D" parent="."]
+
+[node name="AttackArea" type="Area2D" parent="pivot"]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/AttackArea"]
+
+[node name="Sprite" type="Sprite2D" parent="pivot"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wfdpy")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
+tree_root = SubResource("AnimationNodeStateMachine_gifvk")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+offset_bottom = -48.0
+show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="StunnedParticles" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_d65ar")
+lifetime = 1.5
+
+[node name="HealingParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_pmtrr")
+lifetime = 0.7
+one_shot = true
+
+[node name="tameLabel" type="Label" parent="."]
+visible = false
+offset_left = -29.0
+offset_top = 22.0
+offset_right = 30.0
+offset_bottom = 45.0
+text = "press F"
+
+[node name="vanishTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="attackTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="AttackSFX" type="AudioStreamPlayer" parent="."]
+bus = &"Sound Effects"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 30.0
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="vanishTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

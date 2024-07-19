@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://em00ta5dhcpx"]
+
+[ext_resource type="Script" path="res://Scenes/Inventory/Items/inventoryItem.gd" id="1_kkm25"]
+[ext_resource type="Texture2D" uid="uid://bg4d5aiehxi8m" path="res://Assets/Characters/dinos/female/nico/dino_nico_icon.png" id="2_8m3tx"]
+
+[resource]
+script = ExtResource("1_kkm25")
+texture = ExtResource("2_8m3tx")
+creatureName = "Dino"
+description = "Dalladino"
+type = "Creature"
+maxStackAmount = 10

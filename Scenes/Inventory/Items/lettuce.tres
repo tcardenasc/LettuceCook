@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://calwnp8gfdnfl"]
+
+[ext_resource type="Script" path="res://Scenes/Inventory/Items/inventoryItem.gd" id="1_8n3f0"]
+[ext_resource type="Texture2D" uid="uid://brw48eccjjt51" path="res://Assets/Projectile/LettuceIcon.png" id="2_pu7q3"]
+
+[resource]
+script = ExtResource("1_8n3f0")
+texture = ExtResource("2_pu7q3")
+creatureName = "Lettuce"
+description = "lettuce, not cooked"
+type = "Consumable"
+maxStackAmount = 20

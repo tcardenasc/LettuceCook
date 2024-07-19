@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://sf8to7fwt0th"
+path="res://.godot/imported/creature_summon.wav-39113a8168232bedb7d51ea4667467ea.sample"
+
+[deps]
+
+source_file="res://Assets/Soud effects/creature/creature_summon.wav"
+dest_files=["res://.godot/imported/creature_summon.wav-39113a8168232bedb7d51ea4667467ea.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

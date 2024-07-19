@@ -1,14 +1,16 @@
-[gd_scene load_steps=25 format=3 uid="uid://gosldyeqg71c"]
+[gd_scene load_steps=27 format=3 uid="uid://dbmbvse1sjwyb"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lt40r"]
+[ext_resource type="Resource" uid="uid://bnacd1yphrvow" path="res://Scenes/Inventory/playerInventory.tres" id="2_jtr3j"]
 [ext_resource type="Texture2D" uid="uid://omdg15n7fl4v" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Idle_4.png" id="2_rmpbm"]
+[ext_resource type="AudioStream" uid="uid://xbihcak4r55f" path="res://Assets/Soud effects/lettuce/lettuce_throw.wav" id="3_005ul"]
 [ext_resource type="Texture2D" uid="uid://807mgoepc8i7" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Attack1_4.png" id="3_6ks3l"]
 [ext_resource type="Texture2D" uid="uid://bnrtvvra35by1" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Run_6.png" id="4_ltxox"]
 [ext_resource type="Texture2D" uid="uid://4h47dd0atdj8" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Walk_6.png" id="5_wwe03"]
 [ext_resource type="AudioStream" uid="uid://8xdxa1eet3b0" path="res://Assets/Soud effects/punch.wav" id="6_qy0me"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nad7p"]
-size = Vector2(26.5, 42)
+[sub_resource type="CircleShape2D" id="CircleShape2D_eo5jw"]
+radius = 24.0
 
 [sub_resource type="Animation" id="Animation_slwym"]
 length = 0.001
@@ -286,8 +288,12 @@ radius = 17.0
 height = 46.0
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 2
+position = Vector2(0, -32)
+collision_layer = 42
+collision_mask = 9
 script = ExtResource("1_lt40r")
+inventory = ExtResource("2_jtr3j")
+lettuce_throw_sound = ExtResource("3_005ul")
 
 [node name="pivot" type="Node2D" parent="."]
 
@@ -301,8 +307,8 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/AttackArea"]
-position = Vector2(24, 8)
-shape = SubResource("RectangleShape2D_nad7p")
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_eo5jw")
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -317,6 +323,8 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-2, 4)
@@ -325,11 +333,10 @@ shape = SubResource("CircleShape2D_7jg38")
 [node name="aim" type="Node2D" parent="."]
 
 [node name="BulletPosition" type="Marker2D" parent="aim"]
-position = Vector2(26, 0)
+position = Vector2(25, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-2, 8)
+position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_4rg2j")
 
 [node name="AttackSFX" type="AudioStreamPlayer" parent="."]

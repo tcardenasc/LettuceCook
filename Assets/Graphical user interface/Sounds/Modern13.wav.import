@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://jrljet18pshx"
+path="res://.godot/imported/Modern13.wav-f7af098c3b71067df97490814e298ff2.sample"
+
+[deps]
+
+source_file="res://Assets/Graphical user interface/Sounds/Modern13.wav"
+dest_files=["res://.godot/imported/Modern13.wav-f7af098c3b71067df97490814e298ff2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

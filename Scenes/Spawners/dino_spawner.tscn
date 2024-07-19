@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://crw4n0o65iv6r"]
+
+[ext_resource type="PackedScene" uid="uid://dym4bs3gw2gpt" path="res://Scenes/Spawners/creature_spawner.tscn" id="1_jkmnk"]
+[ext_resource type="PackedScene" uid="uid://7i7tl4jtlxl3" path="res://Scenes/Creatures/dino.tscn" id="2_e2cai"]
+
+[node name="DinoSpawner" instance=ExtResource("1_jkmnk")]
+mob_scene = ExtResource("2_e2cai")
+spawn_limit = 10

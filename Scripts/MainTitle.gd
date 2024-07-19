@@ -1,6 +1,12 @@
 extends Control
+const TEST_SCENE_1 = preload("res://Scenes/Levels/testScene1.tscn")
+const GRASS_SCENE = preload("res://Scenes/Levels/grass_scene.tscn")
+const STONE_SCENE = preload("res://Scenes/Levels/stone_scene.tscn")
+var mainTitle = load("res://Scenes/MainTitle.tscn")
+const firstLevel = STONE_SCENE
+var LEVEL_COMPLEATED = load("res://Scenes/levelCompleated.tscn")
 
-const TEST_SCENE_1 = preload("res://Scenes/testScene1.tscn")
+@onready var saveManager = $SaveManager
 
 func _ready():
 	var button1 = $Start
@@ -9,12 +15,13 @@ func _ready():
 	var button4 = $Exit
 
 func _on_start_pressed():
+	saveManager.delete_data()
 	_button_pressed_sound()
-	get_tree().change_scene_to_packed(TEST_SCENE_1)
+	get_tree().change_scene_to_packed(firstLevel)
 
 func _on_continue_pressed():
 	_button_pressed_sound()
-	pass # Replace with function body.
+	get_tree().change_scene_to_packed(LEVEL_COMPLEATED)
 
 
 func _on_settings_pressed():
@@ -51,5 +58,16 @@ func _on_settings_mouse_entered():
 
 
 func _on_exit_mouse_entered():
+	_button_hover_sound()
+	pass # Replace with function body.
+
+
+func _on_credits_pressed():
+	_button_pressed_sound()
+	$CanvasLayer/CreditsScreen.show()
+	pass # Replace with function body.
+
+
+func _on_credits_mouse_entered():
 	_button_hover_sound()
 	pass # Replace with function body.

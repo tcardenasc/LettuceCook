@@ -1,0 +1,122 @@
+[gd_scene load_steps=6 format=3 uid="uid://dk2ykmm1u1ua8"]
+
+[ext_resource type="Script" path="res://Scenes/Tutorial.gd" id="1_i3isr"]
+[ext_resource type="Theme" uid="uid://ci6evmgagmykc" path="res://Assets/Themes/Tutorial.tres" id="2_auw14"]
+[ext_resource type="Texture2D" uid="uid://cghls606p66x4" path="res://Assets/Background/pixel-art-fantasy-lands-1/828x512/004.large.png" id="3_kpymw"]
+[ext_resource type="AudioStream" uid="uid://i6x51548nve8" path="res://Assets/Soud effects/171697__nenadsimic__menu-selection-click.wav" id="4_dwdpi"]
+[ext_resource type="AudioStream" uid="uid://b22pgl4snqnao" path="res://Assets/Soud effects/448080__breviceps__wet-click.wav" id="5_e61mj"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i3isr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -250.0
+offset_right = 400.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_auw14")
+metadata/_edit_lock_ = true
+
+[node name="Next" type="Button" parent="."]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 470.0
+offset_right = 850.0
+offset_bottom = 510.0
+text = "Next"
+metadata/_edit_lock_ = true
+
+[node name="Previous" type="Button" parent="."]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 470.0
+offset_right = 700.0
+offset_bottom = 510.0
+text = "Previous"
+metadata/_edit_lock_ = true
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 470.0
+offset_right = 275.0
+offset_bottom = 510.0
+text = "Exit"
+metadata/_edit_lock_ = true
+
+[node name="TextureReact" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kpymw")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = 60.0
+offset_right = 300.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 1
+clip_text = true
+metadata/_edit_lock_ = true
+
+[node name="SlideNumber" type="Label" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 470.0
+offset_right = 500.0
+offset_bottom = 510.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1 de 10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonPressSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dwdpi")
+bus = &"Sound Effects"
+
+[node name="ButtonHoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_e61mj")
+volume_db = -10.0
+bus = &"Sound Effects"
+
+[connection signal="mouse_entered" from="Next" to="." method="_on_next_mouse_entered"]
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
+[connection signal="mouse_entered" from="Previous" to="." method="_on_previous_mouse_entered"]
+[connection signal="pressed" from="Previous" to="." method="_on_previous_pressed"]
+[connection signal="mouse_entered" from="Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

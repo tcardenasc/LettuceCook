@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ibmj3lmc6b07"]
+
+[ext_resource type="Texture2D" uid="uid://cjsk84fo2reul" path="res://Assets/Graphical user interface/Sprites/UI_Flat_Slot_02_Selected.png" id="1_6mdkb"]
+[ext_resource type="Script" path="res://Scenes/Inventory/slot_gui.gd" id="1_7n0em"]
+
+[node name="Slot" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_7n0em")
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("1_6mdkb")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cnfddcb5j2x23"
+path="res://.godot/imported/Cymatics - Cobra Misc FX 2.wav-27f0941e5e41531fce63bdf3095434b5.sample"
+
+[deps]
+
+source_file="res://Assets/Soud effects/other/Cymatics - Cobra Misc FX 2.wav"
+dest_files=["res://.godot/imported/Cymatics - Cobra Misc FX 2.wav-27f0941e5e41531fce63bdf3095434b5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
