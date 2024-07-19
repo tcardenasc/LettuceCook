@@ -98,13 +98,13 @@ Asset License: CC BY 4.0
 Author: JDWasabi
 Asset License:Royalty free
 
-Sound FX/Programming/Lettuces
+Sound FX/Lettuces/Inventory
 Giacamote (Giacomo Tamburini)
 
 Map/Props
 clementito (Clemente Valenzuela)
 
-UI/Menus
+UI/Menus/Collectables/Stats
 Karmagro (Carlos Galvez)
 
 Programming/Character behaviour
