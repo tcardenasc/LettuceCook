@@ -15,6 +15,7 @@ func save_data(data):
 		saved_data["all_gems_collected"] += data["all_gems_collected"]
 		saved_data["brain_defeated"] += data["brain_defeated"]
 		saved_data["eduardo_defeated"] += data["eduardo_defeated"]
+		saved_data["dino_defeated"] += data["dino_defeated"]
 
 		var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 		file.store_string(JSON.stringify(saved_data))

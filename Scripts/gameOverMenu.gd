@@ -9,6 +9,7 @@ extends Control
 @onready var currentGemsLabel = $Control/Gem
 @onready var totalGemsLabel = $Control/Gem2
 @onready var maxHealthLabel = $Control/Health
+@onready var dinoKilledLabel = $DinoKilledBadge/DinoKilled
 
 const GRASS_SCENE = preload("res://Scenes/Levels/grass_scene.tscn")
 const STONE_SCENE = preload("res://Scenes/Levels/stone_scene.tscn")
@@ -19,6 +20,7 @@ var current_gems = 0
 var all_gems_collected = 0
 var brain_defeated = 0
 var eduardo_defeated = 0
+var dino_defeated = 0
 var max_health = 0
 var damage = 0
 var speed = 0
@@ -34,6 +36,7 @@ func _ready():
 		all_gems_collected = saved_data.get("all_gems_collected", 0)
 		brain_defeated = saved_data.get("brain_defeated", 0)
 		eduardo_defeated = saved_data.get("eduardo_defeated", 0)
+		dino_defeated = saved_data.get("dino_defeated", 0)
 		
 	maxHealthLabel.text = str(max_health)
 	damageLabel.text = str(damage)
@@ -42,6 +45,7 @@ func _ready():
 	totalGemsLabel.text = str(all_gems_collected)
 	eduKilledLabel.text = str(eduardo_defeated)
 	brainKilledLabel.text = str(brain_defeated)
+	dinoKilledLabel.text = str(dino_defeated)
 	
 	
 	print(str(brain_defeated))

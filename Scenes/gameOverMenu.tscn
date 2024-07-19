@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://n3qvwunpsdfr"]
+[gd_scene load_steps=18 format=3 uid="uid://n3qvwunpsdfr"]
 
 [ext_resource type="Texture2D" uid="uid://b3h1nmpxe6cyj" path="res://Assets/Background/pixel-art-fantasy-lands-1/828x512/021.large.png" id="1_8ubta"]
 [ext_resource type="Theme" uid="uid://ohqqda0lrcc1" path="res://Assets/Themes/GameOverMenu.tres" id="1_jem3v"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://o0m5u0nfy62q" path="res://Scenes/SaveManager.tscn" id="7_ubp7d"]
 [ext_resource type="Texture2D" uid="uid://bcot8t1h2fwml" path="res://Assets/Graphical user interface/Spritesheets/UI books & more.png" id="8_ihvcx"]
 [ext_resource type="Texture2D" uid="uid://d22ufrv51q0l3" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster.png" id="9_c68qt"]
+[ext_resource type="Texture2D" uid="uid://c25kw3b1oqfta" path="res://Assets/Characters/dinos/male/nico/base/idle.png" id="9_q45wg"]
 [ext_resource type="Texture2D" uid="uid://dpgjr183f76tl" path="res://Assets/Characters/Eduardo/eduardoIcon.png" id="10_5ilqv"]
 [ext_resource type="Texture2D" uid="uid://bav2fsnm8n243" path="res://Assets/Characters/brainDevour/brainIcon.png" id="11_j0opo"]
 [ext_resource type="FontFile" uid="uid://s6dqutlw1h50" path="res://Assets/Fonts/DungeonFont.ttf" id="12_sbucr"]
@@ -122,6 +123,20 @@ theme_override_font_sizes/font_size = 250
 text = "Run stats"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Dino" type="Panel" parent="."]
+offset_left = 112.0
+offset_top = 370.0
+offset_right = 176.0
+offset_bottom = 434.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_daiir")
+
+[node name="DinoPfp" type="Sprite2D" parent="Dino"]
+position = Vector2(33, 33)
+scale = Vector2(1.884, 2.236)
+texture = ExtResource("9_q45wg")
+region_enabled = true
+region_rect = Rect2(4, 4, 15, 18)
 
 [node name="Edu" type="Panel" parent="."]
 layout_mode = 0
@@ -339,6 +354,40 @@ scale = Vector2(3.525, 3.417)
 texture = ExtResource("9_c68qt")
 region_enabled = true
 region_rect = Rect2(6, 3, 20, 18)
+
+[node name="DinoKilledBadge" type="Sprite2D" parent="."]
+position = Vector2(225, 400)
+scale = Vector2(2.938, 2.438)
+texture = ExtResource("8_ihvcx")
+region_enabled = true
+region_rect = Rect2(192, 336, 32, 16)
+
+[node name="DinoKilled" type="Label" parent="DinoKilledBadge"]
+offset_left = -5.10638
+offset_top = -4.30769
+offset_right = 96.8936
+offset_bottom = 78.6923
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("12_sbucr")
+theme_override_font_sizes/font_size = 70
+text = "230"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="DinoKilledBadge"]
+offset_left = -14.6358
+offset_top = 8.20344
+offset_right = 281.364
+offset_bottom = 129.203
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_sbucr")
+theme_override_font_sizes/font_size = 120
+text = "Killed"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="MainMenu" to="." method="_on_main_menu_mouse_entered"]
 [connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
