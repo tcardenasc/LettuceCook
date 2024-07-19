@@ -19,9 +19,9 @@ var damage = 0
 var speed = 0	
 var saved_data
 
-var health_upgrade = 50
-var damage_upgrade = 1
-var speed_upgrade = 30
+var health_upgrade = 30
+var damage_upgrade = 2
+var speed_upgrade = 15
 
 var health_mp = 0
 var damage_mp = 0
@@ -110,10 +110,20 @@ func _update_labels():
 	SpeedCostLabel.text = str(speed_cost)
 
 func _update_stats():
+	
 	max_health = int(HealthLabel.text)
 	damage = int(DamageLabel.text)
 	speed = int(SpeedLabel.text)
 	current_gems = int(GemsLabel.text)
+	
+	var data = {
+		'max_health' : max_health,
+		'damage' : damage,
+		'speed' : speed,
+		'current_gems' : current_gems
+	}
+	
+	saveManager.update_player(data)
 
 
 func _on_up_health_pressed():

@@ -7,14 +7,13 @@ class_name Player
 @onready var pivot = $pivot
 @onready var attack_area = $pivot/AttackArea
 @onready var attack_sfx = $AttackSFX
-@export var speed = 300
-@export var damage = 5
 @export var knockback_strenght = 1000
 @export var inventory: Inventory
 @export var lettuce_throw_sound: AudioStream
 
-
-const MAX_HEALTH = 150
+var speed = 300
+var damage = 5
+var MAX_HEALTH = 150
 var current_gems = 0
 var all_gems_collected = 0
 var health = MAX_HEALTH

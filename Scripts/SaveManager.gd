@@ -11,6 +11,9 @@ func save_data(data):
 		file.close()
 	else:
 		# Si save_data no estaba vacío, actualiza los datos existentes
+		saved_data["max_health"] = data["max_health"]
+		saved_data["speed"] = data["speed"]
+		saved_data["damage"] = data["damage"]
 		saved_data["current_gems"] = data["current_gems"]
 		saved_data["all_gems_collected"] += data["all_gems_collected"]
 		saved_data["brain_defeated"] += data["brain_defeated"]
@@ -22,6 +25,13 @@ func save_data(data):
 		file.close()
 
 
+func update_player(data):
+	var saved_data = load_data()
+	saved_data["max_health"] = data.get("max_health", 0)
+	saved_data["damage"] = data.get("damage", 0)
+	saved_data["speed"] = data.get("speed",0)
+	saved_data["current_gems"] = data.get("current_gems",0)
+	save_data(saved_data)
 
 func load_data():
 	if FileAccess.file_exists(SAVE_FILE_PATH):
