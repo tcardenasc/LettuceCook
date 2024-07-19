@@ -4,6 +4,7 @@ const GRASS_SCENE = preload("res://Scenes/Levels/grass_scene.tscn")
 const STONE_SCENE = preload("res://Scenes/Levels/stone_scene.tscn")
 var mainTitle = load("res://Scenes/MainTitle.tscn")
 const firstLevel = STONE_SCENE
+var LEVEL_COMPLEATED = load("res://Scenes/levelCompleated.tscn")
 
 @onready var saveManager = $SaveManager
 
@@ -20,7 +21,7 @@ func _on_start_pressed():
 
 func _on_continue_pressed():
 	_button_pressed_sound()
-	pass # Replace with function body.
+	get_tree().change_scene_to_packed(LEVEL_COMPLEATED)
 
 
 func _on_settings_pressed():

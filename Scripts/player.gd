@@ -14,7 +14,7 @@ class_name Player
 @export var lettuce_throw_sound: AudioStream
 
 
-const MAX_HEALTH = 500
+const MAX_HEALTH = 150
 var current_gems = 0
 var all_gems_collected = 0
 var health = MAX_HEALTH
