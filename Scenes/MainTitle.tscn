@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dti55wss7cv7g"]
+[gd_scene load_steps=12 format=3 uid="uid://dti55wss7cv7g"]
 
 [ext_resource type="Script" path="res://Scripts/MainTitle.gd" id="1_rorm8"]
 [ext_resource type="Texture2D" uid="uid://cug68addljywv" path="res://Assets/Background/pixel-art-fantasy-lands-1/828x512/035.large.png" id="2_ewnmp"]
 [ext_resource type="PackedScene" uid="uid://c182stu20qtgv" path="res://Scenes/settings.tscn" id="2_rvta1"]
+[ext_resource type="PackedScene" uid="uid://rv8jlg4atj3t" path="res://Scenes/CreditsScreen.tscn" id="3_e1ebc"]
 [ext_resource type="Theme" uid="uid://dgq3f1dlfm1ss" path="res://Assets/Themes/MainMenu.tres" id="3_kuu6f"]
 [ext_resource type="Texture2D" uid="uid://bykq43s1igudu" path="res://Assets/Graphical user interface/GUI.png" id="4_dg6og"]
 [ext_resource type="AudioStream" uid="uid://de32i50smpygg" path="res://Assets/Background music/プレリュード第2番「名前を入力してください」_2.mp3" id="5_q8tkq"]
@@ -24,6 +25,10 @@ script = ExtResource("1_rorm8")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SettingsMenu" parent="CanvasLayer" instance=ExtResource("2_rvta1")]
+visible = false
+
+[node name="CreditsScreen" parent="CanvasLayer" instance=ExtResource("3_e1ebc")]
+visible = false
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -74,12 +79,21 @@ offset_bottom = 430.0
 theme = ExtResource("3_kuu6f")
 text = "  Settings "
 
-[node name="Exit" type="Button" parent="."]
+[node name="Credits" type="Button" parent="."]
 layout_mode = 0
 offset_left = 412.0
 offset_top = 450.0
 offset_right = 612.0
 offset_bottom = 490.0
+theme = ExtResource("3_kuu6f")
+text = "  Credits"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 510.0
+offset_right = 612.0
+offset_bottom = 550.0
 auto_translate = false
 theme = ExtResource("3_kuu6f")
 text = "Exit"
@@ -107,5 +121,7 @@ bus = &"Sound Effects"
 [connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
 [connection signal="mouse_entered" from="Settings" to="." method="_on_settings_mouse_entered"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
 [connection signal="mouse_entered" from="Exit" to="." method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

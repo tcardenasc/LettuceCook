@@ -55,3 +55,14 @@ func _on_settings_mouse_entered():
 func _on_exit_mouse_entered():
 	_button_hover_sound()
 	pass # Replace with function body.
+
+
+func _on_credits_pressed():
+	_button_pressed_sound()
+	$CanvasLayer/CreditsScreen.show()
+	pass # Replace with function body.
+
+
+func _on_credits_mouse_entered():
+	_button_hover_sound()
+	pass # Replace with function body.
