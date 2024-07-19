@@ -97,3 +97,15 @@ Asset License: CC BY 4.0
 8-bit / 16-bit Sound Effects (x25) Pack
 Author: JDWasabi
 Asset License:Royalty free
+
+Sound FX/Programming/Lettuces
+Giacamote (Giacomo Tamburini)
+
+Map/Props
+clementito (Clemente Valenzuela)
+
+UI/Menus
+Karmagro (Carlos Galvez)
+
+Programming/Character behaviour
+le.tomae (Tomas Cardenas)
