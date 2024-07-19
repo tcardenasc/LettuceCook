@@ -5,7 +5,6 @@
 [ext_resource type="Script" path="res://Scenes/Levels/TileMap.gd" id="3_e7632"]
 
 [node name="StoneScene" instance=ExtResource("1_yqwpx")]
-y_sort_enabled = true
 
 [node name="TileMap" parent="." index="0"]
 z_index = -1

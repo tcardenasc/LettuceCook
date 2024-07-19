@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://o0m5u0nfy62q" path="res://Scenes/SaveManager.tscn" id="11_n2esj"]
 
 [node name="TemplateScene" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_tmt8f")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -24,14 +25,17 @@ format = 2
 position = Vector2(432, -320)
 
 [node name="BrainSpawner" parent="." instance=ExtResource("3_mt2s3")]
+y_sort_enabled = true
 position = Vector2(744, -280)
 spawn_limit = 2
 
 [node name="EduardoSpawner" parent="." instance=ExtResource("4_5dlfg")]
+y_sort_enabled = true
 position = Vector2(288, -464)
 spawn_limit = 2
 
 [node name="DinoSpawner" parent="." instance=ExtResource("5_lvtiw")]
+y_sort_enabled = true
 spawn_limit = 2
 
 [node name="LettuceSpawner" parent="." instance=ExtResource("6_jf3r6")]
