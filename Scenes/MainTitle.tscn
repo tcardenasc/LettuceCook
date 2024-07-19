@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dti55wss7cv7g"]
+[gd_scene load_steps=16 format=3 uid="uid://dti55wss7cv7g"]
 
 [ext_resource type="Script" path="res://Scripts/MainTitle.gd" id="1_rorm8"]
 [ext_resource type="Texture2D" uid="uid://cug68addljywv" path="res://Assets/Background/pixel-art-fantasy-lands-1/828x512/035.large.png" id="2_ewnmp"]
@@ -10,6 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://i6x51548nve8" path="res://Assets/Soud effects/171697__nenadsimic__menu-selection-click.wav" id="6_sqcia"]
 [ext_resource type="AudioStream" uid="uid://b22pgl4snqnao" path="res://Assets/Soud effects/448080__breviceps__wet-click.wav" id="7_xtyhb"]
 [ext_resource type="PackedScene" uid="uid://o0m5u0nfy62q" path="res://Scenes/SaveManager.tscn" id="9_beho0"]
+[ext_resource type="Texture2D" uid="uid://bav2fsnm8n243" path="res://Assets/Characters/brainDevour/brainIcon.png" id="11_r0i7j"]
+[ext_resource type="Texture2D" uid="uid://c25kw3b1oqfta" path="res://Assets/Characters/dinos/male/nico/base/idle.png" id="12_lbl3m"]
+[ext_resource type="Texture2D" uid="uid://dpgjr183f76tl" path="res://Assets/Characters/Eduardo/eduardoIcon.png" id="13_dcilq"]
+[ext_resource type="Texture2D" uid="uid://d22ufrv51q0l3" path="res://Assets/Characters/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster.png" id="14_20e7o"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jxypo"]
 texture = ExtResource("4_dg6og")
@@ -114,6 +118,27 @@ volume_db = -10.0
 bus = &"Sound Effects"
 
 [node name="SaveManager" parent="." instance=ExtResource("9_beho0")]
+
+[node name="BrainIcon" type="Sprite2D" parent="."]
+position = Vector2(116.25, 365.25)
+scale = Vector2(8.43182, 8.43182)
+texture = ExtResource("11_r0i7j")
+
+[node name="Idle" type="Sprite2D" parent="."]
+position = Vector2(277, 284)
+scale = Vector2(6.10417, 6.10417)
+texture = ExtResource("12_lbl3m")
+hframes = 3
+
+[node name="EduardoIcon" type="Sprite2D" parent="."]
+position = Vector2(292, 490)
+scale = Vector2(6.26923, 6.26923)
+texture = ExtResource("13_dcilq")
+
+[node name="PinkMonster" type="Sprite2D" parent="."]
+position = Vector2(806, 386)
+scale = Vector2(-5.8173, 5.8173)
+texture = ExtResource("14_20e7o")
 
 [connection signal="mouse_entered" from="Start" to="." method="_on_start_mouse_entered"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
