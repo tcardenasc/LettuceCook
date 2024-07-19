@@ -123,8 +123,10 @@ height = 80.0
 position = Vector2(0, -32)
 script = ExtResource("2_mfosq")
 attackingSfx = ExtResource("5_w617j")
-MAX_HEALTH = 50
+MAX_HEALTH = 60
+basicDamage = 20
 itemResource = ExtResource("3_yyklv")
+attack_cooldown = 1.5
 
 [node name="CollisionShape2D" parent="pivot/AttackArea" index="0"]
 scale = Vector2(0.75, 0.75)

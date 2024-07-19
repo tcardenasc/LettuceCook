@@ -166,6 +166,7 @@ bus = &"Sound Effects"
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
 radius = 30.0
+max_speed = 2218.64
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="vanishTimer" to="." method="_on_timer_timeout"]

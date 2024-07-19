@@ -120,9 +120,10 @@ height = 50.0
 position = Vector2(0, -24)
 summonSfx = ExtResource("2_h86oh")
 attackingSfx = ExtResource("3_551fg")
-MAX_HEALTH = 50
-movementSpeed = 150
+MAX_HEALTH = 40
+movementSpeed = 300
 itemResource = ExtResource("3_w5uhy")
+attack_cooldown = 0.5
 
 [node name="AttackArea" parent="pivot" index="0"]
 visible = false
