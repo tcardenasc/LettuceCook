@@ -22,8 +22,8 @@ func spawn_lettuce():
 	#var player_position= get_parent().player.position
 	#lettuce.position.x=randf_range(player_position.x-500,player_position.x+500)
 	#lettuce.position.y=randf_range(player_position.y-500,player_position.y+500)
-	lettuce.position.x=randf_range(-160,1100)
-	lettuce.position.y=randf_range(-670,60)
+	lettuce.position.x=randf_range(-320,1020)
+	lettuce.position.y=randf_range(-640,100)
 	lettuce._collectable_particles.emitting=true
 	lettuce._traveling_particles.emitting=false
 	
